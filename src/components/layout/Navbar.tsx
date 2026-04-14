@@ -26,10 +26,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-primary shadow-lg shadow-primary/30 border-b border-primary/20"
-          : "bg-primary/95 backdrop-blur-xl"
+          ? "top-0 bg-primary shadow-lg shadow-primary/30 border-b border-primary/20"
+          : "top-10 bg-primary/95 backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">

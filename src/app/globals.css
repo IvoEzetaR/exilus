@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  /* === BRAND EXILUS — Cirugía Bariátrica === */
+  --color-primary: hsl(331 58% 27%);          /* #6C1D45 — morado dominante */
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary-dark: hsl(315 37% 28%);     /* #612C51 — morado oscuro hover */
+  --color-lilac: hsl(267 58% 88%);            /* #DFD0F1 — lila suave */
+  --color-accent: hsl(102 62% 57%);           /* #78D64B — verde CTA EXCLUSIVO */
+  --color-accent-foreground: hsl(331 58% 15%);
+  --color-accent-soft: hsl(129 78% 84%);      /* #B7F6C2 — verde claro acento */
+  --color-cream: hsl(34 58% 91%);             /* #F5EBDC — fondo neutro */
+  --color-orange: hsl(36 100% 54%);           /* #FF9E16 — acento puntual */
+
+  /* Neutrals */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(331 58% 15%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(331 58% 15%);
+  --color-secondary: hsl(34 58% 91%);
+  --color-secondary-foreground: hsl(331 58% 15%);
+  --color-muted: hsl(34 58% 91%);
+  --color-muted-foreground: hsl(331 20% 40%);
+  --color-border: hsl(267 58% 85%);
+  --color-ring: hsl(331 58% 27%);
+
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

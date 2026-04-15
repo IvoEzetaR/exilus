@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://example.com"; // TODO: Replace
+  const baseUrl = "https://exilus.pe";
 
   return [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 1,
+    },
   ];
 }

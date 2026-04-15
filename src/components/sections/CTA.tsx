@@ -13,7 +13,7 @@ export default function CTA() {
           <h2 className={headings.h2}>
             Listo para empezar?
           </h2>
-          <p className={`mt-4 ${headings.subtitle}`}>
+          <p className={`mt-4 ${headings.bodyMuted}`}>
             Contactanos hoy y recibe una consulta gratuita. Sin compromiso.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -23,7 +23,7 @@ export default function CTA() {
                 Escribenos por WhatsApp
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="secondary" asChild>
               <a href="tel:+51999999999">Llamar ahora</a>
             </Button>
           </div>

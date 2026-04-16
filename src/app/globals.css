@@ -19,8 +19,8 @@
   /* Cream — fondo dominante */
   --color-cream: #F5EBDC;
 
-  /* Orange — acento puntual para stats / números */
-  --color-accent: #FF9E16;
+  /* Rose wine — acento sobrio para stats / números */
+  --color-accent: #9B3A5C;
 
   /* Text warm — cuerpo sobre crema (más cálido que negro puro) */
   --color-warm-text: #4A3728;
@@ -89,4 +89,10 @@
     background-color: var(--color-primary);
     color: var(--color-primary-foreground);
   }
+}
+
+/* Marquee infinite scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar, Activity, HeartPulse } from "lucide-react";
+import Image from "next/image";
 import { CLIENT } from "@/lib/client-data";
 import {
   staggerContainer,
@@ -41,38 +42,157 @@ const differentials = [
   "Equipo altamente especializado",
 ];
 
-const steps = [
+type Step = {
+  step: string;
+  title: string;
+  description: string;
+  image?: string;
+};
+
+const steps: Step[] = [
   {
     step: "1",
     title: "Evaluación inicial",
     description:
       "Consulta médica personalizada para conocer tu historia clínica, objetivos y condición actual.",
+    image: "/images/paso-evaluacion-inicial.jpg",
   },
   {
     step: "2",
     title: "Estudios preoperatorios",
     description:
       "Exámenes de laboratorio e imagen necesarios para planificar el procedimiento de forma segura.",
+    image: "/images/paso-cirugia.jpg",
   },
   {
     step: "3",
     title: "Evaluación multidisciplinaria",
     description:
       "Revisión conjunta con el equipo de nutrición, psicología y medicina interna.",
+    image: "/images/paso-evaluacion-multi.jpg",
   },
   {
     step: "4",
     title: "Cirugía",
     description:
       "Intervención programada en clínica acreditada, con los más altos estándares de seguridad.",
+    image: "/images/doctor-quirofano.jpg",
   },
   {
     step: "5",
     title: "Seguimiento postoperatorio",
     description:
       "Control continuo para asegurar tu recuperación y el mantenimiento de los resultados a largo plazo.",
+    image: "/images/paso-seguimiento.jpg",
   },
 ];
+
+/* ─── Step Card — horizontal layout with glass effect ─── */
+function StepCard({ s, accent }: { s: Step; accent?: boolean }) {
+  return (
+    <div
+      className="rounded-xl sm:rounded-2xl overflow-hidden shadow-sm"
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.55)",
+        backdropFilter: "blur(14px) saturate(160%)",
+        WebkitBackdropFilter: "blur(14px) saturate(160%)",
+        border: accent
+          ? "1.5px solid rgba(180, 100, 120, 0.45)"
+          : "1px solid var(--color-border)",
+      }}
+    >
+      <div className="flex sm:flex-row flex-col">
+        {/* Image */}
+        {s.image && (
+          <div className="relative h-20 sm:h-auto sm:min-h-[110px] sm:w-[38%] flex-shrink-0 overflow-hidden">
+            <Image
+              src={s.image}
+              alt={s.title}
+              fill
+              sizes="(max-width: 640px) 50vw, 200px"
+              className="object-cover"
+            />
+          </div>
+        )}
+        {/* Content */}
+        <div className="p-2 sm:p-3 lg:p-3.5 flex-1 flex flex-col justify-center min-w-0">
+          <h3
+            className="font-serif text-[11px] sm:text-sm lg:text-base font-normal mb-0.5 sm:mb-1 leading-snug"
+            style={{ color: "var(--color-primary)" }}
+          >
+            {s.title}
+          </h3>
+          <p
+            className="text-[9px] sm:text-[11px] lg:text-xs leading-relaxed"
+            style={{ color: "var(--color-warm-text)" }}
+          >
+            {s.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Step 5 card — with icons row ─── */
+function Step5Card({ s }: { s: Step }) {
+  return (
+    <div
+      className="rounded-xl sm:rounded-2xl overflow-hidden shadow-sm"
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.55)",
+        backdropFilter: "blur(14px) saturate(160%)",
+        WebkitBackdropFilter: "blur(14px) saturate(160%)",
+        border: "1px solid var(--color-border)",
+      }}
+    >
+      <div className="flex sm:flex-row flex-col">
+        {/* Image */}
+        {s.image && (
+          <div className="relative h-20 sm:h-auto sm:min-h-[110px] sm:w-[38%] flex-shrink-0 overflow-hidden">
+            <Image
+              src={s.image}
+              alt={s.title}
+              fill
+              sizes="(max-width: 640px) 50vw, 200px"
+              className="object-cover"
+            />
+          </div>
+        )}
+        {/* Content */}
+        <div className="p-2 sm:p-3 lg:p-3.5 flex-1 flex flex-col justify-center min-w-0">
+          <h3
+            className="font-serif text-[11px] sm:text-sm lg:text-base font-normal mb-0.5 sm:mb-1 leading-snug"
+            style={{ color: "var(--color-primary)" }}
+          >
+            {s.title}
+          </h3>
+          <p
+            className="text-[9px] sm:text-[11px] lg:text-xs leading-relaxed mb-2 sm:mb-3"
+            style={{ color: "var(--color-warm-text)" }}
+          >
+            {s.description}
+          </p>
+          {/* Icons row */}
+          <div className="flex gap-2">
+            <div
+              className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-md"
+              style={{ backgroundColor: "var(--color-lilac)" }}
+            >
+              <Activity className="h-3 w-3 sm:h-3.5 sm:w-3.5" style={{ color: "var(--color-primary)" }} />
+            </div>
+            <div
+              className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-md"
+              style={{ backgroundColor: "var(--color-lilac)" }}
+            >
+              <HeartPulse className="h-3 w-3 sm:h-3.5 sm:w-3.5" style={{ color: "var(--color-primary)" }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Method() {
   return (
@@ -188,33 +308,32 @@ export default function Method() {
         </div>
       </div>
 
-      {/* Bloque 2 — Proceso del paciente (fondo crema) */}
+      {/* ═══════════════════════════════════════════════════════════════
+          Bloque 2 — Tu proceso, paso a paso (zigzag timeline con imágenes)
+          Diseño: cards con imagen alternando izquierda/derecha, línea
+          vertical central con números circulares.
+          ═══════════════════════════════════════════════════════════════ */}
       <div
-        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+        className="px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16"
         style={{ backgroundColor: "var(--color-cream)" }}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="text-center mb-14"
+            className="text-center mb-8"
           >
-            <p
-              className="font-sans text-xs font-semibold tracking-[0.15em] uppercase mb-3"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Tu camino con nosotros
-            </p>
             <h2
-              className="font-serif text-4xl sm:text-5xl font-light leading-tight"
+              className="font-serif text-3xl sm:text-4xl font-light leading-tight"
               style={{ color: "var(--color-primary)" }}
             >
               Tu proceso, paso a paso
             </h2>
             <p
-              className="mt-4 text-base max-w-xl mx-auto leading-relaxed"
+              className="mt-3 text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
               style={{ color: "var(--color-warm-text)" }}
             >
               Desde la primera consulta hasta tu seguimiento a largo plazo, cada etapa está
@@ -222,53 +341,53 @@ export default function Method() {
             </p>
           </motion.div>
 
-          {/* Steps */}
-          <motion.ol
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            className="relative"
-            aria-label="Pasos del proceso"
-          >
-            {/* Línea vertical — desktop */}
+          {/* ── Timeline zigzag — all breakpoints ── */}
+          <div className="relative">
+            {/* Línea vertical central */}
             <div
-              className="absolute left-[calc(50%-1px)] top-0 bottom-0 w-px hidden lg:block"
+              className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-[2px]"
               style={{ backgroundColor: "var(--color-border)" }}
               aria-hidden="true"
             />
 
-            <div className="space-y-8">
-              {steps.map((s, idx) => (
-                <motion.li
-                  key={s.step}
-                  variants={staggerItem}
-                  className={`flex items-start gap-6 lg:gap-0 lg:grid lg:grid-cols-2 ${
-                    idx % 2 === 0 ? "lg:text-right" : ""
-                  }`}
-                >
-                  {/* Contenido izquierda (pares) */}
-                  {idx % 2 === 0 ? (
-                    <>
-                      <div className="lg:pr-14 hidden lg:block">
-                        <p
-                          className="font-serif text-xl font-normal mb-1"
-                          style={{ color: "var(--color-primary)" }}
-                        >
-                          {s.title}
-                        </p>
-                        <p
-                          className="text-sm leading-relaxed"
-                          style={{ color: "var(--color-warm-text)" }}
-                        >
-                          {s.description}
-                        </p>
+            {/* Steps */}
+            <motion.ol
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={VIEWPORT_ONCE}
+              className="space-y-1 sm:space-y-1.5 lg:space-y-2"
+              aria-label="Pasos del proceso"
+            >
+              {steps.map((s, idx) => {
+                const isLeft = idx % 2 === 0;
+                const isLast = idx === steps.length - 1;
+                const isStep4 = idx === 3;
+
+                return (
+                  <motion.li
+                    key={s.step}
+                    variants={staggerItem}
+                    className="relative"
+                  >
+                    <div className="grid grid-cols-[1fr_24px_1fr] sm:grid-cols-[1fr_32px_1fr] lg:grid-cols-[1fr_40px_1fr] gap-1.5 sm:gap-2.5 lg:gap-4 items-start">
+                      {/* Left column */}
+                      <div>
+                        {isLeft ? (
+                          isLast ? (
+                            <Step5Card s={s} />
+                          ) : (
+                            <StepCard s={s} accent={isStep4} />
+                          )
+                        ) : (
+                          <div />
+                        )}
                       </div>
 
-                      {/* Número central */}
-                      <div className="flex lg:justify-start lg:pl-14 items-center gap-4">
+                      {/* Center — number circle */}
+                      <div className="flex justify-center pt-3 sm:pt-4 lg:pt-6">
                         <div
-                          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold"
+                          className="relative z-10 flex h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 flex-shrink-0 items-center justify-center rounded-full border-[1.5px] sm:border-2 text-[9px] sm:text-[11px] lg:text-xs font-bold"
                           style={{
                             backgroundColor: "var(--color-cream)",
                             borderColor: "var(--color-primary)",
@@ -277,83 +396,30 @@ export default function Method() {
                         >
                           {s.step}
                         </div>
-                        {/* Mobile content */}
-                        <div className="lg:hidden">
-                          <p
-                            className="font-serif text-lg font-normal mb-1"
-                            style={{ color: "var(--color-primary)" }}
-                          >
-                            {s.title}
-                          </p>
-                          <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: "var(--color-warm-text)" }}
-                          >
-                            {s.description}
-                          </p>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Número central (impares) */}
-                      <div className="flex lg:justify-end lg:pr-14 items-center gap-4">
-                        {/* Mobile content */}
-                        <div
-                          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold"
-                          style={{
-                            backgroundColor: "var(--color-cream)",
-                            borderColor: "var(--color-primary)",
-                            color: "var(--color-primary)",
-                          }}
-                        >
-                          {s.step}
-                        </div>
-                        <div className="lg:hidden">
-                          <p
-                            className="font-serif text-lg font-normal mb-1"
-                            style={{ color: "var(--color-primary)" }}
-                          >
-                            {s.title}
-                          </p>
-                          <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: "var(--color-warm-text)" }}
-                          >
-                            {s.description}
-                          </p>
-                        </div>
                       </div>
 
-                      {/* Contenido derecha (impares) */}
-                      <div className="lg:pl-14 hidden lg:block">
-                        <p
-                          className="font-serif text-xl font-normal mb-1"
-                          style={{ color: "var(--color-primary)" }}
-                        >
-                          {s.title}
-                        </p>
-                        <p
-                          className="text-sm leading-relaxed"
-                          style={{ color: "var(--color-warm-text)" }}
-                        >
-                          {s.description}
-                        </p>
+                      {/* Right column */}
+                      <div>
+                        {!isLeft ? (
+                          <StepCard s={s} accent={isStep4} />
+                        ) : (
+                          <div />
+                        )}
                       </div>
-                    </>
-                  )}
-                </motion.li>
-              ))}
-            </div>
-          </motion.ol>
+                    </div>
+                  </motion.li>
+                );
+              })}
+            </motion.ol>
+          </div>
 
-          {/* CTA proceso */}
+          {/* CTA */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="mt-14 text-center"
+            className="mt-10 text-center"
           >
             <motion.a
               href={CLIENT.booking}

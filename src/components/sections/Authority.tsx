@@ -41,13 +41,13 @@ export default function Authority() {
             <div className="relative">
               {/* Foto */}
               <div
-                className="relative w-72 sm:w-80 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
+                className="relative w-80 sm:w-96 lg:w-[420px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
               >
                 <Image
-                  src="/images/doctor-consulta.jpg"
-                  alt="Dr. Víctor Augusto Salazar Tantaleán en consulta médica personalizada, Trujillo"
+                  src="/images/doctor-terno.jpg"
+                  alt="Dr. Víctor Augusto Salazar Tantaleán, Director Médico de Exilus, Trujillo"
                   fill
-                  sizes="(max-width: 640px) 288px, 320px"
+                  sizes="(max-width: 640px) 320px, (max-width: 1024px) 384px, 420px"
                   className="object-cover object-top"
                   priority
                 />

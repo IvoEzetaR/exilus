@@ -181,21 +181,21 @@ export default function Hero() {
               {/* Foto principal con parallax */}
               <motion.div
                 style={{ y: shouldReduce ? 0 : imageY }}
-                className="relative w-72 sm:w-80 lg:w-[400px] aspect-[4/5] rounded-3xl overflow-hidden"
+                className="relative w-72 sm:w-80 lg:w-[540px] aspect-[4/3] rounded-3xl overflow-hidden"
               >
                 <Image
-                  src="/images/doctor-terno.jpg"
-                  alt="Dr. Víctor Augusto Salazar Tantaleán, cirujano bariatra y laparoscopista en Trujillo"
+                  src="/images/doctor-quirofano.jpg"
+                  alt="Dr. Víctor Augusto Salazar Tantaleán en quirófano con equipo laparoscópico de última generación, Trujillo"
                   fill
                   priority
                   sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 400px"
-                  className="object-cover object-top"
+                  className="object-cover object-center"
                 />
                 {/* Overlay gradiente vino sutil */}
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: "linear-gradient(to top, rgba(108,29,69,0.45) 0%, transparent 60%)",
+                    background: "linear-gradient(to top, rgba(108,29,69,0.35) 0%, transparent 50%)",
                   }}
                   aria-hidden="true"
                 />
@@ -235,7 +235,7 @@ export default function Hero() {
                 className="absolute -top-4 -right-4 flex h-[68px] w-[68px] flex-col items-center justify-center rounded-full shadow-xl"
                 style={{
                   backgroundColor: "var(--color-accent)",
-                  boxShadow: "0 8px 24px rgba(255,158,22,0.35)",
+                  boxShadow: "0 8px 24px rgba(155,58,92,0.35)",
                 }}
               >
                 <span className="text-xl font-bold leading-none text-white">+16</span>

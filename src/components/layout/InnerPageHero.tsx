@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { staggerContainer, staggerItem } from "@/lib/design-system";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
@@ -13,6 +14,7 @@ interface InnerPageHeroProps {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  bgImage?: string;
   breadcrumbs: BreadcrumbItem[];
 }
 
@@ -20,6 +22,7 @@ export default function InnerPageHero({
   eyebrow,
   title,
   subtitle,
+  bgImage,
   breadcrumbs,
 }: InnerPageHeroProps) {
   return (
@@ -31,6 +34,28 @@ export default function InnerPageHero({
         paddingBottom: "4rem",
       }}
     >
+      {/* Background image (optional) */}
+      {bgImage && (
+        <div className="absolute inset-0" aria-hidden="true">
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Dark overlay for text legibility */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(47,14,28,0.88) 0%, rgba(47,14,28,0.72) 45%, rgba(47,14,28,0.45) 100%)",
+            }}
+          />
+        </div>
+      )}
+
       {/* Decorative blobs */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
@@ -53,7 +78,7 @@ export default function InnerPageHero({
             <motion.p
               variants={staggerItem}
               className="text-xs font-semibold tracking-[0.15em] uppercase mb-4"
-              style={{ color: "rgba(245,235,220,0.55)" }}
+              style={{ color: "rgba(245,235,220,0.65)" }}
             >
               {eyebrow}
             </motion.p>
@@ -71,7 +96,7 @@ export default function InnerPageHero({
             <motion.p
               variants={staggerItem}
               className="mt-4 text-lg max-w-2xl leading-relaxed"
-              style={{ color: "rgba(245,235,220,0.75)" }}
+              style={{ color: "rgba(245,235,220,0.85)" }}
             >
               {subtitle}
             </motion.p>

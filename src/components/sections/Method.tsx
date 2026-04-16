@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Calendar, Activity, HeartPulse } from "lucide-react";
 import Image from "next/image";
 import { CLIENT } from "@/lib/client-data";
@@ -41,6 +41,47 @@ const differentials = [
   "Atención personalizada",
   "Equipo altamente especializado",
 ];
+
+/* ─── Animation variants — progressive scroll reveal per step ─── */
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const stepContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.18, delayChildren: 0.05 },
+  },
+};
+
+const cardFromLeft: Variants = {
+  hidden: { opacity: 0, x: -70, scale: 0.95 },
+  show: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.85, ease: EASE },
+  },
+};
+
+const cardFromRight: Variants = {
+  hidden: { opacity: 0, x: 70, scale: 0.95 },
+  show: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.85, ease: EASE },
+  },
+};
+
+const circlePop: Variants = {
+  hidden: { opacity: 0, scale: 0 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 220, damping: 14 },
+  },
+};
+
+const stepViewport = { once: true, margin: "-100px" } as const;
 
 type Step = {
   step: string;
@@ -104,26 +145,26 @@ function StepCard({ s, accent }: { s: Step; accent?: boolean }) {
       <div className="flex sm:flex-row flex-col">
         {/* Image */}
         {s.image && (
-          <div className="relative h-20 sm:h-auto sm:min-h-[110px] sm:w-[38%] flex-shrink-0 overflow-hidden">
+          <div className="relative h-48 sm:h-auto sm:min-h-[200px] lg:min-h-[240px] sm:w-[42%] flex-shrink-0 overflow-hidden">
             <Image
               src={s.image}
               alt={s.title}
               fill
-              sizes="(max-width: 640px) 50vw, 200px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 280px, 340px"
               className="object-cover"
             />
           </div>
         )}
         {/* Content */}
-        <div className="p-2 sm:p-3 lg:p-3.5 flex-1 flex flex-col justify-center min-w-0">
+        <div className="p-5 sm:p-6 lg:p-7 flex-1 flex flex-col justify-center min-w-0">
           <h3
-            className="font-serif text-[11px] sm:text-sm lg:text-base font-normal mb-0.5 sm:mb-1 leading-snug"
+            className="font-serif text-lg sm:text-xl lg:text-2xl font-normal mb-2 sm:mb-2.5 leading-snug"
             style={{ color: "var(--color-primary)" }}
           >
             {s.title}
           </h3>
           <p
-            className="text-[9px] sm:text-[11px] lg:text-xs leading-relaxed"
+            className="text-sm sm:text-base lg:text-[15px] leading-relaxed"
             style={{ color: "var(--color-warm-text)" }}
           >
             {s.description}
@@ -149,43 +190,43 @@ function Step5Card({ s }: { s: Step }) {
       <div className="flex sm:flex-row flex-col">
         {/* Image */}
         {s.image && (
-          <div className="relative h-20 sm:h-auto sm:min-h-[110px] sm:w-[38%] flex-shrink-0 overflow-hidden">
+          <div className="relative h-48 sm:h-auto sm:min-h-[200px] lg:min-h-[240px] sm:w-[42%] flex-shrink-0 overflow-hidden">
             <Image
               src={s.image}
               alt={s.title}
               fill
-              sizes="(max-width: 640px) 50vw, 200px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 280px, 340px"
               className="object-cover"
             />
           </div>
         )}
         {/* Content */}
-        <div className="p-2 sm:p-3 lg:p-3.5 flex-1 flex flex-col justify-center min-w-0">
+        <div className="p-5 sm:p-6 lg:p-7 flex-1 flex flex-col justify-center min-w-0">
           <h3
-            className="font-serif text-[11px] sm:text-sm lg:text-base font-normal mb-0.5 sm:mb-1 leading-snug"
+            className="font-serif text-lg sm:text-xl lg:text-2xl font-normal mb-2 sm:mb-2.5 leading-snug"
             style={{ color: "var(--color-primary)" }}
           >
             {s.title}
           </h3>
           <p
-            className="text-[9px] sm:text-[11px] lg:text-xs leading-relaxed mb-2 sm:mb-3"
+            className="text-sm sm:text-base lg:text-[15px] leading-relaxed mb-4 sm:mb-5"
             style={{ color: "var(--color-warm-text)" }}
           >
             {s.description}
           </p>
           {/* Icons row */}
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             <div
-              className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-md"
+              className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg"
               style={{ backgroundColor: "var(--color-lilac)" }}
             >
-              <Activity className="h-3 w-3 sm:h-3.5 sm:w-3.5" style={{ color: "var(--color-primary)" }} />
+              <Activity className="h-5 w-5 sm:h-[22px] sm:w-[22px]" style={{ color: "var(--color-primary)" }} />
             </div>
             <div
-              className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-md"
+              className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg"
               style={{ backgroundColor: "var(--color-lilac)" }}
             >
-              <HeartPulse className="h-3 w-3 sm:h-3.5 sm:w-3.5" style={{ color: "var(--color-primary)" }} />
+              <HeartPulse className="h-5 w-5 sm:h-[22px] sm:w-[22px]" style={{ color: "var(--color-primary)" }} />
             </div>
           </div>
         </div>
@@ -314,26 +355,26 @@ export default function Method() {
           vertical central con números circulares.
           ═══════════════════════════════════════════════════════════════ */}
       <div
-        className="px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16"
+        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
         style={{ backgroundColor: "var(--color-cream)" }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="text-center mb-8"
+            className="text-center mb-12 sm:mb-14 lg:mb-16"
           >
             <h2
-              className="font-serif text-3xl sm:text-4xl font-light leading-tight"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light leading-tight"
               style={{ color: "var(--color-primary)" }}
             >
               Tu proceso, paso a paso
             </h2>
             <p
-              className="mt-3 text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
+              className="mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
               style={{ color: "var(--color-warm-text)" }}
             >
               Desde la primera consulta hasta tu seguimiento a largo plazo, cada etapa está
@@ -350,44 +391,47 @@ export default function Method() {
               aria-hidden="true"
             />
 
-            {/* Steps */}
-            <motion.ol
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEWPORT_ONCE}
-              className="space-y-1 sm:space-y-1.5 lg:space-y-2"
+            {/* Steps — progressive scroll reveal per item */}
+            <ol
+              className="space-y-6 sm:space-y-8 lg:space-y-10"
               aria-label="Pasos del proceso"
             >
               {steps.map((s, idx) => {
                 const isLeft = idx % 2 === 0;
                 const isLast = idx === steps.length - 1;
                 const isStep4 = idx === 3;
+                const cardVariant = isLeft ? cardFromLeft : cardFromRight;
 
                 return (
                   <motion.li
                     key={s.step}
-                    variants={staggerItem}
+                    variants={stepContainer}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={stepViewport}
                     className="relative"
                   >
-                    <div className="grid grid-cols-[1fr_24px_1fr] sm:grid-cols-[1fr_32px_1fr] lg:grid-cols-[1fr_40px_1fr] gap-1.5 sm:gap-2.5 lg:gap-4 items-start">
+                    <div className="grid grid-cols-[1fr_48px_1fr] sm:grid-cols-[1fr_64px_1fr] lg:grid-cols-[1fr_80px_1fr] gap-3 sm:gap-5 lg:gap-6 items-start">
                       {/* Left column */}
                       <div>
                         {isLeft ? (
-                          isLast ? (
-                            <Step5Card s={s} />
-                          ) : (
-                            <StepCard s={s} accent={isStep4} />
-                          )
+                          <motion.div variants={cardVariant}>
+                            {isLast ? (
+                              <Step5Card s={s} />
+                            ) : (
+                              <StepCard s={s} accent={isStep4} />
+                            )}
+                          </motion.div>
                         ) : (
                           <div />
                         )}
                       </div>
 
-                      {/* Center — number circle */}
-                      <div className="flex justify-center pt-3 sm:pt-4 lg:pt-6">
-                        <div
-                          className="relative z-10 flex h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 flex-shrink-0 items-center justify-center rounded-full border-[1.5px] sm:border-2 text-[9px] sm:text-[11px] lg:text-xs font-bold"
+                      {/* Center — number circle (spring pop-in) */}
+                      <div className="flex justify-center pt-8 sm:pt-10 lg:pt-12">
+                        <motion.div
+                          variants={circlePop}
+                          className="relative z-10 flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 flex-shrink-0 items-center justify-center rounded-full border-2 text-base sm:text-lg lg:text-xl font-bold"
                           style={{
                             backgroundColor: "var(--color-cream)",
                             borderColor: "var(--color-primary)",
@@ -395,13 +439,15 @@ export default function Method() {
                           }}
                         >
                           {s.step}
-                        </div>
+                        </motion.div>
                       </div>
 
                       {/* Right column */}
                       <div>
                         {!isLeft ? (
-                          <StepCard s={s} accent={isStep4} />
+                          <motion.div variants={cardVariant}>
+                            <StepCard s={s} accent={isStep4} />
+                          </motion.div>
                         ) : (
                           <div />
                         )}
@@ -410,7 +456,7 @@ export default function Method() {
                   </motion.li>
                 );
               })}
-            </motion.ol>
+            </ol>
           </div>
 
           {/* CTA */}
@@ -419,7 +465,7 @@ export default function Method() {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="mt-10 text-center"
+            className="mt-14 sm:mt-16 lg:mt-20 text-center"
           >
             <motion.a
               href={CLIENT.booking}

@@ -1,29 +1,64 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { Menu, X, Calendar } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { CLIENT } from "@/lib/client-data";
 
-const links = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Testimonios", href: "#testimonios" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
+const sectionLinks = [
+  { label: "Inicio", anchor: "#inicio", href: "/" },
+  { label: "Proceso", anchor: "#proceso", href: "/#proceso" },
+  { label: "FAQ", anchor: "#faq", href: "/#faq" },
+];
+
+const pageLinks = [
+  { label: "Servicios", href: "/servicios" },
+  { label: "Testimonios", href: "/testimonios" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Build all nav links in order: Inicio | Servicios | Proceso | Testimonios | FAQ | Contacto
+  const allLinks = [
+    // Inicio
+    {
+      label: "Inicio",
+      href: isHome ? "#inicio" : "/",
+      isPage: !isHome,
+    },
+    // Servicios (page)
+    { label: "Servicios", href: "/servicios", isPage: true },
+    // Proceso (section)
+    {
+      label: "Proceso",
+      href: isHome ? "#proceso" : "/#proceso",
+      isPage: !isHome,
+    },
+    // Testimonios (page)
+    { label: "Testimonios", href: "/testimonios", isPage: true },
+    // FAQ (section)
+    {
+      label: "FAQ",
+      href: isHome ? "#faq" : "/#faq",
+      isPage: !isHome,
+    },
+    // Contacto (page)
+    { label: "Contacto", href: "/contacto", isPage: true },
+  ];
 
   return (
     <nav
@@ -41,7 +76,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <a href="#inicio" className="flex items-center" aria-label="Exilus — inicio">
+        <Link href="/" className="flex items-center" aria-label="Exilus — inicio">
           <div className="relative h-10 w-10">
             <Image
               src="/images/exilus-logo.png"
@@ -58,25 +93,46 @@ export default function Navbar() {
           >
             Exilus
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden items-center gap-6 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="relative text-sm font-medium transition-colors group"
-              style={{ color: "var(--color-warm-text)" }}
-            >
-              {l.label}
-              {/* Underline animado */}
-              <span
-                className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
-                style={{ backgroundColor: "var(--color-primary)" }}
-              />
-            </a>
-          ))}
+          {allLinks.map((l) =>
+            l.isPage ? (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="relative text-sm font-medium transition-colors group"
+                style={{
+                  color:
+                    pathname === l.href
+                      ? "var(--color-primary)"
+                      : "var(--color-warm-text)",
+                }}
+              >
+                {l.label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px transition-all duration-300 ${
+                    pathname === l.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                  style={{ backgroundColor: "var(--color-primary)" }}
+                />
+              </Link>
+            ) : (
+              <a
+                key={l.label}
+                href={l.href}
+                className="relative text-sm font-medium transition-colors group"
+                style={{ color: "var(--color-warm-text)" }}
+              >
+                {l.label}
+                <span
+                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
+                  style={{ backgroundColor: "var(--color-primary)" }}
+                />
+              </a>
+            )
+          )}
 
           {/* CTA verde */}
           <motion.a
@@ -124,20 +180,38 @@ export default function Navbar() {
               borderColor: "var(--color-border)",
             }}
           >
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block py-3 text-sm font-medium border-b transition-colors hover:opacity-70"
-                style={{
-                  color: "var(--color-warm-text)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
-                {l.label}
-              </a>
-            ))}
+            {allLinks.map((l) =>
+              l.isPage ? (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-sm font-medium border-b transition-colors hover:opacity-70"
+                  style={{
+                    color:
+                      pathname === l.href
+                        ? "var(--color-primary)"
+                        : "var(--color-warm-text)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-sm font-medium border-b transition-colors hover:opacity-70"
+                  style={{
+                    color: "var(--color-warm-text)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  {l.label}
+                </a>
+              )
+            )}
             <a
               href={CLIENT.booking}
               target="_blank"

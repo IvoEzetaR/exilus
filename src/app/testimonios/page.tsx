@@ -24,7 +24,6 @@ export default function TestimoniosPage() {
           eyebrow="Historias de transformación"
           title="Testimonios"
           subtitle="Cada paciente tiene una historia. Conoce cómo la cirugía bariátrica transformó la vida de quienes confiaron en nosotros."
-          bgImage="/images/doctor-consulta.jpg"
           breadcrumbs={[
             { label: "Inicio", href: "/" },
             { label: "Testimonios" },

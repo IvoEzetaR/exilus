@@ -28,6 +28,7 @@ export default function ServiciosPage() {
           eyebrow="Nuestros procedimientos"
           title="Servicios Especializados"
           subtitle="Cada paciente es único. Ofrecemos un abanico de procedimientos bariátricos y laparoscópicos para encontrar la solución ideal para tu caso."
+          bgImage="/images/doctor-quirofano.jpg"
           breadcrumbs={[
             { label: "Inicio", href: "/" },
             { label: "Servicios" },

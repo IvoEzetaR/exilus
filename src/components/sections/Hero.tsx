@@ -48,7 +48,7 @@ const scrollHintAnim = {
 export default function Hero() {
   const shouldReduce = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(true);
 
   // Pause video when user prefers reduced motion
   useEffect(() => {
@@ -84,6 +84,7 @@ export default function Hero() {
         loop
         playsInline
         preload="auto"
+        poster="/images/doctor-terno.jpg"
         onCanPlay={() => setVideoLoaded(true)}
         className="absolute inset-0 h-full w-full object-cover"
         style={{

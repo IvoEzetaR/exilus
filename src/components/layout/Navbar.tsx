@@ -41,8 +41,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed left-0 right-0 z-40 top-10 transition-all duration-300 ${
-        scrolled ? "shadow-sm border-b" : ""
+      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled ? "top-0 shadow-sm border-b" : "top-10"
       }`}
       style={{
         backgroundColor: isTransparent ? "transparent" : "var(--color-cream)",

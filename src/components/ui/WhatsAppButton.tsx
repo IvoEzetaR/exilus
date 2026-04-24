@@ -80,13 +80,13 @@ function Bubble({
           }
           exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          // Posición: mobile → encima del botón, anclado a la izquierda del botón
-          //           desktop → a la derecha del botón (centrado vertical)
+          // Posición: mobile → encima del botón, alineado a la derecha
+          //           desktop → a la izquierda del botón (centrado vertical), pico apunta a la derecha
           className="
             absolute
-            bottom-[calc(100%+12px)] left-0
+            bottom-[calc(100%+12px)] right-0
             sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2
-            sm:left-[calc(100%+14px)]
+            sm:right-[calc(100%+14px)]
             pointer-events-none
           "
           role="tooltip"
@@ -105,24 +105,24 @@ function Bubble({
           >
             Agenda Tu Consulta Hoy
 
-            {/* Pico apuntando al botón — desktop: burbuja a la derecha, pico apunta hacia la izquierda */}
+            {/* Pico apuntando al botón — desktop: burbuja a la izquierda, pico apunta hacia la derecha */}
             <span
               aria-hidden="true"
               className="
                 hidden sm:block
-                absolute top-1/2 -translate-y-1/2 -left-[8px]
+                absolute top-1/2 -translate-y-1/2 -right-[8px]
                 w-0 h-0
                 border-t-[7px] border-t-transparent
-                border-r-[8px] border-r-white/95
+                border-l-[8px] border-l-white/95
                 border-b-[7px] border-b-transparent
               "
             />
-            {/* Pico apuntando al botón — mobile: burbuja encima, pico apunta hacia abajo */}
+            {/* Pico apuntando al botón — mobile: burbuja encima, pico apunta hacia abajo alineado a la derecha */}
             <span
               aria-hidden="true"
               className="
                 block sm:hidden
-                absolute left-5 -bottom-[8px]
+                absolute right-5 -bottom-[8px]
                 w-0 h-0
                 border-l-[7px] border-l-transparent
                 border-t-[8px] border-t-white/95
@@ -179,23 +179,11 @@ export default function WhatsAppButton({
   }, []);
 
   return (
-    /*
-     * Layout de convivencia con StickyBookingCTA:
-     *
-     * Desktop (sm+):
-     *   — StickyBookingCTA: bottom-6 right-6  (pill verde lima)
-     *   — WhatsApp:         bottom-6 left-6   (círculo verde WhatsApp)
-     *
-     * Mobile (<sm):
-     *   — StickyBookingCTA: bottom-0 inset-x-0  (barra full-width, 56px alto aprox.)
-     *   — WhatsApp:         bottom-[72px] left-4 (flota sobre la barra, costado izquierdo)
-     *     → no tapa el botón de booking ni el contenido central.
-     */
     <div
       className="
         fixed z-50
-        bottom-[72px] left-4
-        sm:bottom-6 sm:left-6
+        bottom-6 right-4
+        sm:bottom-6 sm:right-6
       "
     >
       {/* Burbuja tooltip */}

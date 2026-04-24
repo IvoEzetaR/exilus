@@ -18,7 +18,7 @@ const services = [
     title: "Cirugía Bariátrica y Metabólica",
     description:
       "Procedimientos quirúrgicos de alta complejidad para el tratamiento definitivo de la obesidad y las enfermedades metabólicas asociadas.",
-    bgImage: "/images/doctor-quirofano.jpg",
+    bgImage: "/images/paso-cirugia.jpg",
     procedures: [
       "Manga gástrica",
       "Bypass gástrico",

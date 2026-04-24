@@ -192,7 +192,7 @@ export const SERVICES: ServiceData[] = [
       "Técnica gold standard para obesidad severa y diabetes tipo 2. Combina restricción y malabsorción.",
     heroSubtitle:
       "El estándar de oro en cirugía bariátrica para resultados metabólicos superiores.",
-    image: "/images/doctor-quirofano.jpg",
+    image: "/images/paso-evaluacion-multi.jpg",
     description: [
       "El bypass gástrico en Y de Roux es considerado el estándar de oro en cirugía bariátrica. Combina dos mecanismos: la creación de un pequeño reservorio gástrico (restricción) y el desvío de una porción del intestino delgado (malabsorción controlada).",
       "Este procedimiento es especialmente efectivo para pacientes con diabetes tipo 2, ya que produce cambios hormonales que mejoran la sensibilidad a la insulina incluso antes de que se produzca una pérdida de peso significativa.",

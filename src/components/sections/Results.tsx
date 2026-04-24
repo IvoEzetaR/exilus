@@ -67,7 +67,7 @@ const stats = [
 const marqueeImages = [
   { src: "/images/doctor-terno.jpg", alt: "Dr. Salazar" },
   { src: "/images/paso-evaluacion-inicial.jpg", alt: "Evaluación inicial" },
-  { src: "/images/doctor-quirofano.jpg", alt: "En quirófano" },
+  { src: "/images/doctor-scrubs-2.jpg", alt: "Dr. Salazar en consulta" },
   { src: "/images/paso-evaluacion-multi.jpg", alt: "Equipo multidisciplinario" },
   { src: "/images/doctor-consulta.jpg", alt: "Consulta personalizada" },
   { src: "/images/paso-cirugia.jpg", alt: "Cirugía laparoscópica" },
@@ -161,8 +161,8 @@ function PhotoMosaic() {
         className="absolute top-0 left-0 w-[65%] h-[62%] rounded-2xl overflow-hidden shadow-2xl"
       >
         <Image
-          src="/images/doctor-quirofano.jpg"
-          alt="Dr. Salazar en quirófano"
+          src="/images/doctor-terno.jpg"
+          alt="Dr. Salazar"
           fill
           sizes="(max-width: 1024px) 60vw, 350px"
           className="object-cover"

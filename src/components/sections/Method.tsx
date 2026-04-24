@@ -86,7 +86,7 @@ const steps: Step[] = [
     title: "Cirugía",
     description:
       "Intervención programada en clínica acreditada, con los más altos estándares de seguridad.",
-    image: "/images/doctor-quirofano.jpg",
+    image: "/images/doctor-scrubs-2.jpg",
   },
   {
     step: "5",

@@ -18,23 +18,23 @@ export default function Home() {
         {/* 1 — Hero editorial */}
         <Hero />
 
-        {/* 2 — Authority: Dr. Salazar, credenciales */}
-        <Authority />
-
-        {/* 3 — Services: 5 especialidades */}
-        <Services />
-
-        {/* 4 — Method: pilares + diferenciales + proceso 5 pasos */}
-        <Method />
-
-        {/* 5 — Results: stats confirmados con count-up */}
-        <Results />
-
-        {/* 6 — CandidateTest: quiz IMC interactivo */}
+        {/* 2 — CandidateTest: hook de auto-calificación temprana */}
         <CandidateTest />
 
-        {/* 7 — Testimonials: 3 slots placeholder */}
+        {/* 3 — Authority: Dr. Salazar, credenciales */}
+        <Authority />
+
+        {/* 4 — Results: stats confirmados con count-up */}
+        <Results />
+
+        {/* 5 — Testimonials: prueba social de pacientes */}
         <Testimonials />
+
+        {/* 6 — Method: pilares + diferenciales + proceso 5 pasos */}
+        <Method />
+
+        {/* 7 — Services: detalles de especialidades */}
+        <Services />
 
         {/* 8 — FAQ: accordion con 5 preguntas del brief */}
         <FAQ />

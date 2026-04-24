@@ -93,7 +93,7 @@ export default function CandidateTest() {
               className="font-serif text-4xl sm:text-5xl font-light leading-tight"
               style={{ color: "var(--color-primary)" }}
             >
-              ¿Podrías ser candidato a cirugía bariátrica?
+              ¿Soy candidato a cirugía?
             </h2>
             <p
               className="mt-5 text-base leading-relaxed"

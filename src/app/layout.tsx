@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import StickyBookingCTA from "@/components/ui/StickyBookingCTA";
 import TopBar from "@/components/layout/TopBar";
 import { CLIENT } from "@/lib/client-data";
 
@@ -168,6 +169,7 @@ export default function RootLayout({
         <TopBar />
         {children}
         <WhatsAppButton phoneNumber={CLIENT.phone} />
+        <StickyBookingCTA />
       </body>
     </html>
   );

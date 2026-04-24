@@ -17,7 +17,7 @@ const services = [
     tag: "Bariátrica",
     title: "Cirugía Bariátrica y Metabólica",
     description:
-      "Procedimientos quirúrgicos avanzados para el tratamiento de la obesidad y enfermedades metabólicas asociadas.",
+      "Procedimientos quirúrgicos de alta complejidad para el tratamiento definitivo de la obesidad y las enfermedades metabólicas asociadas.",
     bgImage: "/images/doctor-quirofano.jpg",
     procedures: [
       "Manga gástrica",
@@ -31,15 +31,13 @@ const services = [
   {
     number: "02",
     tag: "Obesidad",
-    title: "Manejo Integral del Sobrepeso y Obesidad",
+    title: "Manejo de Obesidad",
     description:
-      "Abordaje multidisciplinario personalizado que integra evaluación médica, nutricional y psicológica.",
+      "Abordaje integral y personalizado para el control del peso, combinando evaluación médica, acompañamiento nutricional y soporte farmacológico cuando corresponde.",
     bgImage: "/images/doctor-consulta.jpg",
     procedures: [
-      "Evaluación médica integral",
-      "Soporte nutricional",
-      "Acompañamiento psicológico",
-      "Intervención quirúrgica (si aplica)",
+      "Tratamiento multidisciplinario",
+      "Tratamiento farmacológico",
     ],
     forWhom:
       "Quienes buscan un tratamiento completo y sostenido del sobrepeso.",
@@ -47,50 +45,20 @@ const services = [
   {
     number: "03",
     tag: "Laparoscópica",
-    title: "Cirugía Laparoscópica Avanzada",
+    title: "Cirugía Laparoscópica",
     description:
-      "Técnicas mínimamente invasivas que reducen riesgos y aceleran la recuperación postoperatoria.",
+      "Técnica mínimamente invasiva para el tratamiento de patologías abdominales. Menos dolor, recuperación más rápida y resultados estéticos superiores.",
     bgImage: "/images/doctor-scrubs.jpg",
     procedures: [
-      "Colecistectomía (vesícula)",
-      "Apendicectomía",
-      "Hernias abdominales",
-      "Cirugía de colon e intestino",
+      "Vesícula",
+      "Apéndice",
+      "Hernia",
+      "Reflujo",
+      "Colon",
+      "y más",
     ],
     forWhom:
       "Patologías abdominales que requieren intervención con mínima invasión.",
-  },
-  {
-    number: "04",
-    tag: "Digestiva",
-    title: "Cirugía Digestiva Especializada",
-    description:
-      "Tratamiento de enfermedades del sistema digestivo con tecnología de última generación.",
-    bgImage: "/images/doctor-scrubs-2.jpg",
-    procedures: [
-      "Reflujo gastroesofágico",
-      "Enfermedades gástricas",
-      "Patología hepática",
-      "Cirugía pancreática",
-    ],
-    forWhom:
-      "Pacientes con patologías del tracto digestivo superior e inferior.",
-  },
-  {
-    number: "05",
-    tag: "Proctología",
-    title: "Proctología y Cirugía Anorrectal",
-    description:
-      "Diagnóstico y tratamiento especializado de enfermedades del colon, recto y ano.",
-    bgImage: "/images/doctor-terno.jpg",
-    procedures: [
-      "Hemorroides",
-      "Fisuras anales",
-      "Fístulas",
-      "Abscesos perianales",
-    ],
-    forWhom:
-      "Enfermedades anorrectales que requieren evaluación o corrección quirúrgica.",
   },
 ];
 
@@ -255,7 +223,7 @@ export default function Services() {
             className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.05] tracking-tight"
             style={{ color: "var(--color-primary)" }}
           >
-            Cinco especialidades.
+            Tres áreas de atención.
             <br />
             <em
               className="italic"
@@ -274,23 +242,16 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Cards grid — 3 cols top, 2 centered bottom */}
+        {/* Cards grid — 3 cols */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT_ONCE}
-          className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-6"
+          className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((s, idx) => (
-            <div
-              key={s.number}
-              className={`lg:col-span-2 ${
-                idx === 3 ? "lg:col-start-2" : ""
-              }`}
-            >
-              <GlassCard s={s} />
-            </div>
+          {services.map((s) => (
+            <GlassCard key={s.number} s={s} />
           ))}
         </motion.div>
       </div>

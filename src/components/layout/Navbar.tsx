@@ -1,24 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { Menu, X, Calendar } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CLIENT } from "@/lib/client-data";
-
-const sectionLinks = [
-  { label: "Inicio", anchor: "#inicio", href: "/" },
-  { label: "Proceso", anchor: "#proceso", href: "/#proceso" },
-  { label: "FAQ", anchor: "#faq", href: "/#faq" },
-];
-
-const pageLinks = [
-  { label: "Servicios", href: "/servicios" },
-  { label: "Testimonios", href: "/testimonios" },
-  { label: "Contacto", href: "/contacto" },
-];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -32,43 +20,32 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Build all nav links in order: Inicio | Servicios | Proceso | Testimonios | FAQ | Contacto
-  const allLinks = [
-    // Inicio
-    {
-      label: "Inicio",
-      href: isHome ? "#inicio" : "/",
-      isPage: !isHome,
-    },
-    // Servicios (page)
-    { label: "Servicios", href: "/servicios", isPage: true },
-    // Proceso (section)
-    {
-      label: "Proceso",
-      href: isHome ? "#proceso" : "/#proceso",
-      isPage: !isHome,
-    },
-    // Testimonios (page)
-    { label: "Testimonios", href: "/testimonios", isPage: true },
-    // FAQ (section)
-    {
-      label: "FAQ",
-      href: isHome ? "#faq" : "/#faq",
-      isPage: !isHome,
-    },
-    // Contacto (page)
-    { label: "Contacto", href: "/contacto", isPage: true },
+  // Hybrid links: anchor on home, absolute path elsewhere
+  const links = [
+    { label: "Inicio", href: isHome ? "#inicio" : "/" },
+    { label: "Servicios", href: "/servicios" },
+    { label: "Proceso", href: isHome ? "#proceso" : "/#proceso" },
+    { label: "Testimonios", href: "/testimonios" },
+    { label: "FAQ", href: isHome ? "#faq" : "/#faq" },
+    { label: "Contacto", href: "/contacto" },
   ];
+
+  // En home: transparente sobre video cuando no hay scroll, cream al hacer scroll
+  // En otras páginas: siempre cream
+  const isTransparent = isHome && !scrolled;
+
+  const textColor = isTransparent
+    ? "rgba(245,235,220,0.85)"
+    : "var(--color-warm-text)";
+  const underlineColor = isTransparent ? "#F5EBDC" : "var(--color-primary)";
 
   return (
     <nav
-      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "top-0 shadow-sm border-b"
-          : "top-10"
+      className={`fixed left-0 right-0 z-40 top-10 transition-all duration-300 ${
+        scrolled ? "shadow-sm border-b" : ""
       }`}
       style={{
-        backgroundColor: "var(--color-cream)",
+        backgroundColor: isTransparent ? "transparent" : "var(--color-cream)",
         borderColor: scrolled ? "var(--color-border)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
       }}
@@ -88,8 +65,8 @@ export default function Navbar() {
             />
           </div>
           <span
-            className="ml-2 font-serif text-lg font-medium tracking-tight"
-            style={{ color: "var(--color-primary)" }}
+            className="ml-2 font-serif text-lg font-medium tracking-tight transition-colors duration-300"
+            style={{ color: isTransparent ? "#F5EBDC" : "var(--color-primary)" }}
           >
             Exilus
           </span>
@@ -97,42 +74,48 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden items-center gap-6 md:flex">
-          {allLinks.map((l) =>
-            l.isPage ? (
+          {links.map((l) => {
+            const isAnchor = l.href.startsWith("#");
+            const isActive =
+              l.href === "/servicios" && pathname.startsWith("/servicios") ||
+              l.href === "/testimonios" && pathname.startsWith("/testimonios") ||
+              l.href === "/contacto" && pathname.startsWith("/contacto");
+            return isAnchor ? (
+              <a
+                key={l.label}
+                href={l.href}
+                className="relative text-sm font-medium transition-colors duration-300 group"
+                style={{ color: textColor }}
+              >
+                {l.label}
+                <span
+                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
+                  style={{ backgroundColor: underlineColor }}
+                />
+              </a>
+            ) : (
               <Link
                 key={l.label}
                 href={l.href}
-                className="relative text-sm font-medium transition-colors group"
+                className="relative text-sm font-medium transition-colors duration-300 group"
                 style={{
-                  color:
-                    pathname === l.href
-                      ? "var(--color-primary)"
-                      : "var(--color-warm-text)",
+                  color: isActive
+                    ? isTransparent
+                      ? "#F5EBDC"
+                      : "var(--color-primary)"
+                    : textColor,
                 }}
               >
                 {l.label}
                 <span
                   className={`absolute -bottom-0.5 left-0 h-px transition-all duration-300 ${
-                    pathname === l.href ? "w-full" : "w-0 group-hover:w-full"
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
                   }`}
-                  style={{ backgroundColor: "var(--color-primary)" }}
+                  style={{ backgroundColor: underlineColor }}
                 />
               </Link>
-            ) : (
-              <a
-                key={l.label}
-                href={l.href}
-                className="relative text-sm font-medium transition-colors group"
-                style={{ color: "var(--color-warm-text)" }}
-              >
-                {l.label}
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
-                  style={{ backgroundColor: "var(--color-primary)" }}
-                />
-              </a>
-            )
-          )}
+            );
+          })}
 
           {/* CTA verde */}
           <motion.a
@@ -158,9 +141,11 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg transition-colors hover:bg-primary/5"
+          className="md:hidden p-2 rounded-lg transition-colors"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          style={{ color: "var(--color-primary)" }}
+          style={{
+            color: isTransparent && !open ? "#F5EBDC" : "var(--color-primary)",
+          }}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -180,24 +165,9 @@ export default function Navbar() {
               borderColor: "var(--color-border)",
             }}
           >
-            {allLinks.map((l) =>
-              l.isPage ? (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-sm font-medium border-b transition-colors hover:opacity-70"
-                  style={{
-                    color:
-                      pathname === l.href
-                        ? "var(--color-primary)"
-                        : "var(--color-warm-text)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  {l.label}
-                </Link>
-              ) : (
+            {links.map((l) => {
+              const isAnchor = l.href.startsWith("#");
+              return isAnchor ? (
                 <a
                   key={l.label}
                   href={l.href}
@@ -210,8 +180,21 @@ export default function Navbar() {
                 >
                   {l.label}
                 </a>
-              )
-            )}
+              ) : (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-sm font-medium border-b transition-colors hover:opacity-70"
+                  style={{
+                    color: "var(--color-warm-text)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
             <a
               href={CLIENT.booking}
               target="_blank"

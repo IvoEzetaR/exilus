@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import CandidateFloatButton from "@/components/ui/CandidateFloatButton";
 import TopBar from "@/components/layout/TopBar";
 import { CLIENT } from "@/lib/client-data";
 
@@ -167,6 +168,7 @@ export default function RootLayout({
       <body className="font-sans bg-cream text-warm-text antialiased">
         <TopBar />
         {children}
+        <CandidateFloatButton />
         <WhatsAppButton phoneNumber={CLIENT.phone} />
       </body>
     </html>

@@ -69,7 +69,8 @@ export default function CandidateTest() {
 
   return (
     <section
-      className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+      id="soy-candidato"
+      className="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
       style={{ backgroundColor: "var(--color-cream)" }}
       aria-label="Test de candidatura bariátrica"
     >

@@ -22,20 +22,20 @@ export default function Home() {
         {/* 2 — AuthorityLite: quién es el cirujano (construye confianza temprana) */}
         <AuthorityLite />
 
-        {/* 3 — Method: cómo funciona el proceso */}
+        {/* 3 — CandidateTest: micro-commitment inmediato tras conocer al doctor */}
+        <CandidateTest />
+
+        {/* 4 — Method: cómo funciona el proceso */}
         <Method />
 
-        {/* 4 — Results: outcomes y trayectoria cuantificada */}
+        {/* 5 — Results: outcomes y trayectoria cuantificada */}
         <Results />
 
-        {/* 5 — Testimonials: prueba social de pacientes */}
+        {/* 6 — Testimonials: prueba social de pacientes */}
         <Testimonials />
 
-        {/* 6 — Services: qué ofrecemos */}
+        {/* 7 — Services: qué ofrecemos */}
         <Services />
-
-        {/* 7 — CandidateTest: micro-commitment post-persuasión */}
-        <CandidateTest />
 
         {/* 8 — AuthorityDeep: membresías y formación académica para skeptics */}
         <AuthorityDeep />

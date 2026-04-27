@@ -169,7 +169,7 @@ export default function Hero() {
                 }
                 className="block"
               >
-                Transforma tu salud.
+                Baja de peso de forma segura.
               </motion.span>
             </span>
             <span className="block overflow-hidden mt-1">
@@ -179,7 +179,7 @@ export default function Hero() {
                 className="block italic"
                 style={{ color: "rgba(245,235,220,0.85)", transitionDelay: "0.42s" }}
               >
-                Recupera tu vida.
+                Con Exilus en Trujillo.
               </motion.span>
             </span>
           </h1>

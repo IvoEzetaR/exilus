@@ -95,7 +95,8 @@ const steps: Step[] = [
     description:
       "Control continuo para asegurar tu recuperación y el mantenimiento de los resultados a largo plazo.",
     image: "/images/paso-seguimiento.jpg",
-    objectPosition: "30% center",
+    /* Imagen vertical 3:4 dentro de card 4:3 → forzar Y bajo para mostrar el rostro */
+    objectPosition: "center 8%",
   },
 ];
 

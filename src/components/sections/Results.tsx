@@ -197,7 +197,7 @@ function PhotoMosaic() {
         />
       </motion.div>
 
-      {/* Bottom-left small accent (2 cols × 1 row) */}
+      {/* Bottom-left small accent (2 cols × 1 row) — equipo Exilus en quirófano */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -207,15 +207,15 @@ function PhotoMosaic() {
         style={{ borderColor: "rgba(245, 235, 220, 0.18)" }}
       >
         <Image
-          src="/images/doctor-scrubs-2.jpg"
-          alt="Equipo médico Exilus"
+          src="/images/paso-evaluacion-multi.jpg"
+          alt="Equipo Exilus en quirófano"
           fill
           sizes="(max-width: 1024px) 35vw, 200px"
           className="object-cover"
         />
       </motion.div>
 
-      {/* Bottom-large (4 cols × 1 row) — la que estaba antes: equipo en quirófano */}
+      {/* Bottom-large (4 cols × 1 row) — Dr. Salazar con pacientes */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -224,8 +224,8 @@ function PhotoMosaic() {
         className="col-span-4 row-span-1 relative rounded-2xl overflow-hidden shadow-xl"
       >
         <Image
-          src="/images/paso-evaluacion-multi.jpg"
-          alt="Equipo Exilus en quirófano"
+          src="/images/doctor-pacientes.jpg"
+          alt="Dr. Salazar con pacientes"
           fill
           sizes="(max-width: 1024px) 65vw, 400px"
           className="object-cover"

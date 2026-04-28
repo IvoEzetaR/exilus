@@ -48,7 +48,7 @@ const services = [
     title: "Cirugía Laparoscópica",
     description:
       "Técnica mínimamente invasiva para el tratamiento de patologías abdominales. Menos dolor, recuperación más rápida y resultados estéticos superiores.",
-    bgImage: "/images/doctor-scrubs.jpg",
+    bgImage: "/images/doctor-cirugia-laparoscopica.jpg",
     procedures: [
       "Vesícula",
       "Apéndice",

@@ -65,13 +65,13 @@ const stats = [
 ];
 
 const marqueeImages = [
-  { src: "/images/doctor-terno.jpg", alt: "Dr. Salazar" },
-  { src: "/images/paso-evaluacion-inicial.jpg", alt: "Evaluación inicial" },
-  { src: "/images/doctor-scrubs-2.jpg", alt: "Dr. Salazar en consulta" },
+  { src: "/images/dia-a-dia-1.jpg", alt: "Equipo Exilus en quirófano" },
+  { src: "/images/dia-a-dia-2.jpg", alt: "Día a día en Exilus" },
+  { src: "/images/dia-a-dia-3.jpg", alt: "Atención personalizada Exilus" },
+  { src: "/images/dia-a-dia-4.jpg", alt: "Equipo Exilus" },
+  { src: "/images/doctor-pacientes.jpg", alt: "Dr. Salazar con pacientes" },
   { src: "/images/paso-evaluacion-multi.jpg", alt: "Equipo multidisciplinario" },
   { src: "/images/doctor-consulta.jpg", alt: "Consulta personalizada" },
-  { src: "/images/paso-cirugia.jpg", alt: "Cirugía laparoscópica" },
-  { src: "/images/doctor-scrubs.jpg", alt: "Dr. Salazar en hospital" },
   { src: "/images/paso-seguimiento.jpg", alt: "Seguimiento postoperatorio" },
 ];
 
@@ -148,46 +148,46 @@ function StatCard({
   );
 }
 
-/* ─── Photo Mosaic ─── */
+/* ─── Photo Mosaic — clean grid layout (sin overlaps) ─── */
 function PhotoMosaic() {
   return (
-    <div className="relative h-full min-h-[400px] sm:min-h-[480px]">
-      {/* Main large image */}
+    <div className="grid grid-cols-6 grid-rows-3 gap-3 sm:gap-4 h-full min-h-[420px] sm:min-h-[520px]">
+      {/* Main — large top-left (4 cols × 2 rows) */}
       <motion.div
         variants={fadeInLeft}
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT_ONCE}
-        className="absolute top-0 left-0 w-[65%] h-[62%] rounded-2xl overflow-hidden shadow-2xl"
+        className="col-span-4 row-span-2 relative rounded-2xl overflow-hidden shadow-2xl"
       >
         <Image
           src="/images/doctor-saco-blanco.jpg"
           alt="Dr. Víctor Salazar"
           fill
-          sizes="(max-width: 1024px) 60vw, 350px"
+          sizes="(max-width: 1024px) 65vw, 400px"
           className="object-cover"
           style={{ objectPosition: "center 20%" }}
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(108,29,69,0.3) 0%, transparent 50%)" }}
+          style={{ background: "linear-gradient(to top, rgba(108,29,69,0.3) 0%, transparent 55%)" }}
           aria-hidden="true"
         />
       </motion.div>
 
-      {/* Top-right image */}
+      {/* Top-right side (2 cols × 2 rows) — consulta personalizada */}
       <motion.div
         variants={fadeInRight}
         initial="hidden"
         whileInView="show"
         viewport={VIEWPORT_ONCE}
-        className="absolute top-4 right-0 w-[42%] h-[45%] rounded-2xl overflow-hidden shadow-xl"
+        className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden shadow-xl"
       >
         <Image
           src="/images/doctor-consulta.jpg"
           alt="Consulta personalizada"
           fill
-          sizes="(max-width: 1024px) 40vw, 240px"
+          sizes="(max-width: 1024px) 35vw, 220px"
           className="object-cover"
         />
         <div
@@ -197,43 +197,43 @@ function PhotoMosaic() {
         />
       </motion.div>
 
-      {/* Bottom-right image */}
+      {/* Bottom-left small accent (2 cols × 1 row) */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={VIEWPORT_ONCE}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute bottom-0 right-[5%] w-[50%] h-[42%] rounded-2xl overflow-hidden shadow-xl"
-      >
-        <Image
-          src="/images/doctor-pacientes.jpg"
-          alt="Dr. Salazar con pacientes"
-          fill
-          sizes="(max-width: 1024px) 45vw, 280px"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(108,29,69,0.25) 0%, transparent 50%)" }}
-          aria-hidden="true"
-        />
-      </motion.div>
-
-      {/* Small accent image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.85 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={VIEWPORT_ONCE}
         transition={{ duration: 0.6, delay: 0.35 }}
-        className="absolute bottom-[8%] left-[2%] w-[30%] h-[30%] rounded-xl overflow-hidden shadow-lg border-2"
-        style={{ borderColor: "rgba(245, 235, 220, 0.2)" }}
+        className="col-span-2 row-span-1 relative rounded-xl overflow-hidden shadow-lg border"
+        style={{ borderColor: "rgba(245, 235, 220, 0.18)" }}
       >
         <Image
           src="/images/doctor-scrubs-2.jpg"
-          alt="Equipo médico"
+          alt="Equipo médico Exilus"
           fill
-          sizes="160px"
+          sizes="(max-width: 1024px) 35vw, 200px"
           className="object-cover"
+        />
+      </motion.div>
+
+      {/* Bottom-large (4 cols × 1 row) — la que estaba antes: equipo en quirófano */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={VIEWPORT_ONCE}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="col-span-4 row-span-1 relative rounded-2xl overflow-hidden shadow-xl"
+      >
+        <Image
+          src="/images/paso-evaluacion-multi.jpg"
+          alt="Equipo Exilus en quirófano"
+          fill
+          sizes="(max-width: 1024px) 65vw, 400px"
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to top, rgba(108,29,69,0.2) 0%, transparent 50%)" }}
+          aria-hidden="true"
         />
       </motion.div>
     </div>

@@ -244,31 +244,31 @@ export default function AuthorityDeep() {
               estándares con los que opera.
             </p>
 
-            {/* Imagen del doctor — solo desktop, contenida y elegante */}
+            {/* Imagen del doctor — horizontal, solo desktop */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VIEWPORT_ONCE}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="hidden lg:block mt-10 relative w-full max-w-sm aspect-[3/4] rounded-2xl overflow-hidden shadow-xl"
+              className="hidden lg:block mt-10 relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl"
             >
               <Image
-                src="/images/doctor-formacion.jpg"
+                src="/images/doctor-saco-blanco.jpg"
                 alt="Dr. Víctor Augusto Salazar Tantaleán"
                 fill
-                sizes="400px"
+                sizes="(max-width: 1024px) 100vw, 600px"
                 className="object-cover"
-                style={{ objectPosition: "center 25%" }}
+                style={{ objectPosition: "center 22%" }}
               />
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(to top, rgba(108,29,69,0.45) 0%, rgba(108,29,69,0.05) 50%, transparent 100%)",
+                    "linear-gradient(110deg, rgba(108,29,69,0.55) 0%, rgba(108,29,69,0.10) 45%, transparent 75%)",
                 }}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-4 left-5 right-5">
+              <div className="absolute bottom-4 left-5 right-5 max-w-[60%]">
                 <p
                   className="font-serif text-lg font-light leading-tight"
                   style={{ color: "var(--color-cream)" }}

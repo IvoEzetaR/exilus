@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowRight, Calendar } from "lucide-react";
 import { CLIENT } from "@/lib/client-data";
 import {
   staggerContainer,
@@ -27,6 +29,8 @@ const services = [
     ],
     forWhom:
       "Pacientes con obesidad, diabetes tipo 2, hipertensión o síndrome metabólico.",
+    /* Página representativa de esta categoría */
+    detailHref: "/servicios/manga-gastrica",
   },
   {
     number: "02",
@@ -41,6 +45,8 @@ const services = [
     ],
     forWhom:
       "Quienes buscan un tratamiento completo y sostenido del sobrepeso.",
+    /* No tiene página dedicada — manda al listado de servicios */
+    detailHref: "/servicios",
   },
   {
     number: "03",
@@ -59,6 +65,7 @@ const services = [
     ],
     forWhom:
       "Patologías abdominales que requieren intervención con mínima invasión.",
+    detailHref: "/servicios/cirugia-laparoscopica",
   },
 ];
 
@@ -161,22 +168,43 @@ function GlassCard({ s }: { s: (typeof services)[0] }) {
             {s.forWhom}
           </p>
 
-          {/* CTA */}
-          <a
-            href={CLIENT.booking}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[13px] font-semibold text-white transition-all duration-300 hover:gap-3"
-            aria-label={`Agenda tu evaluación para ${s.title}`}
-          >
-            Agenda tu evaluación
-            <span
-              aria-hidden="true"
-              className="transition-transform duration-300 group-hover:translate-x-1"
+          {/* CTA pair — Ver más información (outline) + Agenda tu evaluación (primary) */}
+          <div className="flex flex-col gap-2 sm:gap-2.5 mt-1">
+            <Link
+              href={s.detailHref}
+              aria-label={`Ver más información sobre ${s.title}`}
+              className="group/btn inline-flex h-10 items-center justify-center gap-2 rounded-lg px-4 text-[12.5px] font-semibold transition-all duration-300"
+              style={{
+                backgroundColor: "rgba(245, 235, 220, 0.12)",
+                color: "rgba(255, 255, 255, 0.95)",
+                border: "1px solid rgba(245, 235, 220, 0.28)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+              }}
             >
-              →
-            </span>
-          </a>
+              Ver más información
+              <ArrowRight
+                className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
+
+            <a
+              href={CLIENT.booking}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Agenda tu evaluación para ${s.title}`}
+              className="group/btn inline-flex h-10 items-center justify-center gap-2 rounded-lg px-4 text-[12.5px] font-semibold transition-all duration-300 hover:shadow-[0_0_24px_rgba(120,214,75,0.45)]"
+              style={{
+                backgroundColor: "var(--color-cta)",
+                color: "#1a3a0a",
+                boxShadow: "0 6px 18px rgba(120,214,75,0.30)",
+              }}
+            >
+              <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
+              Agenda tu evaluación
+            </a>
+          </div>
         </div>
       </div>
     </motion.article>

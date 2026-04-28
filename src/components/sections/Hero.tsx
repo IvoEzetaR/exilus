@@ -301,11 +301,11 @@ export default function Hero() {
         <div className="h-0 shrink-0" />
       </div>
 
-      {/* ── Credential badge — bottom right ─────────────────────────────── */}
+      {/* ── Credential badge — bottom right (oculto en mobile para evitar sobrecarga) ─── */}
       <motion.div
         variants={credentialSlide}
         {...motionProps}
-        className="absolute bottom-16 right-4 sm:right-8 z-20 max-w-[220px] sm:max-w-[240px]"
+        className="hidden sm:block absolute bottom-16 right-4 sm:right-8 z-20 max-w-[220px] sm:max-w-[240px]"
       >
         <div
           className="rounded-2xl p-4 backdrop-blur-md"

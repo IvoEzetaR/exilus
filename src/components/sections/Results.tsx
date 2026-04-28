@@ -161,11 +161,12 @@ function PhotoMosaic() {
         className="absolute top-0 left-0 w-[65%] h-[62%] rounded-2xl overflow-hidden shadow-2xl"
       >
         <Image
-          src="/images/doctor-terno.jpg"
-          alt="Dr. Salazar"
+          src="/images/doctor-saco-blanco.jpg"
+          alt="Dr. Víctor Salazar"
           fill
           sizes="(max-width: 1024px) 60vw, 350px"
           className="object-cover"
+          style={{ objectPosition: "center 20%" }}
         />
         <div
           className="absolute inset-0"
@@ -205,8 +206,8 @@ function PhotoMosaic() {
         className="absolute bottom-0 right-[5%] w-[50%] h-[42%] rounded-2xl overflow-hidden shadow-xl"
       >
         <Image
-          src="/images/paso-evaluacion-multi.jpg"
-          alt="Equipo multidisciplinario"
+          src="/images/doctor-pacientes.jpg"
+          alt="Dr. Salazar con pacientes"
           fill
           sizes="(max-width: 1024px) 45vw, 280px"
           className="object-cover"

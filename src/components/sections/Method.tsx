@@ -57,6 +57,7 @@ type Step = {
   title: string;
   description: string;
   image?: string;
+  objectPosition?: string;
 };
 
 const steps: Step[] = [
@@ -72,7 +73,7 @@ const steps: Step[] = [
     title: "Estudios preoperatorios",
     description:
       "Exámenes de laboratorio e imagen necesarios para planificar el procedimiento de forma segura.",
-    image: "/images/paso-cirugia.jpg",
+    image: "/images/paso-estudios-preop.jpg",
   },
   {
     step: "3",
@@ -86,7 +87,7 @@ const steps: Step[] = [
     title: "Cirugía",
     description:
       "Intervención programada en clínica acreditada, con los más altos estándares de seguridad.",
-    image: "/images/doctor-scrubs-2.jpg",
+    image: "/images/paso-cirugia.jpg",
   },
   {
     step: "5",
@@ -94,6 +95,7 @@ const steps: Step[] = [
     description:
       "Control continuo para asegurar tu recuperación y el mantenimiento de los resultados a largo plazo.",
     image: "/images/paso-seguimiento.jpg",
+    objectPosition: "30% center",
   },
 ];
 
@@ -444,6 +446,7 @@ function ProcessJourney() {
                     fill
                     sizes="50vw"
                     className="object-cover"
+                    style={{ objectPosition: steps[activeStep].objectPosition ?? "center" }}
                     priority={activeStep === 0}
                   />
                   {/* Subtle vino overlay para unidad editorial */}
@@ -627,6 +630,7 @@ function ProcessJourney() {
                             fill
                             sizes="(max-width: 768px) 90vw, 50vw"
                             className="object-cover"
+                            style={{ objectPosition: s.objectPosition ?? "center" }}
                             loading="lazy"
                           />
                         </div>

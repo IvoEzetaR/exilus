@@ -23,7 +23,7 @@ export default function Navbar() {
   // Hybrid links: anchor on home, absolute path elsewhere
   const links = [
     { label: "Inicio", href: isHome ? "#inicio" : "/" },
-    { label: "Servicios", href: "/servicios" },
+    { label: "Servicios", href: isHome ? "#servicios" : "/#servicios" },
     { label: "Proceso", href: isHome ? "#proceso" : "/#proceso" },
     { label: "Testimonios", href: "/testimonios" },
     { label: "FAQ", href: isHome ? "#faq" : "/#faq" },
@@ -77,9 +77,9 @@ export default function Navbar() {
           {links.map((l) => {
             const isAnchor = l.href.startsWith("#");
             const isActive =
-              l.href === "/servicios" && pathname.startsWith("/servicios") ||
-              l.href === "/testimonios" && pathname.startsWith("/testimonios") ||
-              l.href === "/contacto" && pathname.startsWith("/contacto");
+              (l.label === "Servicios" && pathname.startsWith("/servicios")) ||
+              (l.href === "/testimonios" && pathname.startsWith("/testimonios")) ||
+              (l.href === "/contacto" && pathname.startsWith("/contacto"));
             return isAnchor ? (
               <a
                 key={l.label}

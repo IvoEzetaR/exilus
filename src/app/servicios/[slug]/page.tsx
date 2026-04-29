@@ -40,12 +40,13 @@ export default async function ServicePage({ params }: Props) {
       <Navbar />
       <main>
         <InnerPageHero
-          eyebrow="Servicios especializados"
+          eyebrow={`Especialidad — ${service.tag}`}
           title={service.name}
           subtitle={service.heroSubtitle}
+          bgImage={service.image}
           breadcrumbs={[
             { label: "Inicio", href: "/" },
-            { label: "Servicios", href: "/servicios" },
+            { label: "Servicios", href: "/#servicios" },
             { label: service.name },
           ]}
         />

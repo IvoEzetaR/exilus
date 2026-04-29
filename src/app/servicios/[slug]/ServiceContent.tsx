@@ -26,6 +26,8 @@ import {
   Search,
   Wrench,
   Eye,
+  Users,
+  Settings,
 } from "lucide-react";
 import {
   fadeInUp,
@@ -40,7 +42,7 @@ import {
   VIEWPORT_ONCE,
 } from "@/lib/design-system";
 import { CLIENT } from "@/lib/client-data";
-import type { ServiceData } from "@/lib/services-data";
+import type { ServiceData, SubService } from "@/lib/services-data";
 import { getOtherServices } from "@/lib/services-data";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -60,6 +62,8 @@ const iconMap: Record<string, React.ElementType> = {
   Search,
   Wrench,
   Eye,
+  Users,
+  Settings,
 };
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -112,12 +116,238 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+/* ─── Sub-service block: alternating layout (image left/right) ─── */
+function SubServiceBlock({
+  sub,
+  index,
+  categoryName,
+}: {
+  sub: SubService;
+  index: number;
+  categoryName: string;
+}) {
+  const isReversed = index % 2 === 1;
+
+  return (
+    <motion.section
+      id={sub.slug}
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_ONCE}
+      className="scroll-mt-24"
+    >
+      {/* Header del sub-service */}
+      <motion.div variants={fadeInUp} className="mb-10 sm:mb-12">
+        <p
+          className="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase mb-3 inline-flex items-center gap-2"
+          style={{ color: "var(--color-primary)" }}
+        >
+          <span
+            className="font-serif text-base font-light tracking-normal normal-case opacity-60"
+            style={{ color: "var(--color-primary)" }}
+          >
+            0{index + 1}
+          </span>
+          <span
+            className="h-px w-6"
+            style={{ backgroundColor: "var(--color-primary)" }}
+            aria-hidden="true"
+          />
+          {categoryName}
+        </p>
+        <h3
+          className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-[1.08] tracking-tight"
+          style={{ color: "var(--color-primary)" }}
+        >
+          {sub.name}
+        </h3>
+        <p
+          className="mt-4 text-base sm:text-lg leading-relaxed max-w-2xl"
+          style={{ color: "var(--color-warm-text)" }}
+        >
+          {sub.shortDescription}
+        </p>
+      </motion.div>
+
+      {/* Layout image + content */}
+      <div
+        className={`grid gap-8 lg:gap-12 lg:grid-cols-12 items-start ${
+          isReversed ? "" : ""
+        }`}
+      >
+        {/* Image */}
+        <motion.div
+          variants={isReversed ? fadeInRight : fadeInLeft}
+          className={`relative aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] overflow-hidden rounded-2xl lg:rounded-3xl lg:col-span-5 ${
+            isReversed ? "lg:order-2" : ""
+          }`}
+        >
+          <Image
+            src={sub.image}
+            alt={sub.imageAlt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%)",
+            }}
+          />
+          {/* Stats overlay - bottom of image */}
+          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+            <div
+              className="grid grid-cols-2 gap-3 rounded-xl p-3 sm:p-4"
+              style={{
+                backgroundColor: "rgba(245, 235, 220, 0.92)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+              }}
+            >
+              {sub.stats.slice(0, 2).map((s) => (
+                <div key={s.label}>
+                  <p
+                    className="font-serif text-lg sm:text-xl font-semibold leading-none"
+                    style={{ color: "var(--color-accent)" }}
+                  >
+                    {s.value}
+                  </p>
+                  <p
+                    className="mt-1 text-[10px] sm:text-[11px] leading-tight"
+                    style={{ color: "var(--color-warm-text)" }}
+                  >
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Content */}
+        <motion.div
+          variants={isReversed ? fadeInLeft : fadeInRight}
+          className={`lg:col-span-7 ${isReversed ? "lg:order-1" : ""}`}
+        >
+          {/* Description */}
+          <div className="space-y-4 mb-8">
+            {sub.description.map((p, i) => (
+              <p
+                key={i}
+                className="text-base leading-relaxed"
+                style={{ color: "var(--color-warm-text)" }}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+
+          {/* Benefits grid */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            {sub.benefits.map((b) => {
+              const Icon = iconMap[b.icon] || ShieldCheck;
+              return (
+                <div
+                  key={b.title}
+                  className="rounded-xl p-4 border"
+                  style={{
+                    backgroundColor: "var(--color-card)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg"
+                      style={{ backgroundColor: "var(--color-lilac)" }}
+                    >
+                      <Icon
+                        className="h-4 w-4"
+                        style={{ color: "var(--color-primary)" }}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        className="font-serif text-sm font-medium leading-snug"
+                        style={{ color: "var(--color-primary)" }}
+                      >
+                        {b.title}
+                      </p>
+                      <p
+                        className="mt-1 text-xs leading-relaxed"
+                        style={{ color: "var(--color-warm-text)" }}
+                      >
+                        {b.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Ideal para */}
+          <div
+            className="rounded-xl p-5 border mb-6"
+            style={{
+              backgroundColor: "var(--color-cream)",
+              borderColor: "var(--color-border)",
+            }}
+          >
+            <p
+              className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-3"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Ideal para
+            </p>
+            <ul className="space-y-2">
+              {sub.candidateProfile.map((c) => (
+                <li
+                  key={c}
+                  className="flex items-start gap-2.5 text-sm leading-relaxed"
+                  style={{ color: "var(--color-warm-text)" }}
+                >
+                  <CheckCircle
+                    className="h-4 w-4 flex-shrink-0 mt-0.5"
+                    style={{ color: "var(--color-cta)" }}
+                  />
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CTA inline */}
+          <a
+            href={CLIENT.booking}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all hover:shadow-[0_8px_24px_rgba(120,214,75,0.30)]"
+            style={{
+              backgroundColor: "var(--color-cta)",
+              color: "#1a3a0a",
+            }}
+          >
+            <Calendar className="h-4 w-4" />
+            Agenda tu evaluación
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+}
+
+/* ─── Main component ─── */
 export default function ServiceContent({ service }: { service: ServiceData }) {
   const otherServices = getOtherServices(service.slug);
 
   return (
     <>
-      {/* Description + Stats */}
+      {/* INTRO — descripción de la categoría + stats */}
       <section
         className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
         style={{ backgroundColor: "var(--color-cream)" }}
@@ -132,16 +362,16 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
           >
             <motion.div variants={fadeInLeft}>
               <h2
-                className="font-serif text-3xl sm:text-4xl font-light leading-tight"
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.08] tracking-tight"
                 style={{ color: "var(--color-primary)" }}
               >
-                Qué es la {service.name.toLowerCase()}?
+                ¿Qué es la {service.name.toLowerCase()}?
               </h2>
               <div className="mt-6 space-y-4">
-                {service.description.map((p, i) => (
+                {service.intro.map((p, i) => (
                   <p
                     key={i}
-                    className="text-base leading-relaxed"
+                    className="text-base sm:text-lg leading-relaxed"
                     style={{ color: "var(--color-warm-text)" }}
                   >
                     {p}
@@ -188,98 +418,29 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
         </div>
       </section>
 
-      {/* Candidate Profile */}
+      {/* HIGHLIGHTS — 3 razones por las que esta categoría destaca */}
       <section
-        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
+        className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
         style={{ backgroundColor: "var(--color-card)" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            variants={fadeInUp}
-            className="text-center mb-10"
-          >
-            <h2
-              className="font-serif text-3xl sm:text-4xl font-light"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Para quién es este procedimiento?
-            </h2>
-          </motion.div>
-
-          <motion.ul
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            className="space-y-4"
-          >
-            {service.candidateProfile.map((item) => (
-              <motion.li
-                key={item}
-                variants={staggerItem}
-                className="flex items-start gap-3 rounded-xl p-4 border"
-                style={{
-                  backgroundColor: "var(--color-cream)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
-                <CheckCircle
-                  className="h-5 w-5 flex-shrink-0 mt-0.5"
-                  style={{ color: "var(--color-cta)" }}
-                />
-                <span
-                  className="text-base"
-                  style={{ color: "var(--color-warm-text)" }}
-                >
-                  {item}
-                </span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
-        style={{ backgroundColor: "var(--color-cream)" }}
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            variants={fadeInUp}
-            className="text-center mb-12"
-          >
-            <h2
-              className="font-serif text-3xl sm:text-4xl font-light"
-              style={{ color: "var(--color-primary)" }}
-            >
-              Beneficios
-            </h2>
-          </motion.div>
-
-          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-3 gap-6"
           >
-            {service.benefits.map((benefit) => {
-              const Icon = iconMap[benefit.icon] || ShieldCheck;
+            {service.highlights.map((h) => {
+              const Icon = iconMap[h.icon] || ShieldCheck;
               return (
                 <motion.div
-                  key={benefit.title}
+                  key={h.title}
                   variants={staggerItem}
                   {...cardHover}
                   className="rounded-2xl p-6 border"
                   style={{
-                    backgroundColor: "var(--color-card)",
+                    backgroundColor: "var(--color-cream)",
                     borderColor: "var(--color-border)",
                   }}
                 >
@@ -293,16 +454,16 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
                     />
                   </div>
                   <h3
-                    className="mt-4 font-serif text-lg font-medium"
+                    className="mt-4 font-serif text-lg font-medium leading-snug"
                     style={{ color: "var(--color-primary)" }}
                   >
-                    {benefit.title}
+                    {h.title}
                   </h3>
                   <p
                     className="mt-2 text-sm leading-relaxed"
                     style={{ color: "var(--color-warm-text)" }}
                   >
-                    {benefit.description}
+                    {h.description}
                   </p>
                 </motion.div>
               );
@@ -311,87 +472,30 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
         </div>
       </section>
 
-      {/* Procedure Steps */}
+      {/* TABLE OF CONTENTS — navegación a sub-servicios */}
       <section
-        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
-        style={{ backgroundColor: "var(--color-primary)" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            variants={fadeInUp}
-            className="text-center mb-12"
-          >
-            <h2
-              className="font-serif text-3xl sm:text-4xl font-light"
-              style={{ color: "var(--color-cream)" }}
-            >
-              El procedimiento paso a paso
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={VIEWPORT_ONCE}
-            className="space-y-6"
-          >
-            {service.steps.map((step) => (
-              <motion.div
-                key={step.step}
-                variants={staggerItem}
-                className="flex gap-5 items-start"
-              >
-                <div
-                  className="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-full font-serif text-lg font-semibold"
-                  style={{
-                    backgroundColor: "var(--color-accent)",
-                    color: "var(--color-cream)",
-                  }}
-                >
-                  {step.step}
-                </div>
-                <div>
-                  <h3
-                    className="font-serif text-lg font-medium"
-                    style={{ color: "var(--color-cream)" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    className="mt-1 text-sm leading-relaxed"
-                    style={{ color: "rgba(245,235,220,0.70)" }}
-                  >
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Recovery Timeline */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+        className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
         style={{ backgroundColor: "var(--color-cream)" }}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
             variants={fadeInUp}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
-            <h2
-              className="font-serif text-3xl sm:text-4xl font-light"
+            <p
+              className="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase mb-3"
               style={{ color: "var(--color-primary)" }}
             >
-              Recuperación
+              Procedimientos disponibles
+            </p>
+            <h2
+              className="font-serif text-2xl sm:text-3xl font-light"
+              style={{ color: "var(--color-primary)" }}
+            >
+              {service.subServices.length} procedimientos en esta especialidad
             </h2>
           </motion.div>
 
@@ -400,42 +504,55 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"
           >
-            {service.recovery.map((phase, i) => (
-              <motion.div
-                key={phase.phase}
+            {service.subServices.map((sub, i) => (
+              <motion.a
+                key={sub.slug}
+                href={`#${sub.slug}`}
                 variants={staggerItem}
-                className="rounded-2xl p-6 border relative"
+                className="group flex items-center gap-3 rounded-xl px-4 py-3 border transition-all hover:shadow-md"
                 style={{
                   backgroundColor: "var(--color-card)",
                   borderColor: "var(--color-border)",
                 }}
               >
                 <span
-                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold mb-3"
-                  style={{
-                    backgroundColor: "var(--color-lilac)",
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  {phase.timeframe}
-                </span>
-                <h3
-                  className="font-serif text-base font-medium"
+                  className="font-serif text-sm font-semibold tabular-nums opacity-50 group-hover:opacity-100 transition-opacity"
                   style={{ color: "var(--color-primary)" }}
                 >
-                  {phase.phase}
-                </h3>
-                <p
-                  className="mt-2 text-sm leading-relaxed"
-                  style={{ color: "var(--color-warm-text)" }}
+                  0{i + 1}
+                </span>
+                <span
+                  className="font-sans text-sm font-medium flex-1"
+                  style={{ color: "var(--color-primary)" }}
                 >
-                  {phase.description}
-                </p>
-              </motion.div>
+                  {sub.name}
+                </span>
+                <ArrowRight
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  style={{ color: "var(--color-primary)" }}
+                />
+              </motion.a>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* SUB-SERVICES — bloque alternado por sub-servicio */}
+      <section
+        className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+        style={{ backgroundColor: "var(--color-cream)" }}
+      >
+        <div className="max-w-7xl mx-auto space-y-20 sm:space-y-28 lg:space-y-32">
+          {service.subServices.map((sub, i) => (
+            <SubServiceBlock
+              key={sub.slug}
+              sub={sub}
+              index={i}
+              categoryName={service.tag}
+            />
+          ))}
         </div>
       </section>
 
@@ -452,6 +569,12 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
             variants={fadeInUp}
             className="text-center mb-10"
           >
+            <p
+              className="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase mb-3"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Resolvemos tus dudas
+            </p>
             <h2
               className="font-serif text-3xl sm:text-4xl font-light"
               style={{ color: "var(--color-primary)" }}
@@ -476,22 +599,21 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
       {/* CTA */}
       <section
         className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
-        style={{ backgroundColor: "var(--color-cream)" }}
+        style={{ backgroundColor: "var(--color-primary)" }}
       >
         <div className="max-w-3xl mx-auto text-center">
           <h2
             className="font-serif text-3xl sm:text-4xl font-light"
-            style={{ color: "var(--color-primary)" }}
+            style={{ color: "var(--color-cream)" }}
           >
             Da el primer paso
           </h2>
           <p
             className="mt-4 text-lg leading-relaxed"
-            style={{ color: "var(--color-warm-text)" }}
+            style={{ color: "rgba(245,235,220,0.75)" }}
           >
-            Agenda una evaluación personalizada con el Dr. Salazar para
-            determinar si la {service.name.toLowerCase()} es la mejor opción
-            para tu caso.
+            Agenda una evaluación con el Dr. Salazar para definir cuál de los
+            procedimientos de esta especialidad es el mejor para tu caso.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <motion.a
@@ -516,8 +638,8 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
               {...scaleOnHover}
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 px-7 py-4 text-base font-semibold"
               style={{
-                borderColor: "var(--color-primary)",
-                color: "var(--color-primary)",
+                borderColor: "rgba(245,235,220,0.3)",
+                color: "var(--color-cream)",
               }}
             >
               <MessageCircle className="h-5 w-5" />
@@ -527,10 +649,10 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
         </div>
       </section>
 
-      {/* Other Services */}
+      {/* OTHER SERVICES — las otras 2 categorías */}
       <section
         className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
-        style={{ backgroundColor: "var(--color-card)" }}
+        style={{ backgroundColor: "var(--color-cream)" }}
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -540,11 +662,17 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
             variants={fadeInUp}
             className="text-center mb-10"
           >
+            <p
+              className="font-sans text-[11px] font-semibold tracking-[0.2em] uppercase mb-3"
+              style={{ color: "var(--color-primary)" }}
+            >
+              Explora otras especialidades
+            </p>
             <h2
               className="font-serif text-3xl sm:text-4xl font-light"
               style={{ color: "var(--color-primary)" }}
             >
-              Otros servicios
+              Otras áreas de atención
             </h2>
           </motion.div>
 
@@ -553,37 +681,65 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT_ONCE}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            className="grid sm:grid-cols-2 gap-6"
           >
             {otherServices.map((s) => (
               <motion.div key={s.slug} variants={staggerItem}>
-                <Link href={`/servicios/${s.slug}`} className="group block">
+                <Link href={`/servicios/${s.slug}`} className="group block h-full">
                   <motion.div
                     {...cardHover}
-                    className="rounded-2xl p-5 border h-full"
+                    className="relative overflow-hidden rounded-2xl border h-full min-h-[260px] flex flex-col"
                     style={{
-                      backgroundColor: "var(--color-cream)",
+                      backgroundColor: "var(--color-card)",
                       borderColor: "var(--color-border)",
                     }}
                   >
-                    <h3
-                      className="font-serif text-base font-medium"
-                      style={{ color: "var(--color-primary)" }}
-                    >
-                      {s.name}
-                    </h3>
-                    <p
-                      className="mt-2 text-xs leading-relaxed line-clamp-2"
-                      style={{ color: "var(--color-warm-text)" }}
-                    >
-                      {s.shortDescription}
-                    </p>
-                    <span
-                      className="mt-3 inline-flex items-center gap-1 text-xs font-semibold transition-all group-hover:gap-2"
-                      style={{ color: "var(--color-primary)" }}
-                    >
-                      Ver más <ArrowRight className="h-3 w-3" />
-                    </span>
+                    <div className="relative h-40 overflow-hidden">
+                      <Image
+                        src={s.image}
+                        alt={s.imageAlt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0))",
+                        }}
+                      />
+                      <span
+                        className="absolute top-3 left-3 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase"
+                        style={{
+                          backgroundColor: "rgba(245,235,220,0.92)",
+                          color: "var(--color-primary)",
+                        }}
+                      >
+                        {s.tag}
+                      </span>
+                    </div>
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3
+                        className="font-serif text-xl font-medium leading-snug"
+                        style={{ color: "var(--color-primary)" }}
+                      >
+                        {s.name}
+                      </h3>
+                      <p
+                        className="mt-2 text-sm leading-relaxed flex-1"
+                        style={{ color: "var(--color-warm-text)" }}
+                      >
+                        {s.shortDescription}
+                      </p>
+                      <span
+                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-3"
+                        style={{ color: "var(--color-primary)" }}
+                      >
+                        Ver especialidad <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
                   </motion.div>
                 </Link>
               </motion.div>

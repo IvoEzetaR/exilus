@@ -25,17 +25,17 @@ export default function Home() {
         {/* 3 — CandidateTest: micro-commitment inmediato tras conocer al doctor */}
         <CandidateTest />
 
-        {/* 4 — Method: cómo funciona el proceso */}
+        {/* 4 — Services: qué ofrecemos (3 categorías con páginas dedicadas) */}
+        <Services />
+
+        {/* 5 — Method: cómo funciona el proceso */}
         <Method />
 
-        {/* 5 — Results: outcomes y trayectoria cuantificada */}
+        {/* 6 — Results: outcomes y trayectoria cuantificada */}
         <Results />
 
-        {/* 6 — Testimonials: prueba social de pacientes */}
+        {/* 7 — Testimonials: prueba social de pacientes */}
         <Testimonials />
-
-        {/* 7 — Services: qué ofrecemos */}
-        <Services />
 
         {/* 8 — AuthorityDeep: membresías y formación académica para skeptics */}
         <AuthorityDeep />

@@ -29,8 +29,7 @@ const services = [
     ],
     forWhom:
       "Pacientes con obesidad, diabetes tipo 2, hipertensión o síndrome metabólico.",
-    /* Página representativa de esta categoría */
-    detailHref: "/servicios/manga-gastrica",
+    detailHref: "/servicios/cirugia-bariatrica",
   },
   {
     number: "02",
@@ -42,11 +41,11 @@ const services = [
     procedures: [
       "Tratamiento multidisciplinario",
       "Tratamiento farmacológico",
+      "Balón intragástrico",
     ],
     forWhom:
       "Quienes buscan un tratamiento completo y sostenido del sobrepeso.",
-    /* No tiene página dedicada — manda al listado de servicios */
-    detailHref: "/servicios",
+    detailHref: "/servicios/manejo-obesidad",
   },
   {
     number: "03",
@@ -61,7 +60,6 @@ const services = [
       "Hernia",
       "Reflujo",
       "Colon",
-      "y más",
     ],
     forWhom:
       "Patologías abdominales que requieren intervención con mínima invasión.",

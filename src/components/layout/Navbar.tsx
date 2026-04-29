@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, Calendar, ClipboardCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -135,18 +135,50 @@ export default function Navbar() {
           </motion.a>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg transition-colors"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          style={{
-            color: isTransparent && !open ? "#F5EBDC" : "var(--color-primary)",
-          }}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {/* Mobile cluster: candidate pill + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
+          {/* "¿Soy candidato?" pill — equivalente al floating de desktop */}
+          <a
+            href={isHome ? "#soy-candidato" : "/#soy-candidato"}
+            onClick={(e) => {
+              if (!isHome) return;
+              const target = document.getElementById("soy-candidato");
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
+            aria-label="Test orientativo: ¿soy candidato a cirugía bariátrica?"
+            className="inline-flex items-center gap-1.5 rounded-full pl-2 pr-2.5 py-1.5 text-[11px] font-semibold whitespace-nowrap"
+            style={{
+              backgroundColor: "var(--color-primary)",
+              color: "var(--color-primary-foreground)",
+              border: "1px solid rgba(245,235,220,0.20)",
+              boxShadow: "0 4px 12px rgba(108,29,69,0.30)",
+            }}
+          >
+            <span
+              className="flex h-5 w-5 items-center justify-center rounded-full"
+              style={{ backgroundColor: "rgba(245,235,220,0.18)" }}
+            >
+              <ClipboardCheck className="h-3 w-3" aria-hidden="true" />
+            </span>
+            ¿Soy candidato?
+          </a>
+
+          {/* Hamburger */}
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-lg transition-colors"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            style={{
+              color: isTransparent && !open ? "#F5EBDC" : "var(--color-primary)",
+            }}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

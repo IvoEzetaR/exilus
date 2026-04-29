@@ -62,7 +62,7 @@ export default function CandidateFloatButton() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduced ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.92 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden sm:block fixed z-50 bottom-6 left-4 sm:bottom-6 sm:left-6"
+          className="hidden md:block fixed z-50 bottom-6 left-6"
         >
           <motion.a
             href={isHome ? "#soy-candidato" : "/#soy-candidato"}

@@ -246,13 +246,22 @@ export default function Hero() {
                 backgroundColor: "rgba(245,235,220,0.08)",
               }}
             >
-              <span className="relative flex items-center gap-2 h-full overflow-hidden">
-                {/* Text swap — two spans stacked */}
-                <span className="flex items-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
+              <span className="relative inline-flex h-full items-center overflow-hidden">
+                {/* Ghost — reserva el ancho del texto más largo para evitar shift */}
+                <span
+                  aria-hidden="true"
+                  className="invisible flex items-center gap-2"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Consultar ahora →
+                </span>
+                {/* Estado normal */}
+                <span className="absolute inset-0 flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   WhatsApp
                 </span>
-                <span className="absolute inset-0 flex items-center gap-2 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0">
+                {/* Estado hover */}
+                <span className="absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   Consultar ahora →
                 </span>
@@ -265,7 +274,7 @@ export default function Hero() {
         <motion.div
           variants={itemFade}
           {...motionProps}
-          className="max-w-7xl w-full mx-auto pb-20 sm:pb-24"
+          className="max-w-7xl w-full mx-auto mt-10 sm:mt-14 lg:mt-16 pb-20 sm:pb-24"
         >
           <div
             className="inline-flex flex-wrap gap-x-8 gap-y-3 rounded-2xl px-6 py-4 backdrop-blur-sm"

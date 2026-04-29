@@ -34,7 +34,8 @@ const featuredCases: Case[] = [
     highlight: "110 kg → 68 kg",
     quote:
       "Nuestra paciente Mariana llegó a nosotros con un peso inicial de 110 kg. Actualmente, luego de 6 meses de su cirugía de Manga Gástrica, su peso es de 68 kg.",
-    composite: "/images/mariana-antes-despues.jpg",
+    antes: "/images/mariana-antes.jpeg",
+    despues: "/images/mariana-despues.jpeg",
   },
   {
     id: "daniel",

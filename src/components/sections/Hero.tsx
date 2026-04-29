@@ -22,7 +22,7 @@ const itemFade = {
 };
 
 const lineReveal = {
-  hidden: { y: "105%" },
+  hidden: { y: "125%" },
   show: { y: 0, transition: { duration: 0.75, ease: EASE_OUT_EXPO } },
 };
 
@@ -154,8 +154,8 @@ export default function Hero() {
           </motion.p>
 
           {/* H1 — kinetic line-by-line reveal */}
-          <h1 className="font-serif text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-light leading-[1.02] tracking-tight text-white mb-6 lg:mb-8">
-            <span className="block overflow-hidden">
+          <h1 className="font-serif text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-light leading-[1.1] tracking-tight text-white mb-6 lg:mb-8">
+            <span className="block overflow-hidden pb-[0.18em]">
               <motion.span
                 variants={shouldReduce ? itemFade : lineReveal}
                 {...motionProps}
@@ -172,7 +172,7 @@ export default function Hero() {
                 Baja de peso de forma segura.
               </motion.span>
             </span>
-            <span className="block overflow-hidden mt-1">
+            <span className="block overflow-hidden pb-[0.18em] -mt-[0.1em]">
               <motion.span
                 variants={shouldReduce ? itemFade : lineReveal}
                 {...motionProps}

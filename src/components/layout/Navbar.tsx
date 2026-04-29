@@ -54,22 +54,20 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center" aria-label="Exilus — inicio">
-          <div className="relative h-10 w-10">
+          <div className="relative h-10 w-32">
             <Image
-              src="/images/exilus-logo.png"
+              src={
+                isTransparent
+                  ? "/images/exilus-logo.png"
+                  : "/images/exilus-logo-dark.png"
+              }
               alt="Exilus — Cirugía Bariátrica Trujillo"
               fill
-              sizes="40px"
+              sizes="128px"
               priority
-              className="object-contain"
+              className="object-contain object-left"
             />
           </div>
-          <span
-            className="ml-2 font-serif text-lg font-medium tracking-tight transition-colors duration-300"
-            style={{ color: isTransparent ? "#F5EBDC" : "var(--color-primary)" }}
-          >
-            Exilus
-          </span>
         </Link>
 
         {/* Desktop links */}

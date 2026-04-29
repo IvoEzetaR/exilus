@@ -33,22 +33,16 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="mb-5 flex items-center gap-3">
-              <div className="relative h-14 w-14">
+            <div className="mb-5 flex items-center">
+              <div className="relative h-14 w-44">
                 <Image
                   src="/images/exilus-logo.png"
                   alt="Exilus — Cirugía Bariátrica Trujillo"
                   fill
-                  sizes="56px"
-                  className="object-contain"
+                  sizes="176px"
+                  className="object-contain object-left"
                 />
               </div>
-              <span
-                className="font-serif text-2xl font-medium tracking-tight"
-                style={{ color: "var(--color-cream)" }}
-              >
-                Exilus
-              </span>
             </div>
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "rgba(245,235,220,0.70)" }}>
               Cirugía bariátrica y laparoscópica avanzada con excelencia médica,

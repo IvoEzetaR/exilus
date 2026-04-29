@@ -92,10 +92,7 @@ export default function Hero() {
           transition: "opacity 0.8s ease",
         }}
       >
-        <source
-          src="https://res.cloudinary.com/dd0hiqfsf/video/upload/q_auto/f_auto/v1776436288/WhatsApp_Video_2026-04-17_at_9.31.00_AM_i6xapq.mp4"
-          type="video/mp4"
-        />
+        <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
 
       {/* ── Multi-layer overlay for legibility ──────────────────────────── */}

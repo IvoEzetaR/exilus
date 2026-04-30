@@ -161,9 +161,9 @@ export default function Footer() {
             © 2026 Exilus — Cirugía Bariátrica. Todos los derechos reservados.
           </p>
           <p className="text-xs" style={{ color: "rgba(245,235,220,0.25)" }}>
-            Sitio web por{" "}
+            Desarrollado por{" "}
             <a
-              href="https://www.ideagency.pro"
+              href="https://ideagency.pro"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-opacity hover:opacity-60"

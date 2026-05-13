@@ -160,15 +160,25 @@ export default function Footer() {
           <p className="text-xs" style={{ color: "rgba(245,235,220,0.35)" }}>
             © 2026 Exilus — Cirugía Bariátrica. Todos los derechos reservados.
           </p>
-          <p className="text-xs" style={{ color: "rgba(245,235,220,0.25)" }}>
-            Desarrollado por{" "}
+          <p className="text-xs" style={{ color: "rgba(245,235,220,0.65)" }}>
             <a
               href="https://ideagency.pro"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-60"
+              aria-label="Sitio web desarrollado por IDE Agency"
+              className="group inline-flex items-center gap-1.5 font-medium transition-opacity"
             >
-              IDE Agency
+              <span className="opacity-80 group-hover:opacity-100 transition-opacity">Hecho por</span>
+              <span
+                className="font-bold bg-clip-text text-transparent transition-all duration-500 group-hover:[background-position:100%_50%] group-hover:[filter:drop-shadow(0_0_6px_rgba(168,85,247,0.6))]"
+                style={{
+                  backgroundImage: "linear-gradient(110deg, #a855f7 0%, #ec4899 50%, #a855f7 100%)",
+                  backgroundSize: "200% 100%",
+                  backgroundPosition: "0% 50%",
+                }}
+              >
+                IDE Agency
+              </span>
             </a>
           </p>
         </div>

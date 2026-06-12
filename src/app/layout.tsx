@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CandidateFloatButton from "@/components/ui/CandidateFloatButton";
 import TopBar from "@/components/layout/TopBar";
 import { CLIENT } from "@/lib/client-data";
+
+const GA_MEASUREMENT_ID = "G-6B167Z5VEY";
 
 // ─── Tipografía ────────────────────────────────────────────────────────────
 const fraunces = Fraunces({
@@ -170,6 +173,18 @@ export default function RootLayout({
         {children}
         <CandidateFloatButton />
         <WhatsAppButton phoneNumber={CLIENT.phone} />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

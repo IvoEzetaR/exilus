@@ -14,12 +14,12 @@ const faqs = [
   {
     question: "¿Cuánto peso se pierde después de la cirugía?",
     answer:
-      "Los resultados dependen del procedimiento realizado y del compromiso del paciente con el seguimiento multidisciplinario. En promedio, se pierde entre el 60% y 80% del exceso de peso. El acompañamiento integral — nutrición, psicología y control médico — es clave para mantener los resultados a largo plazo.",
+      "Los resultados varían según el procedimiento realizado y el compromiso del paciente con el seguimiento multidisciplinario. La evidencia de la ASMBS muestra una reducción significativa del exceso de peso, pero cada caso es individual. El acompañamiento integral — nutrición, psicología y control médico — es clave para sostener los resultados a largo plazo.",
   },
   {
     question: "¿La cirugía es riesgosa?",
     answer:
-      "La cirugía bariátrica es un procedimiento seguro cuando es realizado por un equipo especializado y en un centro acreditado. En Exilus utilizamos técnicas laparoscópicas avanzadas que reducen significativamente los riesgos quirúrgicos y aceleran la recuperación postoperatoria.",
+      "La cirugía bariátrica es un procedimiento con respaldo médico cuando es realizado por un equipo especializado y en un centro acreditado. En Exilus utilizamos técnicas laparoscópicas avanzadas que ayudan a reducir los riesgos quirúrgicos y favorecen la recuperación postoperatoria. Toda intervención conlleva riesgos que se evalúan en la consulta.",
   },
   {
     question: "¿Qué seguimiento se realiza después de la cirugía?",
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "¿Cuánto cuesta la cirugía?",
     answer:
-      "El costo varía según cada caso clínico. La inversión incluye la evaluación integral preoperatoria, el procedimiento y el seguimiento. Contáctanos para una evaluación personalizada donde podremos orientarte sobre las opciones que mejor se adaptan a tu situación.",
+      "El costo varía según cada caso clínico y se define en la evaluación. La inversión incluye la evaluación integral preoperatoria, el procedimiento y el seguimiento. Contáctanos para una evaluación personalizada donde podremos orientarte sobre las opciones que mejor se adaptan a tu situación.",
   },
 ];
 

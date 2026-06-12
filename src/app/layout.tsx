@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | Exilus Cirugía Bariátrica",
   },
   description:
-    "Cirugía bariátrica y laparoscópica avanzada en Trujillo. Dr. Augusto Salazar, 16 años de experiencia, pionero en el norte del Perú. Agenda tu evaluación.",
+    "Cirugía bariátrica laparoscópica en Trujillo. Dr. Augusto Salazar — FACS, +16 años, Director HRDT. Agenda tu evaluación.",
   keywords: [
     "cirugía bariátrica trujillo",
     "manga gástrica trujillo",
@@ -120,7 +120,7 @@ const medicalSchema = {
       ],
     },
     {
-      "@type": "Physician",
+      "@type": ["Physician", "Person"],
       "@id": `${siteUrl}/#physician`,
       name: CLIENT.doctor,
       jobTitle: "Cirujano Bariatra y Laparoscopista",
@@ -142,6 +142,33 @@ const medicalSchema = {
       hasCredential: [
         { "@type": "EducationalOccupationalCredential", name: "Cirujano Bariatra y Laparoscopista" },
       ],
+      // Membresías internacionales — sigla y nombre tal como figuran en AuthorityDeep
+      memberOf: [
+        {
+          "@type": "Organization",
+          name: "Fellow of the American College of Surgeons (FACS)",
+        },
+        {
+          "@type": "Organization",
+          name: "American Society for Metabolic & Bariatric Surgery (ASMBS)",
+        },
+        {
+          "@type": "Organization",
+          name: "International Federation for the Surgery of Obesity (IFSO)",
+        },
+        {
+          "@type": "Organization",
+          name: "Society of American Gastrointestinal and Endoscopic Surgeons (SAGES)",
+        },
+        {
+          "@type": "Organization",
+          name: "Advanced Trauma Life Support — American College of Surgeons (ATLS)",
+        },
+        {
+          "@type": "Organization",
+          name: "Asociación Peruana de Cirugía Bariátrica y Enfermedades Metabólicas (APCBEM)",
+        },
+      ],
       knowsAbout: [
         "Cirugía bariátrica",
         "Manga gástrica",
@@ -149,6 +176,53 @@ const medicalSchema = {
         "Cirugía laparoscópica",
         "Cirugía digestiva",
         "Manejo de obesidad",
+      ],
+    },
+    // ── FAQPage — marca las 5 preguntas frecuentes de la home (componente FAQ) ──
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}/#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "¿Soy candidato para cirugía bariátrica?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Generalmente, son candidatos los pacientes con IMC ≥ 30 con comorbilidades o IMC ≥ 35 con o sin enfermedades asociadas. Sin embargo, cada caso se evalúa de forma personalizada en consulta con el Dr. Salazar para determinar la mejor alternativa según tu situación médica e historia clínica.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cuánto peso se pierde después de la cirugía?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Los resultados varían según el procedimiento realizado y el compromiso del paciente con el seguimiento multidisciplinario. La evidencia de la ASMBS muestra una reducción significativa del exceso de peso, pero cada caso es individual. El acompañamiento integral — nutrición, psicología y control médico — es clave para sostener los resultados a largo plazo.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿La cirugía es riesgosa?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "La cirugía bariátrica es un procedimiento con respaldo médico cuando es realizado por un equipo especializado y en un centro acreditado. En Exilus utilizamos técnicas laparoscópicas avanzadas que ayudan a reducir los riesgos quirúrgicos y favorecen la recuperación postoperatoria. Toda intervención conlleva riesgos que se evalúan en la consulta.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Qué seguimiento se realiza después de la cirugía?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El tratamiento incluye un seguimiento multidisciplinario continuo con cirugía, nutrición, psicología y control médico. El proceso no termina en el quirófano — el acompañamiento postoperatorio es parte integral de nuestro método y es fundamental para sostener los resultados.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cuánto cuesta la cirugía?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El costo varía según cada caso clínico y se define en la evaluación. La inversión incluye la evaluación integral preoperatoria, el procedimiento y el seguimiento. Contáctanos para una evaluación personalizada donde podremos orientarte sobre las opciones que mejor se adaptan a tu situación.",
+          },
+        },
       ],
     },
   ],

@@ -146,8 +146,8 @@ export default function Hero() {
             className="text-sm sm:text-base font-semibold tracking-wide mb-4 lg:mb-5 max-w-2xl"
             style={{ color: "rgba(245,235,220,0.90)" }}
           >
-            Cirugía bariátrica segura, con resultados reales y acompañamiento
-            integral en Trujillo
+            Cirugía bariátrica con respaldo médico y acompañamiento integral en
+            Trujillo
           </motion.p>
 
           {/* H1 — kinetic line-by-line reveal */}
@@ -188,8 +188,8 @@ export default function Hero() {
             style={{ color: "rgba(245,235,220,0.80)" }}
           >
             Cirugía bariátrica y laparoscópica avanzada con un enfoque integral,
-            seguro y personalizado. Pionero en el norte del Perú con +10 años de
-            experiencia en cirugía metabólica.
+            con respaldo médico y personalizado. Pionero en el norte del Perú
+            con +10 años de experiencia en cirugía metabólica.
           </motion.p>
 
           {/* CTA pair */}

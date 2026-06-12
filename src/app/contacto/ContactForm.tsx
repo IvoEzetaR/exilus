@@ -65,10 +65,13 @@ export default function ContactForm() {
     servicio: "",
     mensaje: "",
   });
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    // El navegador bloquea el submit si el checkbox `required` no está marcado
+    if (!consent) return;
     // Client-side only — no backend
     setSubmitted(true);
   };
@@ -302,6 +305,37 @@ export default function ContactForm() {
                       }}
                       placeholder="Cuéntanos sobre tu caso o consulta..."
                     />
+                  </div>
+
+                  {/* Consentimiento de datos (Ley 29733) — obligatorio */}
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="consent"
+                      name="consent"
+                      required
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      className="mt-1 h-4 w-4 flex-shrink-0 rounded"
+                      style={{ accentColor: "var(--color-primary)" }}
+                    />
+                    <label
+                      htmlFor="consent"
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--color-warm-text)" }}
+                    >
+                      Acepto el tratamiento de mis datos personales según la{" "}
+                      <a
+                        href="/legal/privacidad"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
+                        style={{ color: "var(--color-primary)" }}
+                      >
+                        Política de Privacidad
+                      </a>
+                      .
+                    </label>
                   </div>
 
                   {/* Submit */}

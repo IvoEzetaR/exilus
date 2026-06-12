@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Testimonios",
   description:
     "Conoce las historias de éxito de nuestros pacientes de cirugía bariátrica en Trujillo. Más de 500 pacientes confían en el Dr. Augusto Salazar.",
+  alternates: { canonical: "https://exilus.pe/testimonios" },
   openGraph: {
     title: "Testimonios — Exilus Cirugía Bariátrica",
     description:
@@ -22,7 +23,7 @@ export default function TestimoniosPage() {
       <main>
         <InnerPageHero
           eyebrow="Historias de transformación"
-          title="Testimonios"
+          title="Testimonios — Pacientes de Cirugía Bariátrica en Trujillo"
           subtitle="Cada paciente tiene una historia. Conoce cómo la cirugía bariátrica transformó la vida de quienes confiaron en nosotros."
           breadcrumbs={[
             { label: "Inicio", href: "/" },

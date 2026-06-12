@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "Contáctanos para agendar tu evaluación con el Dr. Augusto Salazar. Cirugía bariátrica y laparoscópica en Trujillo. WhatsApp, email o visita nuestra clínica.",
+  alternates: { canonical: "https://exilus.pe/contacto" },
   openGraph: {
     title: "Contacto — Exilus Cirugía Bariátrica",
     description:
@@ -22,7 +23,7 @@ export default function ContactoPage() {
       <main>
         <InnerPageHero
           eyebrow="Estamos para ayudarte"
-          title="Contáctanos"
+          title="Contacto — Dr. Augusto Salazar, Cirugía Bariátrica Trujillo"
           subtitle="Agenda tu evaluación o escríbenos para resolver cualquier duda. Tu primera consulta es el primer paso hacia una nueva vida."
           breadcrumbs={[
             { label: "Inicio", href: "/" },

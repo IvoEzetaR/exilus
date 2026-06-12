@@ -40,7 +40,7 @@ const pillars = [
     number: "03",
     title: "Resultados sostenibles",
     description:
-      "El proceso no termina en el quirófano. El seguimiento continuo garantiza cambios duraderos.",
+      "El proceso no termina en el quirófano. El seguimiento continuo favorece cambios duraderos.",
   },
 ];
 

@@ -234,7 +234,7 @@ function SubServiceBlock({
           className={`lg:col-span-7 ${isReversed ? "lg:order-1" : ""}`}
         >
           {/* Description */}
-          <div className="space-y-4 mb-8">
+          <div className="space-y-4 mb-6">
             {sub.description.map((p, i) => (
               <p
                 key={i}
@@ -245,6 +245,41 @@ function SubServiceBlock({
               </p>
             ))}
           </div>
+
+          {/* SEO long-form: descripción ampliada del procedimiento */}
+          {sub.seoDescription && (
+            <p
+              className="text-base leading-relaxed mb-6"
+              style={{ color: "var(--color-warm-text)" }}
+            >
+              {sub.seoDescription}
+            </p>
+          )}
+
+          {/* Qué esperar — pre / intra / post-operatorio */}
+          {sub.whatToExpect && (
+            <div
+              className="rounded-xl p-5 border mb-8"
+              style={{
+                backgroundColor: "var(--color-card)",
+                borderColor: "var(--color-border)",
+              }}
+            >
+              <p
+                className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-2 inline-flex items-center gap-2"
+                style={{ color: "var(--color-primary)" }}
+              >
+                <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                Qué esperar
+              </p>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--color-warm-text)" }}
+              >
+                {sub.whatToExpect}
+              </p>
+            </div>
+          )}
 
           {/* Benefits grid */}
           <div className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -377,6 +412,14 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
                     {p}
                   </p>
                 ))}
+                {service.keywordLine && (
+                  <p
+                    className="text-base sm:text-lg leading-relaxed font-medium"
+                    style={{ color: "var(--color-primary)" }}
+                  >
+                    {service.keywordLine}
+                  </p>
+                )}
               </div>
             </motion.div>
 

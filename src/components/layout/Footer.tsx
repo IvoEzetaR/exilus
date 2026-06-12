@@ -151,12 +151,51 @@ export default function Footer() {
 
         {/* Bottom */}
         <div
-          className="mt-12 border-t pt-8 space-y-2 text-center"
+          className="mt-12 border-t pt-8 space-y-3 text-center"
           style={{ borderColor: "rgba(245,235,220,0.10)" }}
         >
-          <p className="text-xs max-w-2xl mx-auto" style={{ color: "rgba(245,235,220,0.50)" }}>
-            La evaluación médica personalizada es indispensable. Los resultados pueden variar según cada paciente.
+          {/* Disclaimer médico global (YMYL) */}
+          <p className="text-xs max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(245,235,220,0.50)" }}>
+            La información de este sitio es referencial y no reemplaza la consulta
+            médica. Cada caso es individual y los resultados varían según el
+            paciente.
           </p>
+
+          {/* Enlaces legales */}
+          <nav aria-label="Enlaces legales">
+            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs">
+              <li>
+                <a
+                  href="/legal/aviso-legal"
+                  className="transition-opacity hover:opacity-100"
+                  style={{ color: "rgba(245,235,220,0.60)" }}
+                >
+                  Aviso Legal
+                </a>
+              </li>
+              <li aria-hidden="true" style={{ color: "rgba(245,235,220,0.30)" }}>·</li>
+              <li>
+                <a
+                  href="/legal/privacidad"
+                  className="transition-opacity hover:opacity-100"
+                  style={{ color: "rgba(245,235,220,0.60)" }}
+                >
+                  Política de Privacidad
+                </a>
+              </li>
+              <li aria-hidden="true" style={{ color: "rgba(245,235,220,0.30)" }}>·</li>
+              <li>
+                <a
+                  href="/legal/terminos"
+                  className="transition-opacity hover:opacity-100"
+                  style={{ color: "rgba(245,235,220,0.60)" }}
+                >
+                  Términos y Condiciones
+                </a>
+              </li>
+            </ul>
+          </nav>
+
           <p className="text-xs" style={{ color: "rgba(245,235,220,0.35)" }}>
             © 2026 Exilus — Cirugía Bariátrica. Todos los derechos reservados.
           </p>

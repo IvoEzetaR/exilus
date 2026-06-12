@@ -23,6 +23,20 @@ export interface SubService {
   benefits: SubServiceBenefit[];
   candidateProfile: string[];
   stats: { label: string; value: string }[];
+  // ── Campos SEO por procedimiento (cartilla QW1) ──
+  /** Descripción larga 120-200 palabras: qué es, cómo se realiza por laparoscopía, beneficios cualitativos. */
+  seoDescription: string;
+  /** Qué esperar: pre / intra / post-operatorio breve. */
+  whatToExpect: string;
+  // ── Campos para schema MedicalProcedure / MedicalTherapy (QW3) ──
+  /** Tipo de @type en el schema médico. */
+  schemaType: "MedicalProcedure" | "MedicalTherapy";
+  /** procedureType de schema.org. Solo aplica a MedicalProcedure. */
+  procedureType?: "SurgicalProcedure" | "NoninvasiveProcedure";
+  /** Región corporal intervenida. */
+  bodyLocation?: string;
+  /** Cómo se realiza, descripción breve para schema. */
+  howPerformed?: string;
 }
 
 export interface CategoryStat {
@@ -43,6 +57,8 @@ export interface ServiceData {
   subServices: SubService[];
   faqs: ServiceFAQ[];
   stats: CategoryStat[];
+  /** Frase corta keyword-rich (geo Trujillo) que refuerza la intención de búsqueda de la página. */
+  keywordLine: string;
 }
 
 export const SERVICES: ServiceData[] = [
@@ -99,8 +115,9 @@ export const SERVICES: ServiceData[] = [
           "Procedimiento de manga gástrica laparoscópica realizado en Trujillo por el Dr. Augusto Salazar",
         benefits: [
           {
-            title: "Pérdida del 60-70% del exceso de peso",
-            description: "En los primeros 12-18 meses con compromiso adecuado.",
+            title: "Reducción significativa del exceso de peso",
+            description:
+              "Según evidencia de la ASMBS; los resultados varían según el paciente.",
             icon: "TrendingDown",
           },
           {
@@ -126,11 +143,20 @@ export const SERVICES: ServiceData[] = [
           "Mayores de 18 años en buen estado de salud general",
         ],
         stats: [
-          { label: "Pérdida exceso de peso", value: "60-70%" },
+          { label: "Técnica", value: "Laparoscópica" },
           { label: "Tiempo de cirugía", value: "60-90 min" },
           { label: "Estancia hospitalaria", value: "2-3 días" },
           { label: "Retorno laboral", value: "10-14 días" },
         ],
+        seoDescription:
+          "La manga gástrica o gastrectomía vertical es uno de los procedimientos de cirugía bariátrica en Trujillo más solicitados por su eficacia y su perfil de seguridad. Se realiza íntegramente por laparoscopía: a través de incisiones milimétricas, el cirujano bariatra retira una porción del estómago y deja un reservorio tubular con forma de manga. Esta reducción no solo limita el volumen de alimento, también disminuye la grelina, la hormona que regula el apetito, lo que favorece la saciedad temprana. Como operación de obesidad, la manga es una alternativa permanente, sin dispositivos externos ni ajustes periódicos. La técnica mínimamente invasiva implica menos dolor postoperatorio y una recuperación más rápida que la cirugía abierta. Cada caso se evalúa de forma individual con el Dr. Augusto Salazar para confirmar que es la mejor opción para tu salud.",
+        whatToExpect:
+          "Antes de la cirugía realizamos una evaluación integral con análisis preoperatorios, valoración cardiológica y acompañamiento nutricional. La intervención dura entre 60 y 90 minutos bajo anestesia general y se realiza por laparoscopía. La estancia hospitalaria suele ser de 2 a 3 días, con retorno a actividades ligeras en aproximadamente 10 a 14 días. El seguimiento multidisciplinario posterior — nutrición, psicología y control médico — es clave para sostener los resultados.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Estómago",
+        howPerformed:
+          "Gastrectomía vertical laparoscópica: se retira parte del estómago dejando un reservorio tubular, a través de incisiones milimétricas y bajo anestesia general.",
       },
       {
         slug: "bypass-gastrico",
@@ -146,18 +172,20 @@ export const SERVICES: ServiceData[] = [
           "Bypass gástrico laparoscópico — Dr. Augusto Salazar, cirujano bariatra Trujillo",
         benefits: [
           {
-            title: "Pérdida del 70-80% del exceso de peso",
-            description: "Superior a otros procedimientos bariátricos.",
+            title: "Reducción importante del exceso de peso",
+            description:
+              "Según evidencia de la ASMBS; los resultados varían según el paciente.",
             icon: "TrendingDown",
           },
           {
-            title: "Remisión de diabetes hasta 83%",
-            description: "Tasa más alta entre todos los procedimientos.",
+            title: "Mejora del control de la diabetes tipo 2",
+            description:
+              "Puede favorecer la remisión de la diabetes; cada caso es individual.",
             icon: "Activity",
           },
           {
             title: "Mejora del reflujo severo",
-            description: "Elimina o controla el reflujo gastroesofágico (ERGE).",
+            description: "Ayuda a controlar el reflujo gastroesofágico (ERGE).",
             icon: "ShieldCheck",
           },
           {
@@ -173,11 +201,20 @@ export const SERVICES: ServiceData[] = [
           "Compromiso con suplementación vitamínica de por vida",
         ],
         stats: [
-          { label: "Pérdida exceso de peso", value: "70-80%" },
-          { label: "Remisión diabetes", value: "83%" },
+          { label: "Técnica", value: "Laparoscópica" },
+          { label: "Indicación", value: "Diabetes / ERGE" },
           { label: "Tiempo de cirugía", value: "90-120 min" },
           { label: "Estancia hospitalaria", value: "2-4 días" },
         ],
+        seoDescription:
+          "El bypass gástrico en Y de Roux es una de las técnicas de referencia de la cirugía bariátrica en Trujillo, especialmente indicada en obesidad severa y diabetes tipo 2. Como cirujano bariatra en Trujillo, el Dr. Augusto Salazar lo realiza por laparoscopía: crea un pequeño reservorio gástrico (restricción) y desvía una porción del intestino delgado (malabsorción controlada). Esta combinación produce cambios hormonales que mejoran la sensibilidad a la insulina, por lo que suele recomendarse en pacientes con diabetes tipo 2 o reflujo gastroesofágico severo. Al tratarse de una operación de obesidad mínimamente invasiva, las incisiones son milimétricas, el dolor postoperatorio es menor y la recuperación más rápida que en cirugía abierta. Requiere compromiso con la suplementación vitamínica de por vida. La indicación se confirma siempre en una evaluación médica individual.",
+        whatToExpect:
+          "El preoperatorio incluye estudios completos, valoración por el equipo multidisciplinario y preparación nutricional. La cirugía dura entre 90 y 120 minutos bajo anestesia general, por laparoscopía. La estancia hospitalaria es de 2 a 4 días. Tras el alta se inicia una progresión alimentaria guiada y controles periódicos; la suplementación vitamínica y el seguimiento son indispensables para mantener los resultados de forma segura.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Estómago e intestino delgado",
+        howPerformed:
+          "Bypass gástrico en Y de Roux por laparoscopía: se crea un reservorio gástrico pequeño y se reconfigura el intestino delgado, bajo anestesia general.",
       },
       {
         slug: "biparticion-intestinal",
@@ -220,11 +257,20 @@ export const SERVICES: ServiceData[] = [
           "Quienes buscan equilibrio entre control metabólico y bajo riesgo nutricional",
         ],
         stats: [
-          { label: "Pérdida exceso de peso", value: "65-75%" },
-          { label: "Control de diabetes", value: "Excelente" },
+          { label: "Técnica", value: "Laparoscópica" },
+          { label: "Indicación", value: "Diabetes tipo 2" },
           { label: "Tiempo de cirugía", value: "120-150 min" },
           { label: "Estancia hospitalaria", value: "3-4 días" },
         ],
+        seoDescription:
+          "La bipartición intestinal — también conocida como SADI-S simplificada — es una técnica avanzada de cirugía metabólica dentro de la cirugía bariátrica en Trujillo, diseñada para pacientes con diabetes tipo 2 severa o de difícil control. Combina una manga gástrica con una derivación parcial del intestino delgado y se realiza por laparoscopía. A diferencia del bypass clásico, mantiene una vía alimentaria más fisiológica: la comida sigue pasando por el duodeno, lo que reduce el riesgo de deficiencias vitamínicas mientras conserva un efecto importante sobre el control glicémico. Es una opción que el cirujano bariatra en Trujillo evalúa cuando se busca equilibrio entre control metabólico y bajo riesgo nutricional, o cuando el bypass está contraindicado por anatomía o estado nutricional. Como toda operación de obesidad, su indicación se define en una evaluación clínica individualizada.",
+        whatToExpect:
+          "La preparación incluye estudios metabólicos, control de la diabetes y valoración multidisciplinaria. La cirugía dura entre 120 y 150 minutos bajo anestesia general, por laparoscopía. La estancia hospitalaria suele ser de 3 a 4 días. El seguimiento posterior monitorea el control glicémico y el estado nutricional para sostener los resultados de manera segura.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Estómago e intestino delgado",
+        howPerformed:
+          "Bipartición intestinal (SADI-S simplificada) por laparoscopía: manga gástrica asociada a una derivación parcial del intestino delgado, bajo anestesia general.",
       },
       {
         slug: "cirugia-revisional",
@@ -272,6 +318,15 @@ export const SERVICES: ServiceData[] = [
           { label: "Recuperación", value: "4-8 semanas" },
           { label: "Retorno laboral", value: "3-4 semanas" },
         ],
+        seoDescription:
+          "La cirugía revisional o de conversión es un área especializada dentro de la cirugía bariátrica en Trujillo, indicada cuando un procedimiento bariátrico previo no logró el resultado esperado, presentó complicaciones o hubo recuperación significativa del peso. Operar sobre una anatomía ya modificada exige una experiencia mayor, por eso el cirujano bariatra en Trujillo evalúa cada caso de forma minuciosa. Según la situación, la estrategia puede ser convertir una banda gástrica a manga o bypass, revisar una manga hacia bypass, o corregir complicaciones como dilatación, fístulas o reflujo severo. La mayoría de estas intervenciones se realizan por laparoscopía, lo que favorece una recuperación más rápida que la cirugía abierta. El objetivo es ofrecer una segunda oportunidad segura para retomar el camino hacia un peso saludable, siempre con una indicación definida en evaluación clínica.",
+        whatToExpect:
+          "La evaluación inicial incluye revisar la cirugía previa, estudios de imagen y endoscopía cuando corresponde. La intervención dura entre 2 y 3 horas bajo anestesia general y, en la mayoría de casos, se realiza por laparoscopía. La estancia hospitalaria es de 3 a 5 días y la recuperación completa puede tomar de 4 a 8 semanas. El acompañamiento multidisciplinario posterior es esencial para sostener los nuevos resultados.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Estómago e intestino delgado",
+        howPerformed:
+          "Cirugía revisional bariátrica por laparoscopía: conversión o corrección de un procedimiento bariátrico previo, bajo anestesia general.",
       },
     ],
     faqs: [
@@ -307,6 +362,8 @@ export const SERVICES: ServiceData[] = [
       { label: "Tipo de cirugía", value: "Laparoscópica" },
       { label: "Equipo multidisciplinario", value: "Sí" },
     ],
+    keywordLine:
+      "Cirugía bariátrica en Trujillo con un cirujano bariatra de más de 16 años de experiencia. Manga gástrica, bypass y cirugía metabólica para la operación de obesidad, por laparoscopía.",
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -389,11 +446,19 @@ export const SERVICES: ServiceData[] = [
           "Pacientes post-quirúrgicos en fase de mantenimiento",
         ],
         stats: [
-          { label: "Pérdida de peso esperada", value: "5-15%" },
+          { label: "Enfoque", value: "Sin cirugía" },
           { label: "Duración del programa", value: "3-12 meses" },
           { label: "Especialistas", value: "4+" },
           { label: "Frecuencia controles", value: "Mensual" },
         ],
+        seoDescription:
+          "El tratamiento multidisciplinario es la base de un tratamiento de obesidad en Trujillo serio y sostenible. Reúne la mirada de varios especialistas — cirujano bariatra, nutricionista, psicóloga y endocrinólogo — para entender tu caso desde lo médico, lo nutricional, lo conductual y lo metabólico. No es un procedimiento quirúrgico: es un programa de acompañamiento que puede ser un tratamiento definitivo en pacientes con sobrepeso leve, o el complemento indispensable antes y después de una intervención farmacológica, un balón o una cirugía. El plan se personaliza según tu cuerpo, tus hábitos, tus comorbilidades y tus objetivos, con controles periódicos que sostienen los cambios en el tiempo. La experiencia clínica muestra que los pacientes que mejor acompañamiento reciben son los que mejor mantienen sus resultados; cada caso es individual y se define en evaluación médica.",
+        whatToExpect:
+          "El programa arranca con una evaluación 360°: valoración médica, nutricional, psicológica y metabólica. A partir de ahí se diseña un plan personalizado con controles, en general mensuales, durante 3 a 12 meses. No requiere hospitalización. El objetivo es lograr cambios duraderos en hábitos y composición corporal, con seguimiento continuo del equipo.",
+        schemaType: "MedicalTherapy",
+        bodyLocation: "Manejo integral del peso corporal",
+        howPerformed:
+          "Programa ambulatorio de manejo de obesidad con cirujano bariatra, nutricionista, psicóloga y endocrinólogo, con controles periódicos.",
       },
       {
         slug: "tratamiento-farmacologico",
@@ -401,7 +466,7 @@ export const SERVICES: ServiceData[] = [
         shortDescription:
           "Última generación de medicamentos GLP-1 (semaglutida, liraglutida, tirzepatida) para pérdida de peso clínicamente significativa.",
         description: [
-          "Los nuevos medicamentos análogos de GLP-1 —como semaglutida, liraglutida y tirzepatida— han revolucionado el tratamiento médico de la obesidad. Son fármacos inyectables que actúan sobre el centro del apetito y mejoran la sensibilidad a la insulina, logrando pérdidas de peso del 10-20% en pacientes adecuadamente seleccionados.",
+          "Los nuevos medicamentos análogos de GLP-1 —como semaglutida, liraglutida y tirzepatida— han transformado el tratamiento médico de la obesidad. Son fármacos inyectables que actúan sobre el centro del apetito y mejoran la sensibilidad a la insulina, logrando una reducción significativa del peso en pacientes adecuadamente seleccionados. Los resultados varían según cada persona.",
           "El Dr. Salazar evalúa la indicación, tolerancia, contraindicaciones y combinación óptima con tu plan nutricional. La farmacoterapia no reemplaza el cambio de hábitos: los potencia. Funciona mejor cuando se combina con seguimiento nutricional y conductual.",
         ],
         image: "/images/doctor-terno.jpg",
@@ -409,8 +474,9 @@ export const SERVICES: ServiceData[] = [
           "Tratamiento farmacológico para obesidad con análogos GLP-1 — Dr. Augusto Salazar Trujillo",
         benefits: [
           {
-            title: "Pérdida del 10-20% del peso",
-            description: "Resultados clínicamente significativos.",
+            title: "Reducción significativa del peso",
+            description:
+              "Resultados clínicamente relevantes que varían según el paciente.",
             icon: "TrendingDown",
           },
           {
@@ -420,7 +486,7 @@ export const SERVICES: ServiceData[] = [
           },
           {
             title: "Mejora metabólica",
-            description: "Reduce riesgo cardiovascular y diabetes tipo 2.",
+            description: "Apoya el control cardiovascular y de la diabetes tipo 2.",
             icon: "Activity",
           },
           {
@@ -436,11 +502,19 @@ export const SERVICES: ServiceData[] = [
           "Como puente o complemento a cirugía bariátrica",
         ],
         stats: [
-          { label: "Pérdida de peso", value: "10-20%" },
+          { label: "Enfoque", value: "Sin cirugía" },
           { label: "Forma de uso", value: "Inyección semanal" },
           { label: "Duración mínima", value: "12 meses" },
           { label: "Vía", value: "Subcutánea" },
         ],
+        seoDescription:
+          "El tratamiento farmacológico con análogos de GLP-1 es una de las opciones no quirúrgicas del manejo del tratamiento de obesidad en Trujillo. Medicamentos como semaglutida, liraglutida y tirzepatida actúan sobre el centro del apetito y mejoran la sensibilidad a la insulina, ayudando a una reducción significativa del peso en pacientes adecuadamente seleccionados. No es un procedimiento quirúrgico: se administra de forma ambulatoria mediante inyección subcutánea, generalmente semanal. La farmacoterapia no reemplaza el cambio de hábitos, sino que lo potencia, por lo que funciona mejor combinada con seguimiento nutricional y conductual. El Dr. Augusto Salazar evalúa la indicación, la tolerancia y las posibles contraindicaciones — como antecedentes de pancreatitis o cáncer medular de tiroides — antes de iniciar. Los resultados varían según cada paciente y se monitorean durante todo el tratamiento.",
+        whatToExpect:
+          "Antes de iniciar se revisa tu historia clínica y se descartan contraindicaciones. El tratamiento es ambulatorio: aprenderás a aplicarte la inyección, en general semanal, con una duración mínima recomendada de 12 meses. Durante el proceso se controlan la tolerancia, los efectos adversos y la evolución del peso, ajustando la dosis y el plan nutricional según tu respuesta.",
+        schemaType: "MedicalTherapy",
+        bodyLocation: "Manejo metabólico y del apetito",
+        howPerformed:
+          "Tratamiento ambulatorio con análogos de GLP-1 (semaglutida, liraglutida o tirzepatida) por vía subcutánea, bajo supervisión médica.",
       },
       {
         slug: "balon-intragastrico",
@@ -471,8 +545,9 @@ export const SERVICES: ServiceData[] = [
             icon: "Zap",
           },
           {
-            title: "Pérdida del 10-15%",
-            description: "Del peso total durante el tratamiento.",
+            title: "Apoya la pérdida de peso",
+            description:
+              "Reducción que varía según el paciente durante el tratamiento.",
             icon: "TrendingDown",
           },
         ],
@@ -483,11 +558,20 @@ export const SERVICES: ServiceData[] = [
           "Personas que buscan opción temporal y reversible",
         ],
         stats: [
-          { label: "Pérdida de peso total", value: "10-15%" },
+          { label: "Procedimiento", value: "Endoscópico" },
           { label: "Duración procedimiento", value: "20 min" },
           { label: "Tiempo del balón", value: "6 meses" },
           { label: "Retorno a actividades", value: "24-48h" },
         ],
+        seoDescription:
+          "El balón intragástrico es una opción no quirúrgica dentro del tratamiento de obesidad en Trujillo. Se trata de un dispositivo de silicona que se coloca en el estómago por vía endoscópica — sin incisiones ni cirugía — y se llena con solución salina. Al ocupar espacio dentro del estómago genera saciedad temprana y ayuda al paciente a reducir las porciones. El procedimiento dura alrededor de 20 minutos y el balón permanece de 6 a 12 meses según el tipo, retirándose también por endoscopía. Es una alternativa útil como tratamiento de obesidad leve, como puente hacia una cirugía en pacientes de alto riesgo, o como motivador inicial para quienes necesitan ver avances antes de comprometerse con un programa más extenso. Es completamente reversible y no deja cambios anatómicos. La indicación se confirma en evaluación médica y los resultados varían según cada persona.",
+        whatToExpect:
+          "La colocación se realiza por endoscopía, con sedación, en aproximadamente 20 minutos y de forma ambulatoria. Los primeros días pueden aparecer náuseas o molestias que se controlan con medicación. El retorno a las actividades suele darse en 24 a 48 horas. Durante los meses con el balón se mantiene un seguimiento nutricional; al finalizar se retira por endoscopía.",
+        schemaType: "MedicalProcedure",
+        procedureType: "NoninvasiveProcedure",
+        bodyLocation: "Estómago",
+        howPerformed:
+          "Colocación endoscópica de un balón de silicona en el estómago, sin cirugía, bajo sedación; se retira por endoscopía al finalizar el tratamiento.",
       },
     ],
     faqs: [
@@ -513,11 +597,13 @@ export const SERVICES: ServiceData[] = [
       },
     ],
     stats: [
-      { label: "Sin cirugía mayor", value: "100%" },
+      { label: "Sin cirugía mayor", value: "Sí" },
       { label: "Especialistas", value: "4+" },
-      { label: "Pérdida promedio", value: "10-20%" },
+      { label: "Enfoque", value: "Personalizado" },
       { label: "Recuperación", value: "24-48h" },
     ],
+    keywordLine:
+      "Tratamiento de obesidad en Trujillo sin cirugía mayor: programa multidisciplinario, fármacos GLP-1 y balón intragástrico, con acompañamiento médico, nutricional y psicológico.",
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -605,6 +691,15 @@ export const SERVICES: ServiceData[] = [
           { label: "Incisiones", value: "3-4 (5-10mm)" },
           { label: "Retorno laboral", value: "5-7 días" },
         ],
+        seoDescription:
+          "La cirugía de vesícula o colecistectomía laparoscópica es una de las intervenciones más frecuentes dentro de la cirugía laparoscópica en Trujillo. Es el tratamiento estándar para los cálculos biliares (litiasis vesicular) y la inflamación de la vesícula (colecistitis). Se realiza por vía laparoscópica, a través de 3 o 4 incisiones milimétricas en el abdomen, por lo que las cicatrices son mínimas. Comparada con la cirugía abierta, ofrece menos dolor postoperatorio, menor riesgo de infección y una recuperación más rápida. Es uno de los procedimientos en los que el Dr. Augusto Salazar acumula mayor volumen de experiencia. La vesícula laparoscópica en Trujillo permite resolver de forma definitiva los cólicos biliares; la mayoría de pacientes recibe el alta el mismo día o al día siguiente y retoma sus actividades en una semana.",
+        whatToExpect:
+          "El preoperatorio incluye análisis y, según el caso, una ecografía abdominal. La cirugía dura entre 30 y 60 minutos bajo anestesia general, por laparoscopía. Suele ser ambulatoria o con una noche de hospitalización. El retorno a actividades de oficina ocurre en aproximadamente 5 a 7 días, con indicaciones de dieta y cuidado de las incisiones.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Vesícula biliar",
+        howPerformed:
+          "Colecistectomía laparoscópica: extracción de la vesícula biliar a través de 3-4 incisiones milimétricas, bajo anestesia general.",
       },
       {
         slug: "apendice",
@@ -652,6 +747,15 @@ export const SERVICES: ServiceData[] = [
           { label: "Incisiones", value: "3 (5-12mm)" },
           { label: "Retorno actividades", value: "1-2 semanas" },
         ],
+        seoDescription:
+          "La cirugía de apéndice o apendicectomía laparoscópica es el tratamiento de elección para la apendicitis aguda y forma parte de la cirugía laparoscópica en Trujillo que realiza el Dr. Augusto Salazar. La intervención se efectúa por 3 pequeñas incisiones en el abdomen y permite confirmar el diagnóstico, evaluar otras posibles causas de dolor abdominal y resolver el cuadro en un solo tiempo quirúrgico. Frente a la cirugía abierta, la vía laparoscópica reduce el dolor postoperatorio, el riesgo de infección de la herida y el tiempo de recuperación, además de dejar cicatrices mínimas — un punto importante en pacientes jóvenes. Por tratarse de una urgencia, la rapidez en la atención es clave: la mayoría de pacientes recibe el alta a las 24 horas. La indicación se establece en la evaluación médica de urgencia.",
+        whatToExpect:
+          "Al ser una urgencia, la evaluación es inmediata e incluye análisis y estudios de imagen. La cirugía dura entre 30 y 60 minutos bajo anestesia general, por laparoscopía. La estancia hospitalaria suele ser de 1 a 2 días y el retorno a las actividades habituales se da en 1 a 2 semanas, según la evolución y el estado del apéndice.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Apéndice",
+        howPerformed:
+          "Apendicectomía laparoscópica: extracción del apéndice a través de 3 incisiones pequeñas, bajo anestesia general.",
       },
       {
         slug: "hernia",
@@ -696,9 +800,18 @@ export const SERVICES: ServiceData[] = [
         stats: [
           { label: "Tiempo de cirugía", value: "60-90 min" },
           { label: "Estancia", value: "1 día" },
-          { label: "Tasa de recidiva", value: "<2%" },
+          { label: "Técnica", value: "Malla / laparoscopía" },
           { label: "Retorno laboral", value: "1-2 semanas" },
         ],
+        seoDescription:
+          "La cirugía de hernia o hernioplastía laparoscópica es la técnica moderna para reparar hernias inguinales, umbilicales, ventrales e incisionales, y forma parte de la cirugía laparoscópica en Trujillo que ofrece el Dr. Augusto Salazar. Consiste en colocar una malla biocompatible que refuerza la pared abdominal desde el interior, sin necesidad de una gran incisión. Frente a la cirugía abierta, la vía laparoscópica se asocia a menor dolor crónico, una recuperación más rápida y la posibilidad de tratar hernias bilaterales en un solo acto quirúrgico. Es una buena opción para pacientes que buscan reincorporarse pronto a su actividad. La técnica con malla ayuda a reducir el riesgo de que la hernia vuelva a aparecer. La elección del abordaje y del tipo de malla se define en la evaluación médica, según el tipo y tamaño de la hernia.",
+        whatToExpect:
+          "La evaluación inicial define el tipo de hernia y el abordaje. La cirugía dura entre 60 y 90 minutos bajo anestesia general, por laparoscopía, con colocación de malla. La estancia hospitalaria suele ser de un día. El retorno a trabajos de oficina ocurre en 1 a 2 semanas, evitando esfuerzos físicos intensos durante las primeras semanas según indicación.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Pared abdominal",
+        howPerformed:
+          "Hernioplastía laparoscópica: reparación de la hernia con colocación de una malla biocompatible que refuerza la pared abdominal, bajo anestesia general.",
       },
       {
         slug: "reflujo",
@@ -743,9 +856,18 @@ export const SERVICES: ServiceData[] = [
         stats: [
           { label: "Tiempo de cirugía", value: "90-120 min" },
           { label: "Estancia", value: "2-3 días" },
-          { label: "Resolución reflujo", value: ">90%" },
+          { label: "Técnica", value: "Funduplicatura Nissen" },
           { label: "Retorno laboral", value: "2-3 semanas" },
         ],
+        seoDescription:
+          "La cirugía de reflujo o funduplicatura de Nissen laparoscópica es el tratamiento quirúrgico de referencia para el reflujo gastroesofágico (ERGE) severo y la hernia hiatal sintomática, dentro de la cirugía laparoscópica en Trujillo que realiza el Dr. Augusto Salazar. La técnica consiste en envolver la parte superior del estómago alrededor del esófago para crear una válvula antirreflujo, corrigiendo además la hernia hiatal que suele ser la causa anatómica del problema. Se realiza por laparoscopía, con incisiones milimétricas. Está indicada cuando los medicamentos antiácidos pierden efectividad, cuando aparecen complicaciones como esofagitis severa o esófago de Barrett, o cuando el paciente prefiere una solución definitiva al uso crónico de fármacos. El objetivo es mejorar la calidad de vida: menos acidez y regurgitaciones nocturnas. La indicación se confirma con estudios y evaluación médica individualizada.",
+        whatToExpect:
+          "El estudio previo suele incluir endoscopía y, según el caso, manometría o pH-metría. La cirugía dura entre 90 y 120 minutos bajo anestesia general, por laparoscopía. La estancia hospitalaria es de 2 a 3 días, con una dieta progresiva las primeras semanas. El retorno laboral ocurre en 2 a 3 semanas, según la evolución.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Unión gastroesofágica y hiato",
+        howPerformed:
+          "Funduplicatura de Nissen laparoscópica: se envuelve la parte superior del estómago alrededor del esófago para crear una válvula antirreflujo y se repara la hernia hiatal, bajo anestesia general.",
       },
       {
         slug: "colon",
@@ -793,6 +915,15 @@ export const SERVICES: ServiceData[] = [
           { label: "Recuperación", value: "3-4 semanas" },
           { label: "Retorno laboral", value: "4-6 semanas" },
         ],
+        seoDescription:
+          "La cirugía laparoscópica de colon o colectomía permite resecar segmentos del intestino grueso afectados por tumores, diverticulitis complicada o enfermedad inflamatoria intestinal, a través de incisiones de mínima invasión. Es uno de los procedimientos avanzados de la cirugía laparoscópica en Trujillo que realiza el Dr. Augusto Salazar. En cáncer colorrectal de estadios tempranos, la vía laparoscópica ofrece resultados oncológicos equivalentes a la cirugía abierta, pero con una recuperación significativamente más rápida, menor dolor, menor sangrado intraoperatorio y una reincorporación más temprana del tránsito intestinal. La visualización amplificada que brinda la laparoscopía aporta precisión durante la resección. Cada caso se evalúa de forma individual y multidisciplinaria, definiendo el momento y el tipo de intervención más adecuados según el diagnóstico y el estado general del paciente.",
+        whatToExpect:
+          "La preparación incluye estudios de imagen, colonoscopía y valoración integral previa. La cirugía dura entre 2 y 4 horas bajo anestesia general, por laparoscopía. La estancia hospitalaria es de 3 a 5 días, con una recuperación que puede tomar de 3 a 4 semanas y retorno laboral en 4 a 6 semanas. El seguimiento posterior es coordinado según el diagnóstico de base.",
+        schemaType: "MedicalProcedure",
+        procedureType: "SurgicalProcedure",
+        bodyLocation: "Colon (intestino grueso)",
+        howPerformed:
+          "Colectomía laparoscópica: resección de un segmento del colon a través de incisiones de mínima invasión, bajo anestesia general.",
       },
     ],
     faqs: [
@@ -809,7 +940,7 @@ export const SERVICES: ServiceData[] = [
       {
         question: "¿Qué pasa si durante la laparoscopía se necesita convertir a cirugía abierta?",
         answer:
-          "En casos excepcionales (menos del 2-3%), puede ser necesario convertir a cirugía abierta por seguridad del paciente. Esto no es un fracaso: es una decisión profesional para garantizar el mejor resultado. El Dr. Salazar está preparado para ambas técnicas en cada intervención.",
+          "En casos excepcionales (menos del 2-3%), puede ser necesario convertir a cirugía abierta por seguridad del paciente. Esto no es un fracaso: es una decisión profesional para buscar el mejor resultado posible. El Dr. Salazar está preparado para ambas técnicas en cada intervención.",
       },
       {
         question: "¿Cuándo puedo retomar el ejercicio después de una cirugía laparoscópica?",
@@ -823,6 +954,8 @@ export const SERVICES: ServiceData[] = [
       { label: "Retorno actividades", value: "1-2 sem" },
       { label: "Experiencia", value: "+16 años" },
     ],
+    keywordLine:
+      "Cirugía laparoscópica en Trujillo de mínima invasión: vesícula, hernia y reflujo en Trujillo, además de apéndice y colon, con incisiones milimétricas y recuperación más rápida.",
   },
 ];
 

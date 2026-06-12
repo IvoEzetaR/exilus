@@ -26,6 +26,7 @@ export default function Navbar() {
     { label: "Servicios", href: isHome ? "#servicios" : "/#servicios" },
     { label: "Proceso", href: isHome ? "#proceso" : "/#proceso" },
     { label: "Testimonios", href: "/testimonios" },
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: isHome ? "#faq" : "/#faq" },
     { label: "Contacto", href: "/contacto" },
   ];
@@ -51,7 +52,7 @@ export default function Navbar() {
       }}
       aria-label="Navegación principal"
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center" aria-label="Exilus — inicio">
           <div className="relative h-10 w-32">
@@ -70,13 +71,14 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden items-center gap-6 md:flex">
+        {/* Desktop links — centrados respecto al viewport */}
+        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-5 lg:flex">
           {links.map((l) => {
             const isAnchor = l.href.startsWith("#");
             const isActive =
               (l.label === "Servicios" && pathname.startsWith("/servicios")) ||
               (l.href === "/testimonios" && pathname.startsWith("/testimonios")) ||
+              (l.href === "/blog" && pathname.startsWith("/blog")) ||
               (l.href === "/contacto" && pathname.startsWith("/contacto"));
             return isAnchor ? (
               <a
@@ -114,29 +116,29 @@ export default function Navbar() {
               </Link>
             );
           })}
-
-          {/* CTA verde */}
-          <motion.a
-            href={CLIENT.booking}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-lg transition-opacity hover:opacity-90"
-            style={{
-              backgroundColor: "var(--color-cta)",
-              color: "#1a3a0a",
-              boxShadow: "0 4px 16px rgba(120, 214, 75, 0.30)",
-            }}
-          >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            Agenda tu evaluación
-          </motion.a>
         </div>
 
+        {/* CTA verde — a la derecha */}
+        <motion.a
+          href={CLIENT.booking}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          className="hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-lg transition-opacity hover:opacity-90 lg:inline-flex"
+          style={{
+            backgroundColor: "var(--color-cta)",
+            color: "#1a3a0a",
+            boxShadow: "0 4px 16px rgba(120, 214, 75, 0.30)",
+          }}
+        >
+          <Calendar className="h-4 w-4" aria-hidden="true" />
+          Agenda tu evaluación
+        </motion.a>
+
         {/* Mobile cluster: candidate pill + hamburger */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           {/* "¿Soy candidato?" pill — equivalente al floating de desktop */}
           <a
             href={isHome ? "#soy-candidato" : "/#soy-candidato"}
@@ -189,7 +191,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="border-t px-4 py-4 md:hidden"
+            className="border-t px-4 py-4 lg:hidden"
             style={{
               backgroundColor: "var(--color-cream)",
               borderColor: "var(--color-border)",

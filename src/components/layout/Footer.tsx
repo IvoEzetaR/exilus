@@ -1,6 +1,16 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { CLIENT } from "@/lib/client-data";
+
+const FOOTER_NAV = [
+  { label: "Cirugía Bariátrica", href: "/servicios/cirugia-bariatrica" },
+  { label: "Manejo de Obesidad", href: "/servicios/manejo-obesidad" },
+  { label: "Cirugía Laparoscópica", href: "/servicios/cirugia-laparoscopica" },
+  { label: "Testimonios", href: "/testimonios" },
+  { label: "Blog y guías", href: "/blog" },
+  { label: "Contacto", href: "/contacto" },
+];
 
 const IconInstagram = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
@@ -29,7 +39,7 @@ export default function Footer() {
       aria-label="Pie de página"
     >
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* Brand */}
           <div>
@@ -82,6 +92,29 @@ export default function Footer() {
                 <IconTikTok />
               </a>
             </div>
+          </div>
+
+          {/* Navegación */}
+          <div>
+            <h4
+              className="font-sans text-xs font-semibold tracking-[0.15em] uppercase mb-5"
+              style={{ color: "var(--color-cream)" }}
+            >
+              Navegación
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {FOOTER_NAV.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="transition-opacity hover:opacity-100"
+                    style={{ color: "rgba(245,235,220,0.70)" }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contacto */}

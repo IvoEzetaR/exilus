@@ -83,6 +83,8 @@ const medicalSchema = {
       "@id": `${siteUrl}/#organization`,
       name: CLIENT.fullName,
       url: siteUrl,
+      // Imagen real existente (también usada como OG image)
+      image: `${siteUrl}/images/doctor-terno.jpg`,
       telephone: CLIENT.phone,
       email: CLIENT.email,
       address: {
@@ -98,6 +100,22 @@ const medicalSchema = {
         latitude: "-8.1116",
         longitude: "-79.0287",
       },
+      // Horarios reales tomados de la tarjeta de contacto (src/app/contacto/ContactForm.tsx):
+      // "Lun - Vie: 9:00am - 7:00pm" · "Sábados: 9:00am - 1:00pm"
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "19:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "09:00",
+          closes: "13:00",
+        },
+      ],
       medicalSpecialty: [
         "http://schema.org/BariatricSurgery",
         "http://schema.org/SurgicalProcedure",
@@ -177,6 +195,15 @@ const medicalSchema = {
         "Cirugía digestiva",
         "Manejo de obesidad",
       ],
+      // Perfiles profesionales verificados (URLs reales confirmadas).
+      sameAs: [
+        "https://www.doctoralia.pe/victor-augusto-salazar-tantalean/cirujano-general/trujillo",
+        "https://www.linkedin.com/in/dr-victor-augusto-salazar-tantalean-3a066aa0",
+      ],
+      // TODO: agregar credenciales colegiadas cuando el cliente las confirme:
+      //   - CMP (Colegio Médico del Perú): N° pendiente confirmar
+      //   - RNE (Registro Nacional de Especialista): N° pendiente confirmar
+      //   - alumniOf / alma mater (universidad de pregrado y especialidad): pendiente confirmar
     },
     // FAQPage de la home vive en src/app/page.tsx (no acá): el layout se renderiza
     // en TODAS las rutas y las service pages emiten su propio FAQPage — dos FAQPage

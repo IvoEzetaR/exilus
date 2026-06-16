@@ -212,6 +212,26 @@ export default function Testimonials() {
             Historias reales de transformación que van más allá del peso —
             calidad de vida, salud recuperada y confianza renovada.
           </p>
+
+          {/* Etiqueta publicitaria (requisito SUSALUD) */}
+          <span
+            className="mt-5 inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide"
+            style={{
+              backgroundColor: "var(--color-lilac)",
+              color: "var(--color-muted-foreground)",
+            }}
+          >
+            Anuncio publicitario
+          </span>
+
+          {/* Disclaimer YMYL — visible junto a los casos */}
+          <p
+            className="mt-3 text-xs leading-relaxed max-w-xl mx-auto"
+            style={{ color: "var(--color-muted-foreground)" }}
+          >
+            Los resultados varían según cada paciente. Cada caso requiere
+            evaluación médica individual.
+          </p>
         </motion.div>
 
         {/* Cards */}

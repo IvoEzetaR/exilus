@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CLIENT } from "@/lib/client-data";
+import TrackedLink from "@/components/ui/TrackedLink";
 
 const FOOTER_NAV = [
   { label: "Cirugía Bariátrica", href: "/servicios/cirugia-bariatrica" },
@@ -126,22 +127,26 @@ export default function Footer() {
               Contacto
             </h4>
             <div className="space-y-3 text-sm" style={{ color: "rgba(245,235,220,0.70)" }}>
-              <a
+              <TrackedLink
                 href={CLIENT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                event="whatsapp_click"
+                eventParams={{ location: "footer" }}
                 className="flex items-start gap-3 transition-opacity hover:opacity-80"
               >
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" aria-hidden="true" />
                 {CLIENT.phone}
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href={`mailto:${CLIENT.email}`}
+                event="email_click"
+                eventParams={{ location: "footer" }}
                 className="flex items-start gap-3 transition-opacity hover:opacity-80"
               >
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" aria-hidden="true" />
                 {CLIENT.email}
-              </a>
+              </TrackedLink>
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <span>

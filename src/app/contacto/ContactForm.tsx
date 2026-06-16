@@ -25,6 +25,7 @@ import {
 } from "@/lib/design-system";
 import { CLIENT } from "@/lib/client-data";
 import { SERVICES } from "@/lib/services-data";
+import { trackEvent } from "@/lib/analytics";
 
 const contactInfo = [
   {
@@ -73,6 +74,10 @@ export default function ContactForm() {
     // El navegador bloquea el submit si el checkbox `required` no está marcado
     if (!consent) return;
     // Client-side only — no backend
+    trackEvent("form_submit", {
+      location: "contacto",
+      servicio: form.servicio || "no_especificado",
+    });
     setSubmitted(true);
   };
 
@@ -143,6 +148,7 @@ export default function ContactForm() {
                     href={CLIENT.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent("whatsapp_click", { location: "contacto_success" })}
                     {...scaleOnHover}
                     className="mt-6 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold"
                     style={{
@@ -371,6 +377,12 @@ export default function ContactForm() {
                       href={info.href}
                       target={info.href.startsWith("http") ? "_blank" : undefined}
                       rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      onClick={() => {
+                        if (info.href === CLIENT.whatsapp)
+                          trackEvent("whatsapp_click", { location: "contacto_info_card" });
+                        else if (info.href?.startsWith("mailto:"))
+                          trackEvent("email_click", { location: "contacto_info_card" });
+                      }}
                       className="block rounded-2xl p-5 border transition-shadow hover:shadow-md"
                       style={{
                         backgroundColor: "var(--color-card)",

@@ -42,6 +42,7 @@ import {
   VIEWPORT_ONCE,
 } from "@/lib/design-system";
 import { CLIENT } from "@/lib/client-data";
+import { trackEvent } from "@/lib/analytics";
 import type { ServiceData, SubService } from "@/lib/services-data";
 import { getOtherServices } from "@/lib/services-data";
 
@@ -678,6 +679,7 @@ export default function ServiceContent({ service }: { service: ServiceData }) {
               href={CLIENT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "service_content" })}
               {...scaleOnHover}
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 px-7 py-4 text-base font-semibold"
               style={{

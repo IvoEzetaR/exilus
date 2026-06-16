@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Calendar, MessageCircle, MapPin, ChevronDown } from "lucide-react";
 import { CLIENT } from "@/lib/client-data";
 import { EASE_OUT_EXPO } from "@/lib/design-system";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── Animation variants ──────────────────────────────────────────────────────
 
@@ -188,8 +189,9 @@ export default function Hero() {
             style={{ color: "rgba(245,235,220,0.80)" }}
           >
             Cirugía bariátrica y laparoscópica avanzada con un enfoque integral,
-            con respaldo médico y personalizado. Pionero en el norte del Perú
-            con +10 años de experiencia en cirugía metabólica.
+            con respaldo médico y personalizado. Con amplia trayectoria en
+            cirugía bariátrica en el norte del Perú y +10 años de experiencia
+            en cirugía metabólica.
           </motion.p>
 
           {/* CTA pair */}
@@ -233,6 +235,7 @@ export default function Hero() {
               href={CLIENT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "hero" })}
               whileHover={shouldReduce ? {} : { scale: 1.03 }}
               whileTap={shouldReduce ? {} : { scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}

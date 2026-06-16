@@ -10,6 +10,7 @@ import {
   VIEWPORT_ONCE,
 } from "@/lib/design-system";
 import { CLIENT } from "@/lib/client-data";
+import { trackEvent } from "@/lib/analytics";
 
 type SocialComment = {
   id: number;
@@ -239,6 +240,26 @@ export default function TestimonialsContent() {
             >
               Comentarios públicos en las redes oficiales del Dr. Augusto Salazar — sin
               edición, sin filtros, directo de la comunidad Exilus.
+            </p>
+
+            {/* Etiqueta publicitaria (requisito SUSALUD) */}
+            <span
+              className="mt-5 inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide"
+              style={{
+                backgroundColor: "var(--color-lilac)",
+                color: "var(--color-muted-foreground)",
+              }}
+            >
+              Anuncio publicitario
+            </span>
+
+            {/* Disclaimer YMYL — visible junto a los testimonios */}
+            <p
+              className="mt-3 text-xs leading-relaxed max-w-2xl mx-auto"
+              style={{ color: "var(--color-muted-foreground)" }}
+            >
+              Los resultados varían según cada paciente. Cada caso requiere
+              evaluación médica individual.
             </p>
           </motion.div>
 
@@ -533,6 +554,7 @@ export default function TestimonialsContent() {
               href={CLIENT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("whatsapp_click", { location: "testimonios" })}
               {...scaleOnHover}
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 px-7 py-4 text-base font-semibold"
               style={{

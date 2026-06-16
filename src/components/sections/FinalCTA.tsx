@@ -6,6 +6,7 @@ import { Calendar, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import { CLIENT } from "@/lib/client-data";
 import { staggerContainer, staggerItem, scaleOnHover, PARALLAX_RANGE } from "@/lib/design-system";
+import { trackEvent } from "@/lib/analytics";
 
 export default function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -129,6 +130,7 @@ export default function FinalCTA() {
                 href={CLIENT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "final_cta" })}
                 {...scaleOnHover}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 px-7 py-4 text-base font-semibold transition-colors"
                 style={{
@@ -146,6 +148,7 @@ export default function FinalCTA() {
             <motion.a
               variants={staggerItem}
               href={`tel:${CLIENT.phone.replace(/\s/g, "")}`}
+              onClick={() => trackEvent("phone_call", { location: "final_cta" })}
               className="mt-5 inline-flex items-center gap-2 text-sm transition-opacity hover:opacity-70"
               style={{ color: "rgba(245,235,220,0.55)" }}
             >

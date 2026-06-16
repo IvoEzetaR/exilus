@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ClipboardCheck } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 // Botón flotante "¿Soy candidato?" — fijado bottom-left para no chocar con
 // WhatsAppButton (bottom-right). Hace scroll suave al ancla #soy-candidato
@@ -46,6 +47,7 @@ export default function CandidateFloatButton() {
   }, [isHome]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    trackEvent("candidate_test_open", { location: "floating_button" });
     if (!isHome) return; // Deja que el navegador navegue a /#soy-candidato
     const target = document.getElementById("soy-candidato");
     if (target) {

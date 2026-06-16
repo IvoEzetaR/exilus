@@ -1,5 +1,6 @@
 import { Phone, MapPin } from "lucide-react";
 import { CLIENT } from "@/lib/client-data";
+import TrackedLink from "@/components/ui/TrackedLink";
 
 const IconInstagram = () => (
   <svg
@@ -26,16 +27,18 @@ export default function TopBar() {
     >
       <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 flex items-center justify-between">
         {/* Teléfono */}
-        <a
+        <TrackedLink
           href={CLIENT.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
+          event="whatsapp_click"
+          eventParams={{ location: "topbar" }}
           className="flex items-center gap-1.5 text-xs transition-opacity hover:opacity-80"
           style={{ color: "var(--color-cream)" }}
         >
           <Phone className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
           <span>{CLIENT.phone}</span>
-        </a>
+        </TrackedLink>
 
         {/* Dirección — hidden en mobile */}
         <span

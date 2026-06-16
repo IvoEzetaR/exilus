@@ -232,16 +232,16 @@ export default function AuthorityDeep() {
               className="font-serif text-3xl sm:text-4xl font-light leading-tight tracking-tight"
               style={{ color: "var(--color-primary)" }}
             >
-              Clínica, gestión y docencia. Una formación sin precedentes en el norte del Perú.
+              Clínica, gestión y docencia. Una formación integral con amplia trayectoria en el norte del Perú.
             </h3>
             <p
               className="mt-4 text-sm leading-relaxed"
               style={{ color: "var(--color-muted-foreground)" }}
             >
-              El Dr. Salazar es el único cirujano bariátrico de la región con doble perfil:
-              doctor en medicina y MBA en gestión de salud por CENTRUM PUCP — la escuela de
-              negocios número uno del Perú. Eso significa que dirige su clínica con los mismos
-              estándares con los que opera.
+              El Dr. Salazar combina un doble perfil poco común entre los cirujanos bariátricos
+              de la región: doctor en medicina y MBA en gestión de salud por CENTRUM PUCP — una
+              de las escuelas de negocios líderes del Perú. Eso significa que dirige su clínica
+              con los mismos estándares con los que opera.
             </p>
 
             {/* Imagen del doctor — horizontal, solo desktop */}

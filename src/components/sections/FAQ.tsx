@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, accordionContent, accordionChevron, VIEWPORT_ONCE } from "@/lib/design-system";
+import { trackEvent } from "@/lib/analytics";
 
 // Preguntas del brief (sección 12) — solo datos confirmados
 const faqs = [
@@ -200,6 +201,7 @@ export default function FAQ() {
             href="https://wa.me/51972652353"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("whatsapp_click", { location: "faq" })}
             className="font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
             style={{ color: "var(--color-primary)" }}
           >

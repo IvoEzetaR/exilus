@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── SVG oficial de WhatsApp ───────────────────────────────────────────────
 // Logo oficial: círculo verde con el ícono característico de bocadillo/teléfono.
@@ -195,7 +196,10 @@ export default function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp — Agenda Tu Consulta Hoy"
-        onClick={(e) => e.stopPropagation()} // no ocultar burbuja al clickear el widget
+        onClick={(e) => {
+          e.stopPropagation(); // no ocultar burbuja al clickear el widget
+          trackEvent("whatsapp_click", { location: "floating_button" });
+        }}
         className="relative flex h-[58px] w-[58px] items-center justify-center rounded-full"
         style={{
           backgroundColor: "#25D366",

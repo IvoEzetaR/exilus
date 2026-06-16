@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, Calendar } from "lucide-react";
 import { CLIENT } from "@/lib/client-data";
+import { trackEvent } from "@/lib/analytics";
 import { calcularIMC, evaluarCandidatura } from "@/lib/imc-logic";
 import { fadeInUp, scaleOnHover, VIEWPORT_ONCE } from "@/lib/design-system";
 
@@ -59,6 +60,10 @@ export default function CandidateTest() {
     const res = evaluarCandidatura(pesoNum, tallaNum, morbilidades, intentos ?? false);
     setResultado(res);
     setShowResult(true);
+    trackEvent("candidate_test_complete", {
+      nivel: res.nivel,
+      imc: Math.round(res.imc * 10) / 10,
+    });
   };
 
   const imcActual = peso && talla

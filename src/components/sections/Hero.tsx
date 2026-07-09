@@ -147,8 +147,8 @@ export default function Hero() {
             className="text-sm sm:text-base font-semibold tracking-wide mb-4 lg:mb-5 max-w-2xl"
             style={{ color: "rgba(245,235,220,0.90)" }}
           >
-            Cirugía bariátrica con respaldo médico y acompañamiento integral en
-            Trujillo
+            Dr. Augusto Salazar — cirugía laparoscópica avanzada con respaldo
+            médico
           </motion.p>
 
           {/* H1 — kinetic line-by-line reveal */}
@@ -167,7 +167,7 @@ export default function Hero() {
                 }
                 className="block"
               >
-                Baja de peso de forma segura.
+                Cirugía bariátrica en Trujillo,
               </motion.span>
             </span>
             <span className="block overflow-hidden pb-[0.18em] -mt-[0.1em]">
@@ -177,7 +177,7 @@ export default function Hero() {
                 className="block italic"
                 style={{ color: "rgba(245,235,220,0.85)", transitionDelay: "0.42s" }}
               >
-                Con Exilus en Trujillo.
+                con evaluación y acompañamiento integral.
               </motion.span>
             </span>
           </h1>

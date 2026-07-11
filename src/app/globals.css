@@ -50,6 +50,14 @@
     border-color: var(--color-border);
   }
 
+  /* Safari/iOS dibuja un botón de play nativo sobre <video> sin controls
+     mientras no arranca la reproducción (autoplay+muted+playsInline ya está
+     seteado en el hero) — lo ocultamos para que no se vea como control roto. */
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+
   html {
     position: relative;
     scroll-behavior: smooth;

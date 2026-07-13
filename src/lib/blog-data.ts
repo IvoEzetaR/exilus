@@ -282,7 +282,11 @@ export const BLOG_POSTS: BlogPost[] = [
         description: "Historias reales de transformación en Trujillo.",
       },
     ],
-    relatedPosts: ["cuanto-cuesta-la-cirugia-bariatrica"],
+    relatedPosts: [
+      "cuanto-cuesta-la-cirugia-bariatrica",
+      "soy-candidato-a-cirugia-bariatrica",
+      "recuperacion-manga-gastrica-semana-a-semana",
+    ],
   },
 
   // ────────────────────────────────────────────────────────────────────────
@@ -473,7 +477,390 @@ export const BLOG_POSTS: BlogPost[] = [
         description: "El primer paso para conocer el costo real de tu caso.",
       },
     ],
-    relatedPosts: ["manga-gastrica-vs-bypass-gastrico"],
+    relatedPosts: [
+      "manga-gastrica-vs-bypass-gastrico",
+      "soy-candidato-a-cirugia-bariatrica",
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Artículo 3 — Cluster B5 (informacional, recuperación)
+  // KW principal: "recuperacion manga gastrica"
+  // Experiencia de primera mano: citas verbatim Dr. Salazar (transcript 2026-07-08)
+  // ────────────────────────────────────────────────────────────────────────
+  {
+    slug: "recuperacion-manga-gastrica-semana-a-semana",
+    category: "Recuperación",
+    title: "Recuperación de la manga gástrica: qué esperar semana a semana",
+    metaTitle: "Recuperación de la manga gástrica semana a semana",
+    metaDescription:
+      "Cómo es la recuperación real tras una manga gástrica: primera semana, segunda semana, primer mes y tercer mes, explicado por el Dr. Augusto Salazar, cirujano bariatra en Trujillo.",
+    excerpt:
+      "La recuperación de la manga gástrica suele ser más rápida de lo que la mayoría imagina. El Dr. Augusto Salazar explica qué pasa cada semana, qué es normal sentir y cuándo la cirugía deja de ser la protagonista.",
+    heroImage: "/images/doctor-pacientes.jpg",
+    heroImageAlt:
+      "Dr. Augusto Salazar acompañando a pacientes en el seguimiento posoperatorio en Trujillo",
+    dateISO: "2026-07-13",
+    dateDisplay: "13 de julio de 2026",
+    updatedISO: "2026-07-13",
+    readingMinutes: 7,
+    keyTakeaways: [
+      "Con cirugía laparoscópica y siguiendo las indicaciones, la recuperación suele ser más rápida de lo que la mayoría imagina.",
+      "Primera semana: controlar el dolor, caminar varias veces al día, hidratarse y adaptarse a la dieta líquida.",
+      "Al primer mes la recuperación física suele ser casi completa; el reto pasa a ser crear hábitos sostenibles.",
+      "A partir del tercer mes, la cirugía deja de ser la protagonista: alimentación, ejercicio y seguimiento médico determinan el éxito.",
+      "La operación es una herramienta muy poderosa, pero necesita del compromiso del paciente.",
+    ],
+    sections: [
+      {
+        id: "mas-rapida-de-lo-que-imaginas",
+        heading: "Más rápida de lo que imaginas (con una condición)",
+        paragraphs: [
+          "Si estás evaluando una manga gástrica, probablemente la recuperación sea una de tus preocupaciones principales: cuánto dolor vas a sentir, cuándo puedes volver a trabajar, cuándo tu vida vuelve a ser tu vida.",
+          "La experiencia del **Dr. Víctor Augusto Salazar**, cirujano bariatra en Trujillo, es directa: “la recuperación tras una manga gástrica suele ser mucho más rápida de lo que la mayoría imagina cuando el procedimiento se realiza por laparoscopía y el paciente sigue las indicaciones”.",
+          "Ahí están las dos condiciones que importan: **técnica laparoscópica** (incisiones pequeñas en lugar de una cirugía abierta) y **compromiso con las indicaciones** del equipo médico. Cada caso es individual y los tiempos exactos varían según el paciente, pero el mapa general se ve así.",
+        ],
+      },
+      {
+        id: "primera-semana",
+        heading: "Primera semana: dolor controlado y caminar",
+        paragraphs: [
+          "Durante los primeros días, el objetivo no es “hacer vida normal”, sino sentar las bases:",
+        ],
+        list: {
+          type: "check",
+          items: [
+            "**Controlar el dolor** con la medicación indicada.",
+            "**Caminar varias veces al día** — moverse temprano es parte del tratamiento, no un extra.",
+            "**Mantenerse hidratado.**",
+            "**Adaptarse a la dieta líquida** indicada por el equipo.",
+          ],
+        },
+      },
+      {
+        id: "cansancio-normal",
+        heading: "¿Y el cansancio de los primeros días?",
+        paragraphs: [
+          "Es normal. Como explica el Dr. Salazar, “el cansancio es normal, pero la mayoría de pacientes puede desplazarse por sí sola” desde esta primera etapa.",
+          "Sentirte con menos energía en los primeros días no significa que algo vaya mal: tu cuerpo está atravesando el posoperatorio inmediato mientras se adapta a una alimentación líquida. Lo que sí importa es no saltarte los controles ni las indicaciones.",
+        ],
+      },
+      {
+        id: "segunda-semana",
+        heading: "Segunda semana: el cuerpo empieza a colaborar",
+        paragraphs: [
+          "En la segunda semana el panorama cambia visiblemente:",
+        ],
+        list: {
+          type: "bullet",
+          items: [
+            "Disminuye el dolor.",
+            "Mejora la movilidad.",
+            "Comienza la fase de alimentación indicada por el equipo de nutrición (la dieta avanza por etapas, siempre guiada — no por cuenta propia).",
+          ],
+        },
+      },
+      {
+        id: "volver-a-trabajar",
+        heading: "¿Cuándo se vuelve al trabajo?",
+        paragraphs: [
+          "Muchos pacientes **retoman actividades administrativas o de oficina** alrededor de la segunda semana, cuando el dolor cede y la movilidad mejora. Si tu trabajo es físico, la pauta la marca tu control médico, no el calendario.",
+        ],
+      },
+      {
+        id: "primer-mes",
+        heading: "Primer mes: la recuperación física casi completa",
+        paragraphs: [
+          "Al llegar al primer mes, “la recuperación física suele ser casi completa”, señala el Dr. Salazar. Además:",
+        ],
+        list: {
+          type: "check",
+          items: [
+            "Ya se percibe una **pérdida importante de peso**.",
+            "Suelen mejorar enfermedades asociadas como **diabetes, hipertensión o apnea del sueño** (cada caso es individual; la evolución la evalúa tu médico en los controles).",
+          ],
+        },
+        callout: {
+          type: "info",
+          title: "El giro que pocos esperan",
+          text: "A partir de este punto el reto principal deja de ser físico: “el reto pasa a ser crear hábitos sostenibles”.",
+        },
+      },
+      {
+        id: "tercer-mes",
+        heading: "A partir del tercer mes: los hábitos toman el control",
+        paragraphs: [
+          "La frase del Dr. Salazar resume la filosofía de todo el proceso: “La cirugía deja de ser la protagonista y los hábitos toman el control. Alimentación, ejercicio y seguimiento médico determinan el éxito a largo plazo”.",
+          "La manga gástrica no es la meta: es el punto de partida. Lo que construyes de ahí en adelante —con tu equipo de nutrición y tus controles— es lo que define el resultado a años vista. Si todavía estás decidiendo entre procedimientos, te ayudará nuestra [guía comparativa manga vs. bypass](/blog/manga-gastrica-vs-bypass-gastrico).",
+        ],
+      },
+      {
+        id: "mitos",
+        heading: "Lo que los pacientes esperan vs. lo que realmente pasa",
+        paragraphs: [
+          "En consulta, el Dr. Salazar encuentra dos mitos una y otra vez.",
+          "**Mito 1: “La cirugía va a resolver todo automáticamente.”** — “Muchos creen que la cirugía resolverá todos sus problemas automáticamente. La realidad es que la operación es una herramienta muy poderosa, pero necesita del compromiso del paciente”.",
+          "**Mito 2: “Voy a sentir hambre intensa siempre / nunca volveré a comer normal.”** — “Otro mito frecuente es pensar que siempre sentirán hambre intensa o que nunca volverán a comer alimentos normales. Con una adecuada adaptación nutricional, la gran mayoría logra una alimentación saludable y una excelente calidad de vida”.",
+          "De hecho, el error más frecuente que ve en su práctica se resume en una línea: **llegar pensando que la cirugía reemplaza los hábitos saludables.** No los reemplaza — los hace posibles.",
+        ],
+      },
+      {
+        id: "caso-real",
+        heading: "Un caso que marcó su práctica",
+        paragraphs: [
+          "*(Caso real, compartido por el Dr. Salazar sin datos que identifiquen al paciente.)*",
+          "“Recuerdo a un paciente con obesidad severa y diabetes de muchos años que había perdido la esperanza de controlar su enfermedad. Tras una evaluación integral decidimos intervenirlo. En pocos meses dejó de requerir varios medicamentos, recuperó movilidad y volvió a realizar actividades familiares que había abandonado. Más que la pérdida de peso, lo más gratificante fue ver cómo recuperó su calidad de vida”.",
+          "Nota lo que el Dr. destaca: no los kilos — la calidad de vida. Es un caso individual y los resultados varían según el paciente, pero ilustra hacia dónde apunta todo el proceso de recuperación. Puedes leer más [historias de pacientes en Trujillo](/testimonios).",
+        ],
+      },
+      {
+        id: "seguimiento",
+        heading: "El seguimiento: tan importante como la cirugía",
+        paragraphs: [
+          "¿Qué papel juega el seguimiento después de la manga? Para el Dr. Salazar, no es un accesorio: “Es tan importante como la cirugía. Permite detectar deficiencias nutricionales, reforzar hábitos y mantener los resultados”.",
+          "Por eso el acompañamiento en Exilus es integral: cirujano, nutrición y controles programados, antes y después de la cirugía — en Trujillo, sin viajar a Lima.",
+        ],
+        callout: {
+          type: "cta",
+          title: "¿Estás evaluando la manga gástrica?",
+          text: "[Agenda una evaluación](/contacto) con el Dr. Augusto Salazar en Trujillo. La información de este artículo no reemplaza la consulta médica presencial.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Cuándo puedo volver a trabajar después de una manga gástrica?",
+        answer:
+          "Muchos pacientes retoman actividades administrativas o de oficina alrededor de la segunda semana, cuando disminuye el dolor y mejora la movilidad. Si tu trabajo exige esfuerzo físico, el momento lo define tu médico en los controles. Cada caso es individual.",
+      },
+      {
+        question: "¿Es normal sentirse cansado la primera semana?",
+        answer:
+          "Sí. El cansancio es normal en los primeros días; aun así, la mayoría de pacientes puede desplazarse por sí sola. La pauta de la primera semana es controlar el dolor, caminar varias veces al día, hidratarse y seguir la dieta líquida indicada.",
+      },
+      {
+        question: "¿Voy a pasar hambre o dejar de comer normal para siempre?",
+        answer:
+          "Es uno de los mitos más frecuentes. Con una adecuada adaptación nutricional guiada por el equipo, la gran mayoría logra una alimentación saludable y una excelente calidad de vida.",
+      },
+      {
+        question: "¿Cuándo se ven los resultados de la manga gástrica?",
+        answer:
+          "Al primer mes ya suele percibirse una pérdida importante de peso y mejora de enfermedades asociadas como diabetes, hipertensión o apnea del sueño. A partir del tercer mes, el resultado a largo plazo depende de los hábitos y del seguimiento. Los resultados varían según el paciente.",
+      },
+      {
+        question: "¿Qué pasa si no sigo el seguimiento médico?",
+        answer:
+          "El seguimiento es tan importante como la cirugía: permite detectar deficiencias nutricionales a tiempo, reforzar hábitos y mantener los resultados. Saltárselo pone en riesgo justamente lo que la cirugía hizo posible.",
+      },
+    ],
+    sources: [
+      {
+        label: "ASMBS — Información para pacientes",
+        url: "https://asmbs.org/patients/",
+      },
+      {
+        label: "IFSO — International Federation for the Surgery of Obesity",
+        url: "https://www.ifso.com/",
+      },
+    ],
+    relatedServices: [
+      {
+        label: "Manejo integral de obesidad",
+        href: "/servicios/manejo-obesidad",
+        description:
+          "Nutrición, psicología y seguimiento: el acompañamiento que sostiene el resultado.",
+      },
+      {
+        label: "Cirugía Bariátrica en Trujillo",
+        href: "/servicios/cirugia-bariatrica",
+        description:
+          "Manga gástrica, bypass y cirugía revisional con el Dr. Augusto Salazar.",
+      },
+      {
+        label: "Agenda tu evaluación",
+        href: "/contacto",
+        description: "Resuelve tus dudas sobre la recuperación con el equipo.",
+      },
+    ],
+    relatedPosts: [
+      "manga-gastrica-vs-bypass-gastrico",
+      "cuanto-cuesta-la-cirugia-bariatrica",
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Artículo 4 — Cluster B4 (informacional, elegibilidad)
+  // KW principal: "soy candidato a cirugia bariatrica"
+  // Experiencia de primera mano: citas verbatim Dr. Salazar (transcript 2026-07-08)
+  // ────────────────────────────────────────────────────────────────────────
+  {
+    slug: "soy-candidato-a-cirugia-bariatrica",
+    category: "Evaluación y decisión",
+    title:
+      "¿Soy candidato a cirugía bariátrica? Los factores que evalúa el especialista",
+    metaTitle: "¿Soy candidato a cirugía bariátrica? Cómo se evalúa",
+    metaDescription:
+      "El peso no decide solo: el Dr. Augusto Salazar, cirujano bariatra en Trujillo, explica los 10 factores que evalúa para saber si eres candidato y cómo se elige entre manga y bypass.",
+    excerpt:
+      "“La decisión nunca debe basarse únicamente en el peso.” El Dr. Augusto Salazar explica qué se evalúa realmente para saber si eres candidato a cirugía bariátrica, a quién no operaría y por qué no existe una cirugía ideal para todos.",
+    heroImage: "/images/paso-evaluacion-inicial.jpg",
+    heroImageAlt:
+      "Evaluación inicial de candidato a cirugía bariátrica con el Dr. Augusto Salazar en Trujillo",
+    dateISO: "2026-07-13",
+    dateDisplay: "13 de julio de 2026",
+    updatedISO: "2026-07-13",
+    readingMinutes: 7,
+    keyTakeaways: [
+      "La decisión nunca debe basarse únicamente en el peso: se evalúan 10 factores, del IMC al estado psicológico y la capacidad de seguimiento.",
+      "No existe una cirugía ideal para todos — cada paciente recibe una estrategia personalizada.",
+      "Hay casos donde la cirugía que el paciente quiere no es la que más le conviene (y un buen especialista lo explica antes de operar).",
+      "También hay pacientes a los que un cirujano responsable NO opera — o todavía no.",
+      "El miedo es normal: una buena evaluación, información clara y un equipo experimentado permiten decidir con tranquilidad.",
+    ],
+    sections: [
+      {
+        id: "el-peso-no-decide-solo",
+        heading: "El peso no decide solo",
+        paragraphs: [
+          "“¿Peso demasiado poco para la cirugía? ¿Demasiado? ¿Mi diabetes me descalifica?” Si te haces estas preguntas, empieza por la regla que ordena todo, en palabras del **Dr. Víctor Augusto Salazar**, cirujano bariatra en Trujillo: “La decisión nunca debe basarse únicamente en el peso”.",
+          "Ser candidato a cirugía bariátrica no es un número en la balanza: es una **evaluación integral** de tu salud, tu historia y tu momento de vida. Por eso dos personas con el mismo peso pueden recibir recomendaciones distintas — y las dos correctas.",
+        ],
+      },
+      {
+        id: "diez-factores",
+        heading: "Los 10 factores que evalúa el especialista",
+        paragraphs: [
+          "En la evaluación de candidato, el Dr. Salazar revisa:",
+        ],
+        list: {
+          type: "check",
+          items: [
+            "Índice de masa corporal (IMC).",
+            "Enfermedades asociadas (las llamadas comorbilidades: diabetes, hipertensión, apnea del sueño, entre otras).",
+            "Presencia de diabetes.",
+            "Reflujo gastroesofágico.",
+            "Hábitos alimentarios.",
+            "Antecedentes quirúrgicos.",
+            "Edad.",
+            "Estado psicológico.",
+            "Expectativas.",
+            "Capacidad para mantener seguimiento a largo plazo.",
+          ],
+        },
+        callout: {
+          type: "info",
+          title: "¿Quieres una primera orientación?",
+          text: "El [test de candidato](/#soy-candidato) de Exilus te da un punto de partida en minutos. No reemplaza la evaluación médica — la ordena.",
+        },
+      },
+      {
+        id: "estrategia-personalizada",
+        heading: "No existe una cirugía ideal para todos",
+        paragraphs: [
+          "La conclusión del Dr. Salazar tras revisar esos factores es siempre la misma: “**Cada paciente recibe una estrategia personalizada; no existe una cirugía ideal para todos**”.",
+          "Eso significa que la pregunta correcta no es “¿cuál es la mejor cirugía?”, sino “¿cuál es la mejor cirugía **para mi historia clínica**?”. Y esa respuesta solo aparece después de la evaluación. Conoce el detalle de los procedimientos en [cirugía bariátrica](/servicios/cirugia-bariatrica).",
+        ],
+      },
+      {
+        id: "cuando-la-cirugia-que-quieres-no-conviene",
+        heading: "Cuando la cirugía que quieres no es la que te conviene",
+        paragraphs: [
+          "*(Caso real, compartido por el Dr. Salazar sin datos que identifiquen a la paciente.)*",
+          "“Una paciente presentaba obesidad, diabetes y reflujo gastroesofágico importante. Inicialmente deseaba una manga gástrica por ser menos compleja. Sin embargo, tras revisar su historia clínica, estudios y conversar ampliamente sobre riesgos y beneficios, optamos por un bypass gástrico porque ofrecía mejores resultados para controlar tanto el reflujo como la diabetes. Hoy mantiene excelente evolución”.",
+          "Este caso muestra cómo funciona la evaluación en la práctica: la paciente llegó con una preferencia razonable, y la historia clínica reveló que otra opción protegía mejor su salud. La decisión se conversó —riesgos y beneficios sobre la mesa— y se tomó en conjunto. ¿Quieres entender las diferencias entre ambas cirugías? Lee la [guía comparativa manga vs. bypass](/blog/manga-gastrica-vs-bypass-gastrico).",
+        ],
+      },
+      {
+        id: "a-quien-no-operaria",
+        heading: "A quién NO operaría",
+        paragraphs: [
+          "Tan importante como saber quién es candidato es saber quién no lo es — o no todavía. El Dr. Salazar es explícito: “No operaría a un paciente que no comprende el procedimiento, que no está dispuesto a realizar cambios permanentes en su estilo de vida o que presenta una enfermedad médica o psicológica no controlada que incremente el riesgo. En algunos casos es mejor esperar, optimizar al paciente y operar en el momento adecuado”.",
+          "Que un cirujano tenga claro a quién no opera es una **señal de seguridad, no de rechazo**. “No ser candidato hoy” muchas veces significa: primero estabilizamos esa condición, ajustamos el terreno y operamos cuando sea seguro.",
+        ],
+      },
+      {
+        id: "error-mas-frecuente",
+        heading: "El error más frecuente al llegar a consulta",
+        paragraphs: [
+          "¿Qué es lo que más corrige el Dr. Salazar en la primera conversación? “Llegar pensando que la cirugía reemplaza los hábitos saludables”.",
+          "La cirugía bariátrica es una herramienta muy poderosa — pero es eso: una herramienta. El compromiso con la alimentación, el ejercicio y los controles es parte del tratamiento desde el día uno. Por eso la “capacidad para mantener seguimiento a largo plazo” es uno de los 10 factores de la evaluación: el Dr. no solo evalúa si **puedes** operarte, sino si el plan completo va a **funcionar** para ti. Puedes ver cómo se vive ese proceso en la [recuperación semana a semana](/blog/recuperacion-manga-gastrica-semana-a-semana).",
+        ],
+      },
+      {
+        id: "y-si-tengo-miedo",
+        heading: "¿Y si tengo miedo?",
+        paragraphs: [
+          "El miedo a la cirugía es una de las razones más comunes para postergar la evaluación durante años. La respuesta del Dr. Salazar a sus pacientes: “El miedo es normal. Una buena evaluación, información clara y un equipo experimentado disminuyen riesgos y permiten tomar una decisión con tranquilidad”.",
+          "Nadie decide bien desde la desinformación. La evaluación de candidato es exactamente eso: información clara sobre **tu** caso, para decidir con calma — operarte o no, ahora o después.",
+        ],
+        callout: {
+          type: "cta",
+          title: "Da el primer paso sin compromiso",
+          text: "[Agenda tu evaluación](/contacto) con el Dr. Augusto Salazar en Trujillo, sin viajar a Lima. La información de este artículo no reemplaza la consulta médica presencial.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Existe un peso o IMC mínimo para la cirugía bariátrica?",
+        answer:
+          "El IMC es uno de los factores — no el único ni el decisivo por sí solo. La indicación se define en una evaluación integral que incluye enfermedades asociadas, hábitos, edad, estado psicológico y capacidad de seguimiento. Las guías internacionales (ASMBS/IFSO) orientan los criterios; la decisión final es individual y la toma el especialista contigo.",
+      },
+      {
+        question: "Tengo diabetes, ¿puedo operarme?",
+        answer:
+          "La diabetes no descalifica — de hecho es una de las condiciones que la evaluación considera con más atención, porque puede influir en qué cirugía conviene más. Lo que sí debe estar controlado antes de operar es cualquier enfermedad médica o psicológica que incremente el riesgo.",
+      },
+      {
+        question: "¿Qué pasa si no soy candidato hoy?",
+        answer:
+          "En algunos casos es mejor esperar, optimizar al paciente y operar en el momento adecuado. “No hoy” no siempre es “nunca”: puede significar estabilizar primero una condición médica o trabajar la preparación.",
+      },
+      {
+        question: "¿Manga o bypass: cuál me toca?",
+        answer:
+          "Depende de tu caso — no existe una cirugía ideal para todos. Factores como el reflujo gastroesofágico o la diabetes pueden inclinar la decisión hacia una u otra. La guía comparativa manga vs. bypass explica las diferencias; la evaluación define cuál corresponde a tu historia clínica.",
+      },
+      {
+        question: "¿La evaluación me compromete a operarme?",
+        answer:
+          "No. La evaluación es información sobre tu caso: qué opciones tienes, con qué riesgos y beneficios. La decisión se toma en conjunto y con tranquilidad.",
+      },
+    ],
+    sources: [
+      {
+        label: "ASMBS — Información para pacientes",
+        url: "https://asmbs.org/patients/",
+      },
+      {
+        label: "IFSO — International Federation for the Surgery of Obesity",
+        url: "https://www.ifso.com/",
+      },
+    ],
+    relatedServices: [
+      {
+        label: "Cirugía Bariátrica en Trujillo",
+        href: "/servicios/cirugia-bariatrica",
+        description:
+          "Manga gástrica, bypass y cirugía revisional con el Dr. Augusto Salazar.",
+      },
+      {
+        label: "Manejo integral de obesidad",
+        href: "/servicios/manejo-obesidad",
+        description:
+          "Tratamiento multidisciplinario, farmacológico y balón intragástrico.",
+      },
+      {
+        label: "Agenda tu evaluación",
+        href: "/contacto",
+        description: "El punto de partida para saber si eres candidato.",
+      },
+    ],
+    relatedPosts: [
+      "manga-gastrica-vs-bypass-gastrico",
+      "recuperacion-manga-gastrica-semana-a-semana",
+    ],
   },
 ];
 

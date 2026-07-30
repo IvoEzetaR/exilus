@@ -297,7 +297,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "cuanto-cuesta-la-cirugia-bariatrica",
     category: "Costos y decisión",
     title: "¿Cuánto cuesta la cirugía bariátrica en el Perú? Guía honesta",
-    metaTitle: "¿Cuánto cuesta la cirugía bariátrica en Perú?",
+    metaTitle: "Precio de la Cirugía Bariátrica en Perú 2026",
     metaDescription:
       "Qué determina el costo de una cirugía bariátrica en el Perú, qué debe incluir un presupuesto serio y cómo conocer la inversión real de tu caso. Guía del Dr. Salazar, Trujillo.",
     excerpt:

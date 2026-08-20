@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
 
   return {
-    title: `${service.name} en Trujillo`,
-    description: `${service.shortDescription} Dr. Augusto Salazar, cirujano bariatra en Trujillo con más de 16 años de experiencia.`,
+    title: slug === "manejo-obesidad" ? "Manejo de Obesidad en Trujillo | Evaluación con Especialista" : `${service.name} en Trujillo`,
+    description: slug === "manejo-obesidad" ? "Programa de manejo de obesidad en Trujillo con evaluación médica personalizada del Dr. Salazar. Agenda tu evaluación y conoce las opciones de tratamiento." : `${service.shortDescription} Dr. Augusto Salazar, cirujano bariatra en Trujillo con más de 16 años de experiencia.`,
     alternates: { canonical: `${siteUrl}/servicios/${service.slug}` },
     openGraph: {
       title: `${service.name} en Trujillo — Exilus`,

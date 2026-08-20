@@ -101,6 +101,10 @@ export default async function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(slug === "cirugia-bariatrica" ? {"@context":"https://schema.org","@type":"MedicalProcedure","name":"Cirugía Bariátrica y Metabólica","procedureType":"http://schema.org/SurgicalProcedure","bodyLocation":"Abdomen","provider":{"@type":"MedicalClinic","name":"Exilus Cirugía Bariátrica","url":"https://exilus.pe","areaServed":"Trujillo, Perú"}} : {}) }}
+      />
       <Navbar />
       <main>
         <InnerPageHero

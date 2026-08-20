@@ -19,6 +19,10 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"MedicalClinic","name":"Exilus Cirugía Bariátrica","address":{"@type":"PostalAddress","streetAddress":"Calle Los Laureles 436, Of. 403, Urb. California — Clínica Sanna Sánchez Ferrer","addressLocality":"Trujillo","addressCountry":"PE"},"telephone":"+51 972 652 353","openingHours":["Mo-Fr 09:00-19:00","Sa 09:00-13:00"],"url":"https://exilus.pe"}) }}
+      />
       <Navbar />
       <main>
         <InnerPageHero

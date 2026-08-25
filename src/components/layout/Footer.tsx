@@ -242,10 +242,10 @@ export default function Footer() {
               href="https://ideagency.pro"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Sitio web desarrollado por IDE Agency"
+              aria-label="Sitio web diseñado por IDE Agency"
               className="group inline-flex items-center gap-1.5 font-medium transition-opacity"
             >
-              <span className="opacity-80 group-hover:opacity-100 transition-opacity">Hecho por</span>
+              <span className="opacity-80 group-hover:opacity-100 transition-opacity">Diseñado por</span>
               <span
                 className="font-bold bg-clip-text text-transparent transition-all duration-500 group-hover:[background-position:100%_50%] group-hover:[filter:drop-shadow(0_0_6px_rgba(168,85,247,0.6))]"
                 style={{

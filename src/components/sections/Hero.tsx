@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar, MessageCircle, MapPin, ChevronDown } from "lucide-react";
+import { Calendar, MessageCircle, MapPin, ChevronDown, ClipboardCheck, ArrowRight } from "lucide-react";
 import { CLIENT } from "@/lib/client-data";
 import { EASE_OUT_EXPO } from "@/lib/design-system";
 import { trackEvent } from "@/lib/analytics";
@@ -134,7 +134,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col min-h-screen px-4 sm:px-6 lg:px-8">
 
         {/* Spacer for fixed Navbar (h-16 + top-10 = ~96px) */}
-        <div className="h-24 sm:h-28 shrink-0" />
+        <div className="h-24 sm:h-28 desk-short:h-24 shrink-0" />
 
         {/* Main copy — vertically centered in remaining space */}
         <motion.div
@@ -143,7 +143,7 @@ export default function Hero() {
           className="flex-1 flex flex-col justify-center max-w-7xl w-full mx-auto"
         >
           {/* Eyebrow pill — location */}
-          <motion.div variants={itemFade} className="mb-5 lg:mb-6">
+          <motion.div variants={itemFade} className="mb-5 lg:mb-6 desk-short:mb-4">
             <span
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] uppercase backdrop-blur-sm"
               style={{
@@ -160,7 +160,7 @@ export default function Hero() {
           {/* Promesa core — primera frase que ve el usuario */}
           <motion.p
             variants={itemFade}
-            className="text-sm sm:text-base font-semibold tracking-wide mb-4 lg:mb-5 max-w-2xl"
+            className="text-sm sm:text-base font-semibold tracking-wide mb-4 lg:mb-5 desk-short:mb-3 max-w-2xl"
             style={{ color: "rgba(245,235,220,0.90)" }}
           >
             Dr. Augusto Salazar — cirugía laparoscópica avanzada con respaldo
@@ -168,7 +168,7 @@ export default function Hero() {
           </motion.p>
 
           {/* H1 — kinetic line-by-line reveal */}
-          <h1 className="font-serif text-[2.4rem] min-[380px]:text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-light leading-[1.1] tracking-tight text-white mb-6 lg:mb-8">
+          <h1 className="font-serif text-[2.4rem] min-[380px]:text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] desk-short:text-[4.25rem] font-light leading-[1.1] tracking-tight text-white mb-6 lg:mb-8 desk-short:mb-5">
             <span className="block overflow-hidden pb-[0.18em]">
               <motion.span
                 variants={shouldReduce ? itemFade : lineReveal}
@@ -201,7 +201,7 @@ export default function Hero() {
           {/* Subcopy */}
           <motion.p
             variants={itemFade}
-            className="text-base sm:text-lg lg:text-xl max-w-lg leading-relaxed mb-8 lg:mb-10"
+            className="text-base sm:text-lg lg:text-xl desk-short:text-lg max-w-lg desk-short:max-w-xl leading-relaxed mb-8 lg:mb-10 desk-short:mb-7"
             style={{ color: "rgba(245,235,220,0.80)" }}
           >
             Cirugía bariátrica y laparoscópica avanzada con un enfoque integral,
@@ -284,6 +284,29 @@ export default function Hero() {
               </span>
             </motion.a>
           </motion.div>
+
+          {/* Enlace al test — en desktop reemplaza al botón flotante, que se
+              oculta en el hero (en mobile el test ya está en la navbar) */}
+          <motion.a
+            variants={itemFade}
+            href="#soy-candidato"
+            onClick={() => trackEvent("candidate_test_open", { location: "hero" })}
+            className="group mt-5 desk-short:mt-4 hidden md:inline-flex w-fit items-center gap-2 text-sm"
+            style={{ color: "rgba(245,235,220,0.78)" }}
+          >
+            <ClipboardCheck className="h-4 w-4" aria-hidden="true" />
+            <span>¿No sabes si eres candidato?</span>
+            <span
+              className="font-semibold underline decoration-1 underline-offset-4 transition-colors group-hover:text-white"
+              style={{ textDecorationColor: "rgba(120,214,75,0.7)", color: "rgba(245,235,220,0.95)" }}
+            >
+              Responde 3 preguntas
+            </span>
+            <ArrowRight
+              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
+          </motion.a>
         </motion.div>
 
         {/* ── Stats bar — bottom strip above scroll hint ─────────────────── */}
@@ -326,11 +349,17 @@ export default function Hero() {
         <div className="h-0 shrink-0" />
       </div>
 
-      {/* ── Credential badge — bottom right (oculto en mobile para evitar sobrecarga) ─── */}
+      {/* ── Credential badge — solo escritorio (en tablet choca con la barra de stats). Se ancla al alto de la pantalla
+          (no al de la sección, que varía) para quedar siempre por encima del
+          botón flotante de WhatsApp. ─── */}
+      <div
+        aria-hidden="true"
+        className="hidden lg:block absolute inset-x-0 top-0 h-svh max-h-full z-20 pointer-events-none"
+      >
       <motion.div
         variants={credentialSlide}
         {...motionProps}
-        className="hidden sm:block absolute bottom-16 right-4 sm:right-8 z-20 max-w-[220px] sm:max-w-[240px]"
+        className="absolute bottom-36 right-4 sm:right-8 max-w-[220px] sm:max-w-[240px]"
       >
         <div
           className="rounded-2xl p-4 backdrop-blur-md"
@@ -368,6 +397,7 @@ export default function Hero() {
           </p>
         </div>
       </motion.div>
+      </div>
 
       {/* ── Scroll hint ─────────────────────────────────────────────────── */}
       <motion.div

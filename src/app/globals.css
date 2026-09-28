@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Escritorio con pantalla baja (laptops 1366×768, 1440×900): el hero se compacta
+   para que los CTAs queden sobre el pliegue. */
+@custom-variant desk-short (@media (min-width: 1024px) and (max-height: 920px));
+
 @theme {
   /* === BRAND EXILUS — Cirugía Bariátrica v2 Editorial Wine-Medical === */
 

@@ -11,33 +11,47 @@ import { trackEvent } from "@/lib/analytics";
 // cuando estamos en home, navega a /#soy-candidato desde otras páginas.
 //
 // Visibilidad:
-//   - Visible desde el inicio (incluido el hero).
-//   - Se oculta solo cuando la sección #soy-candidato está visible en pantalla
-//     (sería redundante mostrarla mientras el usuario ya la ve).
+//   - Oculto mientras el hero (#inicio) ocupa la pantalla: ahí tapaba el CTA
+//     principal y el hero ya tiene su propio enlace al test. Aparece al bajar.
+//   - Se oculta también cuando la sección #soy-candidato está visible en
+//     pantalla (sería redundante mostrarla mientras el usuario ya la ve).
 export default function CandidateFloatButton() {
   const reduced = useReducedMotion() ?? false;
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-  const [show, setShow] = useState(true);
+  const [pastHero, setPastHero] = useState(!isHome);
+  const [candidateVisible, setCandidateVisible] = useState(false);
+  const show = pastHero && !candidateVisible;
+
+  // Fuera del hero: aparece cuando ya se scrolleó más de la mitad del hero.
+  useEffect(() => {
+    const hero = isHome ? document.getElementById("inicio") : null;
+    if (!hero) {
+      setPastHero(true);
+      return;
+    }
+    const update = () => setPastHero(window.scrollY > hero.offsetHeight * 0.55);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [isHome]);
 
   // Ocultar cuando la sección #soy-candidato está visible en viewport.
   useEffect(() => {
-    if (!isHome) {
-      setShow(true);
-      return;
-    }
-
-    const target = document.getElementById("soy-candidato");
+    const target = isHome ? document.getElementById("soy-candidato") : null;
     if (!target) {
-      setShow(true);
+      setCandidateVisible(false);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const sectionVisible = entry.isIntersecting && entry.intersectionRatio > 0.25;
-        setShow(!sectionVisible);
+        setCandidateVisible(entry.isIntersecting && entry.intersectionRatio > 0.25);
       },
       { threshold: [0, 0.25, 0.5] }
     );

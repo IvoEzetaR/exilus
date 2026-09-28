@@ -77,24 +77,40 @@ export default function Hero() {
       style={{ backgroundColor: "#6C1D45" }}
     >
       {/* ── Video full-bleed background ─────────────────────────────────── */}
-      <video
-        ref={videoRef}
+      {/* El video (1024×576) se limita al alto de la pantalla: la sección crece
+          por el contenido y, estirado a toda su altura, se ampliaba ~1.9× y se
+          veía cortado y borroso. Abajo se funde al vino de la sección. */}
+      <div
         aria-hidden="true"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/images/doctor-terno.jpg"
-        onCanPlay={() => setVideoLoaded(true)}
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{
-          opacity: videoLoaded ? 1 : 0,
-          transition: "opacity 0.8s ease",
-        }}
+        className="absolute inset-x-0 top-0 h-svh max-h-full overflow-hidden pointer-events-none"
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+        <video
+          ref={videoRef}
+          aria-hidden="true"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/hero-poster.jpg"
+          onCanPlay={() => setVideoLoaded(true)}
+          // El doctor está en el tercio izquierdo del cuadro 16:9: anclamos ahí el
+          // recorte para que en pantallas verticales no quede fuera de cuadro.
+          className="absolute inset-0 h-full w-full object-cover object-[30%_center]"
+          style={{
+            opacity: videoLoaded ? 1 : 0,
+            transition: "opacity 0.8s ease",
+          }}
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3"
+          style={{
+            background: "linear-gradient(to bottom, transparent 0%, #6C1D45 100%)",
+          }}
+        />
+      </div>
 
       {/* ── Multi-layer overlay for legibility ──────────────────────────── */}
       <div
@@ -152,7 +168,7 @@ export default function Hero() {
           </motion.p>
 
           {/* H1 — kinetic line-by-line reveal */}
-          <h1 className="font-serif text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-light leading-[1.1] tracking-tight text-white mb-6 lg:mb-8">
+          <h1 className="font-serif text-[2.4rem] min-[380px]:text-[2.8rem] sm:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-light leading-[1.1] tracking-tight text-white mb-6 lg:mb-8">
             <span className="block overflow-hidden pb-[0.18em]">
               <motion.span
                 variants={shouldReduce ? itemFade : lineReveal}

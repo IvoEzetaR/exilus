@@ -195,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "¿Cuál da mejores resultados a largo plazo?",
         paragraphs: [
           "La pregunta honesta no es “¿qué cirugía es mejor?” sino “¿qué cirugía es mejor **para este paciente**?”. Los estudios de largo plazo recogidos por la IFSO muestran que ambas cirugías mantienen pérdidas de peso clínicamente relevantes a 5 y 10 años, con diferencias que dependen más del perfil del paciente que del procedimiento en sí.",
-          "Hay un factor que pesa más que la elección de la técnica: el **seguimiento**. Ninguna cirugía bariátrica funciona sola. La adherencia al plan nutricional, los controles médicos y el acompañamiento psicológico durante el primer año son los que consolidan el resultado. Por eso en Exilus el programa incluye seguimiento multidisciplinario, no solo la operación.",
+          "Hay un factor que pesa más que la elección de la técnica: el **seguimiento**. Ninguna cirugía bariátrica funciona sola. La adherencia al plan nutricional, los controles médicos y el acompañamiento psicológico durante el primer año son los que consolidan el resultado. Por eso en Exilus el programa incluye seguimiento multidisciplinario, no solo la operación. Creer que basta con operarse es el mito más frecuente en consulta, y lo explicamos en [mitos y expectativas reales de la cirugía bariátrica](/blog/mitos-cirugia-bariatrica-expectativas-reales).",
           "Si quieres ver cómo se vive ese proceso, te invitamos a conocer las [historias de nuestros pacientes en Trujillo](/testimonios).",
         ],
       },
@@ -205,7 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
         paragraphs: [
           "En la práctica, la elección entre manga y bypass se define en la **evaluación preoperatoria**, donde se analizan tu índice de masa corporal, tus enfermedades asociadas (diabetes, hipertensión, reflujo, apnea del sueño), tus cirugías previas, tu relación con la comida y tus objetivos.",
           "El [Dr. Augusto Salazar](/), cirujano bariatra y laparoscopista con más de 16 años de experiencia en Trujillo, realiza esta evaluación junto a un equipo multidisciplinario —nutrición, psicología y medicina interna— para recomendarte el procedimiento con mejor relación beneficio-riesgo **en tu caso específico**.",
-          "Y si la inversión también es parte de tu decisión, te puede servir nuestra guía sobre [cuánto cuesta la cirugía bariátrica en el Perú](/blog/cuanto-cuesta-la-cirugia-bariatrica).",
+          "Y si la inversión también es parte de tu decisión, te puede servir nuestra guía sobre [cuánto cuesta la cirugía bariátrica en el Perú](/blog/cuanto-cuesta-la-cirugia-bariatrica). Y si estás comparando especialistas, revisa [cómo elegir cirujano bariátrico y qué preguntarle](/blog/como-elegir-cirujano-bariatrico).",
         ],
         callout: {
           type: "cta",
@@ -860,6 +860,378 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedPosts: [
       "manga-gastrica-vs-bypass-gastrico",
       "recuperacion-manga-gastrica-semana-a-semana",
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Artículo 5 — E3 (informacional, expectativas)
+  // KW principal: "mitos cirugia bariatrica"
+  // Citas verbatim Dr. Salazar (respuestas escritas 2026-07-08)
+  // ────────────────────────────────────────────────────────────────────────
+  {
+    slug: "mitos-cirugia-bariatrica-expectativas-reales",
+    category: "Expectativas reales",
+    title:
+      "La cirugía bariátrica no lo resuelve todo: mitos y expectativas reales",
+    metaTitle: "Mitos de la cirugía bariátrica: expectativas reales",
+    metaDescription:
+      "Los mitos que más confunden antes de operarse, a quién no operaría el especialista y por qué no damos una cifra de kilos. Dr. Augusto Salazar, cirujano bariatra en Trujillo.",
+    excerpt:
+      "La cirugía es una herramienta muy poderosa, pero no reemplaza los hábitos. El Dr. Augusto Salazar explica los dos malentendidos que más afectan las expectativas y por qué ningún cirujano serio te promete kilos.",
+    heroImage: "/images/paso-seguimiento.jpg",
+    heroImageAlt:
+      "Seguimiento posoperatorio de un paciente de cirugía bariátrica en Exilus, Trujillo",
+    dateISO: "2026-10-12",
+    dateDisplay: "12 de octubre de 2026",
+    updatedISO: "2026-10-12",
+    readingMinutes: 6,
+    keyTakeaways: [
+      "El mito más frecuente es creer que la cirugía resuelve todo sola: es una herramienta muy poderosa, pero necesita del compromiso del paciente.",
+      "El miedo a “no volver a comer normal” casi nunca se cumple: con una adecuada adaptación nutricional, la gran mayoría logra una alimentación saludable.",
+      "El error que más ve el Dr. Salazar en consulta es llegar pensando que la cirugía reemplaza los hábitos saludables.",
+      "El riesgo se maneja seleccionando bien al candidato: un especialista que te dice a quién no operaría evalúa con criterio.",
+      "No existe una cifra de kilos válida para todos: el resultado razonable para tu caso se conversa en la evaluación.",
+    ],
+    sections: [
+      {
+        id: "mito-resuelve-todo",
+        heading: "El mito más frecuente: “la cirugía resuelve todo sola”",
+        paragraphs: [
+          "Si buscas “mitos cirugía bariátrica” vas a encontrar decenas de artículos con el mismo formato: una lista de “mito / realidad” genérica, casi siempre copiada de una clínica a otra. Ninguno responde lo que de verdad preguntan los pacientes en la consulta en Trujillo. Aquí no vamos a repetir esa lista. Vamos a contarte, con la voz directa del **Dr. Augusto Salazar**, los dos malentendidos que más error de expectativa generan, y por qué entenderlos bien es parte de decidir si eres candidato.",
+          "Es la idea con la que más pacientes llegan a la primera consulta. En palabras del Dr. Salazar:",
+          "“Muchos creen que la cirugía resolverá todos sus problemas automáticamente. La realidad es que la operación es una herramienta muy poderosa, pero necesita del compromiso del paciente. Otro mito frecuente es pensar que siempre sentirán hambre intensa o que nunca volverán a comer alimentos normales. Con una adecuada adaptación nutricional, la gran mayoría logra una alimentación saludable y una excelente calidad de vida.”",
+          "Dos ideas en una sola respuesta. La primera: la cirugía reduce el estómago, pero no cambia por sí sola los hábitos que llevaron a la obesidad; eso lo trabaja el paciente, con acompañamiento, después de operarse. La segunda: el miedo a “no volver a comer normal” casi nunca se cumple. Con la reeducación nutricional del postoperatorio, la alimentación se normaliza en cantidad y variedad; lo que cambia es la relación con la comida, no la posibilidad de disfrutarla.",
+        ],
+      },
+      {
+        id: "error-en-consulta",
+        heading: "El error que más ve en consulta",
+        paragraphs: [
+          "Le preguntamos directamente cuál es el error más común entre quienes llegan pensando en operarse. Su respuesta:",
+          "“Llegar pensando que la cirugía reemplaza los hábitos saludables.”",
+          "Es la misma idea vista desde otro ángulo, y por algo se repite: es el malentendido que más determina si una cirugía bariátrica termina en buenos resultados sostenidos o en una recuperación de peso a los años. La cirugía cambia la anatomía; el paciente cambia la conducta. Las dos partes son necesarias.",
+        ],
+      },
+      {
+        id: "por-que-las-listas-no-ayudan",
+        heading: "¿Por qué la mayoría de artículos sobre “mitos” no ayuda en la práctica?",
+        paragraphs: [
+          "Porque están escritos para desmentir miedos exagerados (“la cirugía es peligrosísima”, “nunca vas a volver a comer”) sin explicar el mito real: no que la cirugía sea mágica ni que sea un riesgo enorme, sino la idea de que basta con operarse. Ese es el mito que de verdad cambia resultados, y es el que un cirujano que ve pacientes todos los días, y no un artículo genérico, puede explicar con criterio real.",
+        ],
+      },
+      {
+        id: "riesgos",
+        heading: "¿Cuáles son los riesgos y efectos que sí debes conocer?",
+        paragraphs: [
+          "Toda cirugía, incluida la bariátrica, conlleva riesgos propios de cualquier procedimiento quirúrgico mayor. Eso no se minimiza ni se exagera: se evalúa caso por caso. Por eso el Dr. Salazar es explícito sobre a quién no operaría:",
+          "“No operaría a un paciente que no comprende el procedimiento, que no está dispuesto a realizar cambios permanentes en su estilo de vida o que presenta una enfermedad médica o psicológica no controlada que incremente el riesgo. En algunos casos es mejor esperar, optimizar al paciente y operar en el momento adecuado.”",
+          "Esa es la respuesta real a “¿es peligrosa la cirugía bariátrica?”: el riesgo se maneja seleccionando bien al candidato, no minimizando el procedimiento ni prometiendo que “no pasa nada”. Un especialista que te dice a quién no operaría es la señal más clara de que evalúa con criterio, no con afán de vender la cirugía. Si estás comparando especialistas, te sirve la guía de [qué preguntarle a tu cirujano bariátrico antes de decidir](/blog/como-elegir-cirujano-bariatrico).",
+        ],
+      },
+      {
+        id: "cuanto-peso",
+        heading: "Cuánto peso se pierde y por qué no damos una cifra",
+        paragraphs: [
+          "Es la pregunta que más buscan quienes investigan sobre cirugía bariátrica, y también la que menos deberíamos contestar con un número genérico. Cada organismo responde distinto según el procedimiento (manga gástrica o bypass), el punto de partida, las comorbilidades y, otra vez, el compromiso con los cambios de hábito del postoperatorio. Cualquier cifra de “pierdes X kilos en X semanas” que veas en internet es, en el mejor de los casos, un promedio de otro paciente, no una promesa para el tuyo. En la evaluación preoperatoria se revisa tu caso puntual y se conversa con realismo sobre qué resultado es razonable esperar.",
+        ],
+      },
+      {
+        id: "antes-de-decidir",
+        heading: "Antes de decidir",
+        paragraphs: [
+          "Si estás evaluando una cirugía bariátrica en Trujillo, el primer paso no es leer más listas de mitos: es una [evaluación con el especialista](/servicios/cirugia-bariatrica) que revise tu historia real. Si ya tienes claro que quieres dar ese paso, puedes leer primero cómo es la [recuperación semana a semana](/blog/recuperacion-manga-gastrica-semana-a-semana) o revisar [si eres candidato](/blog/soy-candidato-a-cirugia-bariatrica) para llegar con las preguntas correctas a tu consulta. Y si todavía dudas entre manga gástrica o bypass, ese es exactamente el tema de nuestra [comparación entre ambos procedimientos](/blog/manga-gastrica-vs-bypass-gastrico).",
+        ],
+        callout: {
+          type: "cta",
+          title: "Lleva tus dudas a la consulta",
+          text: "[Agenda tu evaluación](/contacto) con el Dr. Augusto Salazar en Trujillo. La información de este artículo no reemplaza la consulta médica presencial.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Cuáles son los efectos negativos de la cirugía bariátrica?",
+        answer:
+          "Como toda cirugía mayor, conlleva riesgos propios del procedimiento quirúrgico y del postoperatorio, que se explican en detalle durante la evaluación preoperatoria. También puede haber déficits nutricionales si no se sigue el seguimiento indicado, por eso los controles postoperatorios no son opcionales. El Dr. Salazar evalúa cada caso de forma individual antes de operar, precisamente para reducir esos riesgos a lo mínimo posible según tu historia clínica.",
+      },
+      {
+        question: "¿Qué tan recomendable es la cirugía bariátrica?",
+        answer:
+          "Es una herramienta médica seria, no una solución estética ni un atajo. Se recomienda tras una evaluación completa que confirme que el paciente cumple los criterios clínicos y está dispuesto al cambio de hábitos que requiere el postoperatorio. No es recomendable para todos: el propio especialista puede decidir no operar a un paciente si no está en condiciones médicas o psicológicas de asumir el compromiso que implica.",
+      },
+      {
+        question: "¿Cuántos kilos se pierden con la cirugía bariátrica?",
+        answer:
+          "No existe una cifra única válida para todos los pacientes: depende del procedimiento, el punto de partida y el compromiso con los hábitos del postoperatorio. Cualquier promesa de “X kilos en X semanas” que veas en internet no aplica a tu caso particular. Lo que sí es constante es que el resultado depende tanto de la cirugía como del trabajo del paciente después de ella.",
+      },
+      {
+        question: "¿Cuáles son los riesgos a largo plazo de la cirugía bariátrica?",
+        answer:
+          "El principal riesgo a largo plazo, cuando el procedimiento fue exitoso, es la recuperación parcial de peso si se abandonan los hábitos adquiridos, no una complicación quirúrgica tardía. Por eso el seguimiento postoperatorio se extiende por años, no por semanas: permite detectar a tiempo cualquier desviación nutricional o de hábitos y corregirla antes de que se vuelva un problema mayor.",
+      },
+      {
+        question: "¿Cómo queda uno después de una cirugía bariátrica?",
+        answer:
+          "Los primeros meses son de adaptación: cambios en la alimentación, pérdida de peso progresiva y ajuste a una nueva rutina con controles médicos regulares. A partir del tercer mes, según explica el Dr. Salazar, “la cirugía deja de ser la protagonista y los hábitos toman el control”: la vida diaria se normaliza y la atención pasa de la recuperación quirúrgica al sostenimiento de los nuevos hábitos.",
+      },
+    ],
+    sources: [
+      {
+        label: "ASMBS: información para pacientes",
+        url: "https://asmbs.org/patients/",
+      },
+      {
+        label: "IFSO: International Federation for the Surgery of Obesity",
+        url: "https://www.ifso.com/",
+      },
+    ],
+    relatedServices: [
+      {
+        label: "Cirugía Bariátrica en Trujillo",
+        href: "/servicios/cirugia-bariatrica",
+        description:
+          "Manga gástrica, bypass y cirugía revisional con el Dr. Augusto Salazar.",
+      },
+      {
+        label: "Manejo integral de obesidad",
+        href: "/servicios/manejo-obesidad",
+        description:
+          "Nutrición, psicología y seguimiento: el acompañamiento que sostiene el resultado.",
+      },
+      {
+        label: "Agenda tu evaluación",
+        href: "/contacto",
+        description: "Conversa con realismo sobre lo que puedes esperar en tu caso.",
+      },
+    ],
+    relatedPosts: [
+      "soy-candidato-a-cirugia-bariatrica",
+      "recuperacion-manga-gastrica-semana-a-semana",
+      "como-elegir-cirujano-bariatrico",
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Artículo 6 — E6 (informacional, elección del especialista)
+  // KW principal: "como elegir cirujano bariatrico"
+  // Citas verbatim Dr. Salazar (respuestas escritas 2026-07-08)
+  // ────────────────────────────────────────────────────────────────────────
+  {
+    slug: "como-elegir-cirujano-bariatrico",
+    category: "Evaluación y decisión",
+    title: "Cómo elegir cirujano bariátrico: qué preguntar antes de decidir",
+    metaTitle: "Cómo elegir cirujano bariátrico: qué preguntar",
+    metaDescription:
+      "Las 4 preguntas que debes hacerle a tu cirujano bariátrico antes de operarte: cuántas cirugías hace, complicaciones, dónde opera y cómo es el seguimiento. Criterio del Dr. Augusto Salazar, Trujillo.",
+    excerpt:
+      "Elegir quién te opera pesa tanto como elegir la cirugía. Las preguntas concretas para hacer en consulta, las señales de alerta y el criterio del Dr. Augusto Salazar sobre lo que distingue a un buen cirujano bariátrico.",
+    heroImage: "/images/doctor-scrubs.jpg",
+    heroImageAlt:
+      "Dr. Víctor Augusto Salazar, cirujano bariatra en Trujillo, en pabellón quirúrgico",
+    dateISO: "2026-10-12",
+    dateDisplay: "12 de octubre de 2026",
+    updatedISO: "2026-10-12",
+    readingMinutes: 9,
+    keyTakeaways: [
+      "Según el Dr. Augusto Salazar, a un buen cirujano bariátrico lo distinguen cuatro cosas: “La correcta selección del paciente, la experiencia técnica, el trabajo multidisciplinario y un seguimiento cercano por años.”",
+      "Antes de decidir, pregúntale cuántas cirugías bariátricas hace al año, cuáles son sus tasas de complicaciones y de reoperaciones, en qué clínica opera y cómo es el seguimiento del primer año.",
+      "Un cirujano serio responde esas preguntas con sus propios datos y sin incomodarse. Si la respuesta es vaga, pide que la precise.",
+      "El seguimiento “es tan importante como la cirugía”: permite detectar deficiencias nutricionales, reforzar hábitos y mantener los resultados.",
+      "Ningún cirujano responsable garantiza resultados ni promete kilos. Cada caso es individual.",
+    ],
+    sections: [
+      {
+        id: "lo-que-distingue",
+        heading: "Lo que distingue a un buen cirujano bariátrico",
+        paragraphs: [
+          "Elegir quién te va a operar pesa tanto como elegir la cirugía. Si estás comparando cirujanos bariátricos en Trujillo, seguramente ya viste perfiles, reseñas y fotos de antes y después. Todo eso ayuda, pero no te dice cómo trabaja ese cirujano en la consulta, en el quirófano y en los meses que siguen. En esta guía tienes las preguntas concretas para hacer en consulta y, como ejemplo, el criterio del **Dr. Víctor Augusto Salazar** en Exilus.",
+          "Le preguntamos al Dr. Salazar qué diferencia a un buen cirujano bariátrico. Su respuesta fue corta:",
+          "“La correcta selección del paciente, la experiencia técnica, el trabajo multidisciplinario y un seguimiento cercano por años.”",
+          "En esa lista no aparece “que opere rápido” ni “que sea el más económico”. Cada uno de esos cuatro puntos se puede convertir en una pregunta para la primera consulta:",
+        ],
+        table: {
+          headers: [
+            "Lo que dice el Dr. Salazar",
+            "La pregunta que haces tú",
+            "Una buena respuesta",
+          ],
+          rows: [
+            [
+              "Correcta selección del paciente",
+              "¿Por qué me recomienda esta cirugía y no otra? ¿A quién no opera?",
+              "Revisa tu historia y tus estudios, y te dice con claridad cuándo conviene esperar.",
+            ],
+            [
+              "Experiencia técnica",
+              "¿Cuántas cirugías bariátricas hace al año? ¿Cuántas del tipo que me propone?",
+              "Te da una cifra concreta y propia.",
+            ],
+            [
+              "Trabajo multidisciplinario",
+              "¿Quién más me atiende antes y después de operarme?",
+              "Te presenta al equipo: nutrición, psicología y control médico.",
+            ],
+            [
+              "Seguimiento cercano por años",
+              "¿Cómo es el seguimiento el primer año y después?",
+              "Te explica cuántos controles hay, con quién y qué se revisa en cada uno.",
+            ],
+          ],
+        },
+      },
+      {
+        id: "cuantas-cirugias",
+        heading: "¿Cuántas cirugías bariátricas hace al año?",
+        paragraphs: [
+          "La experiencia técnica se mide en volumen y en constancia: cuántas cirugías bariátricas hace el cirujano cada año y cuántas del procedimiento que te propone, sea manga gástrica o bypass gástrico. Pregúntalo directo. Un especialista con práctica regular te contesta con una cifra suya, no con un “muchas” o un “toda la vida”. Pregunta también si opera por laparoscopía, es decir, con pequeñas incisiones en lugar de un corte grande.",
+          "En el caso del Dr. Salazar: opera por vía laparoscópica, tiene más de 10 años dedicados a la cirugía bariátrica y es cirujano titular en la Clínica SANNA Sánchez Ferrer desde 2013. Cuántas cirugías bariátricas hace al año, y cuántas son manga o bypass, es una pregunta que puedes hacerle directamente en tu evaluación.",
+        ],
+      },
+      {
+        id: "complicaciones",
+        heading: "¿Cuáles son sus tasas de complicaciones y reoperaciones?",
+        paragraphs: [
+          "Toda cirugía bariátrica es una cirugía mayor y tiene riesgos. Por eso es razonable preguntarle al cirujano cuántos de sus pacientes tuvieron complicaciones y cuántos necesitaron una segunda operación. No esperes escuchar “cero”. Lo que importa es que te responda con sus propios números, que te diga qué complicaciones podrían aparecer en tu caso y qué hace su equipo si ocurren. Un cirujano que habla claro de sus riesgos te deja decidir mejor.",
+          "El riesgo no se elimina con promesas. Se reduce evaluando bien a cada paciente antes de operar. El Dr. Salazar lo resume así cuando habla con pacientes que tienen miedo:",
+          "“Que el miedo es normal. Una buena evaluación, información clara y un equipo experimentado disminuyen riesgos y permiten tomar una decisión con tranquilidad.”",
+          "Esta pregunta también puedes hacérsela al Dr. Salazar en tu evaluación, junto con otra: si hace cirugía revisional, que es la operación para corregir o cambiar una cirugía bariátrica anterior. Es uno de los procedimientos que ofrece en [cirugía bariátrica](/servicios/cirugia-bariatrica).",
+        ],
+      },
+      {
+        id: "clinica",
+        heading: "¿En qué clínica opera?",
+        paragraphs: [
+          "El lugar donde te operan importa casi tanto como quién te opera. Pregunta en qué clínica u hospital se hace la cirugía, si tiene unidad de cuidados intensivos y atención las 24 horas, y qué pasa si necesitas volver con urgencia en los días siguientes. Una cirugía bariátrica segura necesita un equipo y una infraestructura que respondan durante la operación y también en los días siguientes.",
+          "El Dr. Salazar atiende en la Clínica SANNA Sánchez Ferrer, en Trujillo, donde es cirujano titular desde 2013. En tu evaluación puedes pedirle que te explique con qué soporte cuenta ahí el paciente y a quién llamar si tienes una urgencia.",
+          "Operarte en tu propia ciudad tiene además una ventaja práctica: ir a los controles es mucho más fácil, y en esta cirugía los controles son parte del tratamiento.",
+        ],
+      },
+      {
+        id: "seguimiento-primer-ano",
+        heading: "¿Cómo es el seguimiento el primer año?",
+        paragraphs: [
+          "Para el Dr. Salazar, el seguimiento “es tan importante como la cirugía. Permite detectar deficiencias nutricionales, reforzar hábitos y mantener los resultados.” Por eso conviene preguntar antes de operarte cuántos controles vas a tener el primer año, con quién vas a tenerlos (cirujano, nutrición, psicología) y qué se revisa en cada uno. Si nadie te lo explica antes de la cirugía, pídelo por escrito.",
+          "El primer año tiene etapas distintas. Según el Dr. Salazar, en la primera semana “el objetivo principal es controlar el dolor, caminar varias veces al día, mantenerse hidratado y adaptarse a la dieta líquida”, y al primer mes “la recuperación física suele ser casi completa”. Después el foco cambia:",
+          "“A partir del tercer mes: la cirugía deja de ser la protagonista y los hábitos toman el control. Alimentación, ejercicio y seguimiento médico determinan el éxito a largo plazo.”",
+          "En Exilus el seguimiento es multidisciplinario y continuo, con cirugía, nutrición, psicología y control médico. Pídele al Dr. Salazar en tu evaluación el calendario de controles del primer año: cuántos son, en qué momento y hasta cuándo te acompaña el equipo. Si quieres ver cómo se vive ese proceso, revisa la [recuperación de la manga gástrica semana a semana](/blog/recuperacion-manga-gastrica-semana-a-semana).",
+        ],
+      },
+      {
+        id: "te-evalua-o-te-vende",
+        heading: "¿Te evalúa a ti o te vende una cirugía?",
+        paragraphs: [
+          "Un buen cirujano bariátrico no le propone la misma operación a todos. Primero evalúa tu historia completa: tu índice de masa corporal (IMC), si tienes diabetes, presión alta o reflujo, tus hábitos, tu edad, tu estado de ánimo y si vas a poder sostener los controles. Recién con eso te recomienda una cirugía. Si alguien te define la operación por teléfono o sin ver tus estudios, toma nota.",
+          "El Dr. Salazar lo dice así: “La decisión nunca debe basarse únicamente en el peso.” Y añade: “Cada paciente recibe una estrategia personalizada; no existe una cirugía ideal para todos.”",
+          "La señal más clara de un cirujano que evalúa con criterio es que sabe a quién no operar:",
+          "“No operaría a un paciente que no comprende el procedimiento, que no está dispuesto a realizar cambios permanentes en su estilo de vida o que presenta una enfermedad médica o psicológica no controlada que incremente el riesgo. En algunos casos es mejor esperar, optimizar al paciente y operar en el momento adecuado.”",
+          "Si todavía no sabes qué cirugía podría corresponderte, lee primero [si eres candidato a cirugía bariátrica](/blog/soy-candidato-a-cirugia-bariatrica) y la [comparación entre manga gástrica y bypass gástrico](/blog/manga-gastrica-vs-bypass-gastrico). Vas a llegar a la consulta con mejores preguntas.",
+        ],
+      },
+      {
+        id: "senales-de-alerta",
+        heading: "Señales de alerta al elegir cirujano",
+        paragraphs: ["Ten cuidado si el cirujano o la clínica:"],
+        list: {
+          type: "bullet",
+          items: [
+            "Te promete una cantidad de kilos o te dice que el resultado está garantizado.",
+            "Te asegura que la cirugía no tiene riesgos.",
+            "Define tu cirugía sin revisar tu historia clínica ni tus estudios.",
+            "No sabe o no quiere decirte cuántas cirugías hace ni dónde opera.",
+            "No te explica el seguimiento, o el seguimiento termina con el alta.",
+            "Usa el precio como único argumento para convencerte.",
+          ],
+        },
+      },
+      {
+        id: "preguntas-para-tu-consulta",
+        heading: "Las preguntas para llevar a tu consulta",
+        paragraphs: ["Anótalas o guárdalas en el celular:"],
+        list: {
+          type: "check",
+          items: [
+            "¿Cuántas cirugías bariátricas hace al año y cuántas del tipo que me propone?",
+            "¿Cuál es su tasa de complicaciones y de reoperaciones?",
+            "¿En qué clínica opera y qué soporte tiene si surge una urgencia?",
+            "¿Por qué me recomienda esta cirugía y no otra?",
+            "¿Quién más forma parte del equipo que me va a acompañar?",
+            "¿Cómo es el seguimiento el primer año y después?",
+            "¿A quién llamo si tengo una duda o un problema fuera del horario de consulta?",
+          ],
+        },
+        callout: {
+          type: "cta",
+          title: "Haz estas preguntas en tu evaluación",
+          text: "Si estás en Trujillo o en el norte del Perú, puedes hacerle estas mismas preguntas al Dr. Augusto Salazar en tu evaluación en la Clínica SANNA Sánchez Ferrer. [Agenda tu evaluación](/contacto) o escríbenos por [WhatsApp](https://wa.me/51972652353). La consulta sirve para resolver tus dudas sobre tu caso y no te obliga a operarte.",
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: "¿Cómo saber si un cirujano bariátrico es bueno?",
+        answer:
+          "Fíjate en cuatro cosas: cómo selecciona a sus pacientes, cuánta experiencia técnica tiene, si trabaja con un equipo de nutrición, psicología y control médico, y cómo es su seguimiento después de la cirugía. Son los cuatro puntos que el Dr. Augusto Salazar señala como diferencia. En la práctica, un buen cirujano te explica tu caso con tus estudios en la mano, responde con datos propios cuando le preguntas por su experiencia y sus resultados, y no te promete kilos.",
+      },
+      {
+        question:
+          "¿Qué preguntas debo hacerle al cirujano antes de una cirugía bariátrica?",
+        answer:
+          "Las más útiles son cuatro: cuántas cirugías bariátricas hace al año, cuáles son sus tasas de complicaciones y de reoperaciones, en qué clínica opera y cómo es el seguimiento del primer año. Suma también por qué te recomienda esa cirugía y no otra, quién más forma parte del equipo y a quién puedes llamar si tienes una urgencia. Lleva la lista escrita para no olvidar ninguna.",
+      },
+      {
+        question: "¿Cómo revisar si un cirujano está certificado en el Perú?",
+        answer:
+          "Todo médico que ejerce en el Perú debe estar colegiado en el Colegio Médico del Perú (CMP). Si además es especialista, tiene un Registro Nacional de Especialista (RNE). Puedes pedirle ambos números en la consulta y buscarlo por su nombre en la web del CMP. Pregunta también si pertenece a sociedades de cirugía bariátrica nacionales o internacionales y si hace formación continua.",
+      },
+      {
+        question: "¿Es normal preguntarle al cirujano por sus complicaciones?",
+        answer:
+          "Sí, y es una de las preguntas más importantes. Toda cirugía mayor tiene riesgos, y un cirujano con experiencia conoce sus resultados y puede explicarlos. No esperes que te diga “nunca pasa nada”; espera que te hable con números propios, que te explique qué riesgos aplican a tu caso y qué hace su equipo si se presenta una complicación.",
+      },
+      {
+        question: "¿Importa en qué clínica me opere?",
+        answer:
+          "Sí. La cirugía bariátrica necesita un equipo de anestesia, enfermería y soporte que responda durante la operación y en los días siguientes. Pregunta si la clínica tiene cuidados intensivos, atención las 24 horas y qué pasa si necesitas volver con urgencia. En Trujillo, el Dr. Augusto Salazar atiende en la Clínica SANNA Sánchez Ferrer, donde es cirujano titular desde 2013.",
+      },
+      {
+        question: "¿Me conviene operarme en Trujillo o viajar a Lima?",
+        answer:
+          "Lo que define una buena cirugía son los criterios de esta guía, no la ciudad. Dicho eso, operarte cerca de casa facilita algo clave: ir a los controles. El seguimiento dura años, y es más fácil sostenerlo si tu cirujano y su equipo están en tu ciudad. Si vives en Trujillo o en el norte del Perú, puedes hacer tu evaluación sin viajar.",
+      },
+    ],
+    sources: [
+      {
+        label: "ASMBS: información para pacientes",
+        url: "https://asmbs.org/patients/",
+      },
+      {
+        label: "IFSO: International Federation for the Surgery of Obesity",
+        url: "https://www.ifso.com/",
+      },
+    ],
+    relatedServices: [
+      {
+        label: "Cirugía Bariátrica en Trujillo",
+        href: "/servicios/cirugia-bariatrica",
+        description:
+          "Manga gástrica, bypass y cirugía revisional con el Dr. Augusto Salazar.",
+      },
+      {
+        label: "Manejo integral de obesidad",
+        href: "/servicios/manejo-obesidad",
+        description:
+          "Nutrición, psicología y seguimiento: el equipo que te acompaña antes y después.",
+      },
+      {
+        label: "Agenda tu evaluación",
+        href: "/contacto",
+        description: "Lleva tus preguntas a la consulta con el Dr. Salazar.",
+      },
+    ],
+    relatedPosts: [
+      "manga-gastrica-vs-bypass-gastrico",
+      "soy-candidato-a-cirugia-bariatrica",
+      "mitos-cirugia-bariatrica-expectativas-reales",
     ],
   },
 ];

@@ -284,9 +284,10 @@ export default function ArticleContent({
   return (
     <article className="bg-cream">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
           {/* ── Columna principal ── */}
-          <div className="max-w-3xl">
+          {/* min-w-0: una tabla ancha no debe ensanchar la columna en mobile (cortaba el texto) */}
+          <div className="min-w-0 max-w-3xl">
             {/* Lo esencial — bloque citable (AI Overviews) */}
             <motion.div
               variants={staggerContainer}

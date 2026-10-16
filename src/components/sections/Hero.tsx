@@ -51,18 +51,24 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(true);
 
-  // Pause video when user prefers reduced motion
+  // El video se reproduce SIEMPRE, también con prefers-reduced-motion: Windows lo
+  // activa solo con "Efectos de animación" apagado (típico en PCs optimizadas para
+  // rendimiento) y antes eso dejaba el hero congelado en el poster. Reduced-motion
+  // apaga las animaciones de entrada (motionProps), no el contenido.
+  // Si el navegador bloquea el autoplay, se reintenta en la primera interacción.
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
-    if (shouldReduce) {
-      el.pause();
-    } else {
-      el.play().catch(() => {
-        // Autoplay blocked — still display fallback background
-      });
-    }
-  }, [shouldReduce]);
+    const events = ["pointerdown", "keydown", "scroll", "touchstart"] as const;
+    const retry = () => {
+      el.play().catch(() => {});
+      events.forEach((e) => window.removeEventListener(e, retry));
+    };
+    el.play().catch(() => {
+      events.forEach((e) => window.addEventListener(e, retry, { once: true, passive: true }));
+    });
+    return () => events.forEach((e) => window.removeEventListener(e, retry));
+  }, []);
 
   const motionProps = shouldReduce
     ? { initial: "show", animate: "show" }
